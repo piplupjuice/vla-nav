@@ -23,9 +23,10 @@ action decoder, and episode budget:
 
 - B1 asks the model once every 8 steps and follows the plan in between.
 - B2 asks at every step (the official deployment regime).
-- B3 asks every 8 steps like B1, but re-queries early when a cheap onboard
-  check fails: the distance the robot was commanded to move minus the
-  distance it actually moved, plus a counter of consecutive stalled steps.
+- B3 asks every 8 steps like B1, but re-queries early when either of two
+  cheap onboard checks fails: the distance the robot was commanded to move
+  exceeds the distance it actually moved by more than a threshold, or the
+  robot has stalled for several consecutive steps.
 
 **Protocol.** Validation scenes (FloorPlan1-30) were used only to pick the
 B3 trigger threshold (0.2 m, stall limit 2). The test split
@@ -36,10 +37,11 @@ regimes, 60-step budget. The analysis refuses to run if a trigger threshold
 cannot be traced to the validation split, and excludes any row not produced
 by the real model.
 
-**Follow-up experiments.** Two diagnostic runs probe the remaining failure
-mode: a 20-episode pilot on the easiest tasks, and a 24-episode sweep that
-adds the model's second official goal interface (goal position as
-coordinates) on the same episodes and seeds.
+**Follow-up experiments.** The main matrix raises the question of why the
+model fails indoors at all. Two diagnostic runs probe this on the easiest
+tasks: a 20-episode pilot, and a 24-episode sweep that adds the model's
+second official goal interface (goal position as coordinates) on the same
+episodes and seeds.
 
 ## Results
 
@@ -54,18 +56,22 @@ Main test matrix, 192 episodes, pooled over the four conditions:
 Wilson 95% intervals, per-condition tables, and exact McNemar tests on the
 paired episodes are in `results/analysis/full_analysis.md`. Success rates
 do not differ significantly at this sample size; the inference cost does.
+Path efficiency is reported only as a straight-line proxy - see the
+limitations below.
 
-**Finding 1 - most every-step queries are redundant.** B3 matches B2's
-measured success while issuing 60% fewer queries. The signal is odometry
+**Finding 1 - most every-step queries can be skipped at equal measured
+success.** B3 matches B2's measured success while issuing 60% fewer
+queries. The signal is odometry
 only: it detects when the robot stops moving as commanded.
 
 ![Inference cost](results/figures/fig_inference_cost.png)
 
 **Finding 2 - indoor transfer is the real wall.** On 20 episodes with the
 goal less than 2.5 m away in a straight line, B2 succeeded 4 times. The
-robot collided with the environment 25.6 times per episode and often ended
-farther from the goal than where it started. OmniVLA was trained mostly on
-outdoor data; this is a transfer failure, reported as measured.
+robot collided with the environment about 26 times per episode and often ended
+farther from the goal than where it started. OmniVLA's training data is
+mostly outdoor robot data (LeLaN, GNM, Frodobots, BDD - Hirose et al. 2025,
+arXiv:2509.19480); this is a transfer failure, reported as measured.
 
 **Finding 3 - more spatial information did not help.** On 24 paired easy
 episodes, giving the model the exact goal coordinates through its official
@@ -82,8 +88,10 @@ simulator information in this experiment and is labelled as such.
   No claim is made that B3 improves success over B2 - only that it costs
   far less at the same measured success.
 - The straight-line efficiency metric ignores walls; true path-length SPL
-  is unavailable here because AI2-THOR returns no path for about 92% of
-  furniture-object goals (object centres are off the navigation mesh).
+  is unavailable here because AI2-THOR returned no path for almost every
+  furniture-object goal in our scans - the object centre is usually off the
+  navigation mesh, so the shortest-path field is empty in all logged
+  episodes.
 - The reliability signal is odometry only; it cannot see an obstacle before
   contact.
 - Simulation only. No claim transfers to physical hardware.
@@ -105,12 +113,13 @@ simulator information in this experiment and is labelled as such.
   and logging.
 - `scripts/` - notebook generators and the analysis pipeline. Notebooks are
   generated code: every cell is syntax-checked before pushing.
-- `tests/` - 79 offline tests over a mock simulator (no GPU needed).
+- `tests/` - offline pytest suite over a mock simulator (81 tests, 2 skip without the Kaggle dataset package; no GPU needed).
 
 ## Credits
 
-OmniVLA: Hirose et al., UC Berkeley BAIR / Toyota
-([code](https://github.com/NHirose/OmniVLA), MIT licence). This study uses
-the released checkpoint unmodified.
+OmniVLA: N. Hirose et al., "OmniVLA: An Omni-Modal Vision-Language-Action
+Model for Robot Navigation" (arXiv:2509.19480, ICRA 2026), UC Berkeley BAIR
+/ Toyota ([code](https://github.com/NHirose/OmniVLA), MIT licence). This
+study uses the released checkpoint unmodified.
 Simulator: AI2-THOR, Allen Institute for AI.
 Compute: Kaggle free tier, 2x T4.

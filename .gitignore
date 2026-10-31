@@ -10,3 +10,6 @@ __pycache__/
 .DS_Store
 kaggle_notebooks/**/*.ipynb
 kaggle_notebooks/**/kernel-metadata.json
+
+*.bak
+kaggle_notebooks/**/output_v*

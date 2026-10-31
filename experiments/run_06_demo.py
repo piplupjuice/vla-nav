@@ -1,13 +1,5 @@
-"""06_demo: the exact code that ran on Kaggle.
+# 06_demo - record every tick of two demo episodes as videos.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/06_demo/06_demo.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -87,7 +79,6 @@ if _miss:
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
                                       for f in NEED if f.endswith((".pt", ".json"))})
 
-# ---- cell 3 ----------------------------------------
 import sys, os
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
@@ -124,8 +115,6 @@ policy.load()
 assert policy.is_model
 print("policy loaded:", policy.provenance.get("load_seconds"), "s")
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -140,8 +129,6 @@ controller = Controller(scene="FloorPlan3", width=400, height=400,
 ev = controller.reset(scene="FloorPlan3")
 print("controller OK | frame", ev.frame.shape)
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # 3-tick smoke episode (action/argument gate; v5 evidence)
 from vlanav.environment.types import EpisodeSpec as _Spec
 env_smoke = Ai2ThorNavEnv(controller)
@@ -159,7 +146,6 @@ assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation broken"
     " (grid/yaw); refusing to record an empty demo" % _smoke.path_length_m)
 
-# ---- cell 6 ----------------------------------------
 # B3 threshold: val-tuning artifact only, else documented fallback
 import glob as _g
 thr_cfg, thr_source = None, None
@@ -179,8 +165,6 @@ THRESHOLD = float(thr_cfg["threshold_m"])
 STALL_LIMIT = int(thr_cfg.get("stall_limit", 2))
 print("threshold", THRESHOLD, "stall", STALL_LIMIT, "from", thr_source)
 
-# ---- cell 8 ----------------------------------------
-# %%time
 import math, os, time
 import numpy as np
 import imageio.v2 as imageio

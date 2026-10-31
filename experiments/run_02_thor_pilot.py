@@ -1,13 +1,5 @@
-"""02_thor_pilot: the exact code that ran on Kaggle.
+# 02_thor_pilot - first comparison of the three query policies.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/02_thor_pilot/02_thor_pilot.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -123,7 +115,6 @@ if _miss:
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
                                       for f in NEED if f.endswith((".pt", ".json"))})
 
-# ---- cell 4 ----------------------------------------
 import sys, os, json
 # The dataset mount layout/zip roots have bitten us twice (v1/v2/v4 evidence:
 # stale nested copy at src/vlanav vs fresh src/src/vlanav). Resolve by finding
@@ -175,8 +166,6 @@ assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()   # single load (constructor excludes it)
 print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-# ---- cell 6 ----------------------------------------
-# %%time
 import numpy as np
 from vlanav.environment.types import Observation
 
@@ -193,8 +182,6 @@ print("SANITY OK | waypoints[0,0] =", w[0].round(3),
 one = policy.provenance_summary()
 print("n_calls:", one["n_inference_calls"])
 
-# ---- cell 8 ----------------------------------------
-# %%time
 import os, subprocess, time
 
 os.environ.setdefault("DISPLAY", ":0")
@@ -245,8 +232,6 @@ for mode in ("cloud", "linux64", "headless"):
 assert controller is not None, "no controller mode worked"
 print("CONTROLLER:", build_mode, "x:", xmode, round(build_secs, 1), "s")
 
-# ---- cell 10 ----------------------------------------
-# %%time
 from vlanav.environment.types import EpisodeSpec as _Spec
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = _Spec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -261,7 +246,6 @@ print("SMOKE OK | steps", smoke_res.step, "| inf", smoke_res.n_inferences,
       "| instr", spec_smoke.instruction)
 assert smoke_res.step >= 1, "smoke episode did not execute a single tick"
 
-# ---- cell 12 ----------------------------------------
 import numpy as np
 from vlanav.environment.types import Observation
 
@@ -294,8 +278,6 @@ def make_spec(i):
         extra={"pilot": True, "max_steps_note": "longer passes during full run"},
     )
 
-# ---- cell 14 ----------------------------------------
-# %%time
 import json, time
 import pandas as pd
 

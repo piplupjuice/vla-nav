@@ -1,13 +1,5 @@
-"""07_thor_diag: the exact code that ran on Kaggle.
+# 07_thor_diag - diagnose the renderer and actuation quirks.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/07_thor_diag/07_thor_diag.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -31,8 +23,6 @@ for _p in ("xvfb", "x11-utils", "mesa-utils", "libgl1", "libglu1-mesa",
         cmd(f"apt-get install -y -qq --no-install-recommends {_p}t64", must=False)
 print("env setup done")
 
-# ---- cell 3 ----------------------------------------
-# %%time
 import subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -43,7 +33,6 @@ subprocess.Popen(["Xvfb", ":0", "-screen", "0", "1024x768x24", "-ac",
 time.sleep(4)
 from ai2thor.controller import Controller
 
-
 def build(**kw):
     t0 = time.time()
     c = Controller(scene="FloorPlan5", width=400, height=400,
@@ -51,12 +40,10 @@ def build(**kw):
     print("built in", round(time.time() - t0, 1), "s", kw)
     return c
 
-
 def pose(c):
     a = c.last_event.metadata["agent"]
     return (round(a["position"]["x"], 4), round(a["position"]["y"], 4),
             round(a["position"]["z"], 4), round(a["rotation"]["y"], 2))
-
 
 def probe(c, tag, action):
     before = pose(c)
@@ -74,8 +61,6 @@ def probe(c, tag, action):
     print(json.dumps(rec))
     return rec
 
-# ---- cell 4 ----------------------------------------
-# %%time
 RECORDS = []
 
 # ---------- A: default grid (whatever THOR uses) -------------------------
@@ -112,8 +97,6 @@ except Exception as e:
     RECORDS.append({"probe": "Teleport_rot_dict", "exception": repr(e)[:300]})
 c.stop()
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # ---------- C: smaller gridSize, does 0.10 m become possible? ------------
 c2 = build(gridSize=0.05)
 print("gridSize =", getattr(c2, "gridSize", "?"))

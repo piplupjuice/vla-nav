@@ -1,13 +1,5 @@
-"""08b_bottleneck: the exact code that ran on Kaggle.
+# 08b_bottleneck - compare goal interfaces: language-only vs language + goal pose.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/08b_bottleneck/08b_bottleneck.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -93,7 +85,6 @@ if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK")
 
-# ---- cell 3 ----------------------------------------
 import sys, os, json, types
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
@@ -131,8 +122,6 @@ policy.load()
 assert policy.is_model
 print("POLICY LOADED | modes:", policy.MODALITY_ID)
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -147,8 +136,6 @@ controller = Controller(scene="FloorPlan1", width=400, height=400,
 ev = controller.reset(scene="FloorPlan1")
 print("CONTROLLER OK | frame", ev.frame.shape)
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # ---- GetShortestPath probe (self-debugging SPL fix) --------------------
 import math
 env_fix = Ai2ThorNavEnv(controller)
@@ -207,8 +194,6 @@ d_straight = math.hypot(float(tgt["position"]["x"]) - float(p0["x"]),
                         float(tgt["position"]["z"]) - float(p0["z"]))
 print("probe: straight", round(d_straight, 2), "m")
 
-# ---- cell 6 ----------------------------------------
-# %%time
 # ---- 3-tick smoke in BOTH modalities (movement gate + conditioning check)
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = EpisodeSpec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -234,8 +219,6 @@ print("smoke m7: moved", round(r7.path_length_m, 3), "| m8: moved", round(r8.pat
 assert r7.path_length_m > 0.02, "modality 7 actuation broken"
 assert r8.path_length_m > 0.02, "modality 8 actuation broken"
 
-# ---- cell 7 ----------------------------------------
-# %%time
 # ---- clear-path easy episode selection (24; provenance logged) ---------
 env_scan = Ai2ThorNavEnv(controller)
 WANT, STRAIGHT_MAX = 24, 2.5
@@ -271,8 +254,6 @@ SEEDS = [s.seed for s, _, _, _ in easy]
 print("selected", len(easy), "episodes")
 print("seeds:", SEEDS)
 
-# ---- cell 8 ----------------------------------------
-# %%time
 # ---- the sweep: 3 methods x 24 paired episodes --------------------------
 import time
 import pandas as pd

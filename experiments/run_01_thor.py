@@ -1,13 +1,5 @@
-"""01_thor: the exact code that ran on Kaggle.
+# 01_thor - bring up the AI2-THOR renderer headless and capture a frame.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/01_thor/01_thor.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/working/thor", exist_ok=True)
@@ -28,8 +20,6 @@ json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
 print(json.dumps(report, indent=2))
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import subprocess
 
 def run(s):
@@ -86,8 +76,6 @@ json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
 print("ai2thor", ai2thor.__version__)
 
-# ---- cell 6 ----------------------------------------
-# %%time
 import os, subprocess, time
 
 report["xmode"] = None
@@ -110,8 +98,6 @@ print("xdpyinfo:", report["xdpyinfo_head"])
 json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
 
-# ---- cell 8 ----------------------------------------
-# %%time
 import os, time, traceback
 
 from ai2thor.controller import Controller
@@ -169,8 +155,6 @@ json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
 print("controller built:", build_mode, build_secs and round(build_secs, 1), "s")
 
-# ---- cell 10 ----------------------------------------
-# %%time
 import numpy as np, statistics, time, traceback
 
 try:
@@ -223,7 +207,6 @@ except Exception:
               indent=2, default=str)
     raise
 
-# ---- cell 12 ----------------------------------------
 import json
 report = json.load(open("/kaggle/working/thor/thor_report.json"))
 print(json.dumps({k: report.get(k) for k in

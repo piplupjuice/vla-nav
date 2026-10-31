@@ -1,13 +1,5 @@
-"""03_tuning: the exact code that ran on Kaggle.
+# 03_tuning - sweep the re-query threshold on validation scenes only.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/03_tuning/03_tuning.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -90,7 +82,6 @@ if _miss:
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
                                       for f in NEED if f.endswith((".pt", ".json"))})
 
-# ---- cell 3 ----------------------------------------
 import sys, os
 # path-agnostic resolver + ambiguity refusal (v1/v2/v4 evidence)
 cands = []
@@ -126,8 +117,6 @@ assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
 print("policy loaded:", json.dumps(policy.provenance, default=str))
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -143,8 +132,6 @@ controller = Controller(scene="FloorPlan5", width=400, height=400,
 controller.reset(scene="FloorPlan5")
 print("controller OK (linux64+Xvfb)")
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # 3-tick smoke episode: v5 evidence says a bad THOR action argument otherwise
 # surfaces only after the 15 GB model load + controller build.
 env_smoke = Ai2ThorNavEnv(controller)
@@ -159,8 +146,6 @@ _smoke = ReliabilityTriggered(policy, threshold_m=0.05, stall_limit=2,
 print("SMOKE OK | steps", _smoke.step, "| scene", spec_smoke.extra.get("scene"))
 assert _smoke.step >= 1
 
-# ---- cell 6 ----------------------------------------
-# %%time
 import math, statistics
 import pandas as pd
 from vlanav.evaluation.logging import EpisodeLogger, ExperimentMeta

@@ -1,13 +1,5 @@
-"""08_phase_a: the exact code that ran on Kaggle.
+# 08_phase_a - 20 easy-episode pilot of the official regime and the trigger.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/08_phase_a/08_phase_a.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -103,7 +95,6 @@ if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK")
 
-# ---- cell 3 ----------------------------------------
 import sys, os, json
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
@@ -144,8 +135,6 @@ policy.load()
 assert policy.is_model, "refusing to run Phase A with a mock policy"
 print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -160,8 +149,6 @@ controller = Controller(scene="FloorPlan1", width=400, height=400,
 ev = controller.reset(scene="FloorPlan1")
 print("CONTROLLER OK | frame", ev.frame.shape, "| val scene rendered")
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # 3-tick smoke on a VAL scene (movement gate; nb07 evidence)
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = EpisodeSpec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -178,8 +165,6 @@ assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation broken "
     "" % _smoke.path_length_m)
 
-# ---- cell 6 ----------------------------------------
-# %%time
 # ---- easy-episode selection (deterministic; selection is logged) --------
 # Candidate seeds 500..599 on the VAL A_in_dist block; keep the first 20
 # whose STRAIGHT-LINE start->goal distance is < 2.5 m. reset() is metadata
@@ -210,8 +195,6 @@ assert len(easy_specs) >= 12, "too few easy episodes found; raise seed range"
 SEEDS = [s.seed for s, _ in easy_specs]
 print("easy seeds:", SEEDS)
 
-# ---- cell 7 ----------------------------------------
-# %%time
 # ---- run B2 + RAAR on the same easy episodes (paired) -------------------
 import time
 import pandas as pd

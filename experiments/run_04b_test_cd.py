@@ -1,13 +1,5 @@
-"""04b_test_cd: the exact code that ran on Kaggle.
+# 04b_test_cd - test matrix, conditions C and D (96 paired episodes).
 
-Extracted from the pushed notebook
-(kaggle_notebooks/04b_test_cd/04b_test.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
-# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -115,7 +107,6 @@ if _miss:
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
                                       for f in NEED if f.endswith((".pt", ".json"))})
 
-# ---- cell 3 ----------------------------------------
 import sys, os, json
 # path-agnostic dataset resolver + ambiguity refusal (v1/v2/v4 evidence)
 cands = []
@@ -157,8 +148,6 @@ policy.load()
 assert policy.is_model, "refusing to run the test matrix with a mock policy"
 print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -173,8 +162,6 @@ controller = Controller(scene="FloorPlan401", width=400, height=400,
 ev = controller.reset(scene="FloorPlan401")
 print("CONTROLLER OK | frame", ev.frame.shape, "| test scene rendered")
 
-# ---- cell 5 ----------------------------------------
-# %%time
 # 3-tick smoke episode: v5 evidence says a bad THOR action argument otherwise
 # surfaces only after the 15 GB model load + controller build.
 from vlanav.environment.types import EpisodeSpec as _Spec
@@ -195,7 +182,6 @@ assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation is broken "
     "(gridSize/yaw); refusing to spend GPU hours" % _smoke.path_length_m)
 
-# ---- cell 6 ----------------------------------------
 # ---- B3 threshold: val-tuning artifact ONLY (never test) -------------
 import glob as _g
 
@@ -236,8 +222,6 @@ print(json.dumps(thr_cfg, indent=2)[:900])
 THRESHOLD = float(thr_cfg["threshold_m"])
 STALL_LIMIT = int(thr_cfg.get("stall_limit", 2))
 
-# ---- cell 7 ----------------------------------------
-# %%time
 import json, time
 import pandas as pd
 

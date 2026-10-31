@@ -1,12 +1,5 @@
-"""00_preflight: the exact code that ran on Kaggle.
+# 00_preflight - load the model on 2x T4 and measure query latency.
 
-Extracted from the pushed notebook
-(kaggle_notebooks/00_preflight/00_preflight.ipynb); markdown cells omitted, cell
-boundaries marked. Cell magics are kept as comments so the file
-stays plain Python."""
-
-
-# ---- cell 2 ----------------------------------------
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/working/preflight", exist_ok=True)
@@ -34,8 +27,6 @@ with open("/kaggle/working/preflight/env_report.json", "w") as f:
     json.dump(report, f, indent=2)
 print(json.dumps(report, indent=2))
 
-# ---- cell 4 ----------------------------------------
-# %%time
 import os, subprocess, sys
 
 def cmd(s, must=True):
@@ -63,8 +54,6 @@ for name, url in [("OmniVLA", "https://github.com/NHirose/OmniVLA.git")]:
 os.makedirs("/kaggle/tmp", exist_ok=True)
 print("OmniVLA repo files:", sorted(os.listdir("/kaggle/tmp/OmniVLA"))[:12])
 
-# ---- cell 6 ----------------------------------------
-# %%time
 from huggingface_hub import snapshot_download
 import os
 
@@ -86,8 +75,6 @@ missing = [f for f in need if not os.path.isfile(os.path.join(VLA_PATH, f))]
 assert not missing, f"checkpoint incomplete: missing {missing}"
 print("checkpoint OK at", VLA_PATH)
 
-# ---- cell 8 ----------------------------------------
-# %%time
 PROBE = r"""
 import json, math, os, statistics, subprocess, sys, time
 
@@ -537,7 +524,6 @@ print("PROBE stdout:\\n", r.stdout[-8000:])
 print("PROBE stderr:\\n", r.stderr[-6000:])
 print("probe returncode:", r.returncode)
 
-# ---- cell 10 ----------------------------------------
 import json, os, time
 
 path = "/kaggle/working/preflight/preflight_report.json"

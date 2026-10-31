@@ -1,12 +1,11 @@
-"""Guards that must exist in the experiment scripts that ran on Kaggle.
+"""Guards that must exist in the experiment scripts.
 
 Each assertion here corresponds to a real failure that cost GPU hours
-(risk register R13-R25). The scripts under experiments/ are the exact code
-that executed on the Kaggle workers, so testing them is testing the run.
+(see the risk register). The scripts under experiments/ are the code
+that executed on the Kaggle workers.
 """
 from __future__ import annotations
 
-import json
 import os
 
 import pytest
@@ -36,7 +35,7 @@ def _text(path: str) -> str:
 @pytest.mark.parametrize("path", EXPERIMENTS)
 def test_every_notebook_has_a_resolver_that_refuses_ambiguity(path):
     txt = _text(path)
-    if "vlanav" not in txt:              # nb01 / nb07 do not import the package
+    if "vlanav" not in txt:              # 01/07 do not import the package
         pytest.skip("does not use the dataset package")
     assert "/kaggle/input" in txt
     assert "ambiguous" in txt or "cands" in txt
@@ -73,7 +72,7 @@ def test_test_matrix_logs_the_instruction_and_scene_per_row(path):
 
 
 def test_controller_is_always_built_with_the_actuation_grid():
-    # nb07 evidence: THOR's default 0.25 m grid makes MoveAhead(0.1) a no-op
+    # 07 evidence: THOR's default 0.25 m grid makes MoveAhead(0.1) a no-op
     for path in MODEL_NOTEBOOKS:
         txt = _text(path)
         if "gridSize" in txt:

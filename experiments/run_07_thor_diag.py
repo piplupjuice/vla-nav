@@ -1,42 +1,13 @@
-"""Generate notebook 07: AI2-THOR ACTUATION diagnostic (no model, ~5 min).
+"""07_thor_diag: the exact code that ran on Kaggle.
 
-Pilot v6 evidence (2026-10-30): every episode had path_length_m = 0.0 and
-`n_collisions = n_steps`, i.e. `MoveAhead` never produced displacement. This
-kernel isolates the action layer:
+Extracted from the pushed notebook
+(kaggle_notebooks/07_thor_diag/07_thor_diag.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
-  1. does `MoveAhead` move with the default magnitude / 0.25 / 0.10 / 0.05?
-  2. does `RotateLeft(degrees=...)` change yaw, and by how much?
-  3. does `Teleport(position=..., rotation=<float>)` land where we asked?
-  4. does movement still work AFTER a teleport?
-  5. does a smaller controller `gridSize` make 0.10 m moves possible?
-  6. is `lastActionSuccess` / `errorMessage` telling us something?
 
-Output: /kaggle/working/thor_diag.json  (each probe: before/after pose,
-success flag, error message)
-
-Run:  python scripts/gen_notebook_07_diag.py
-Then: kaggle kernels push -p kaggle_notebooks/07_thor_diag
-"""
-import ast
-import json
-import os
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "07_thor_diag")
-os.makedirs(OUT, exist_ok=True)
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
-
-cells = [
-    md("""# VLA-NAV - Notebook 07: AI2-THOR actuation diagnostic
-
-No model. Answers one question: **why did `MoveAhead(moveMagnitude=0.1)` move
-the agent 0.0 m in the pilot?** Every probe records the pose before/after, the
-action success flag and THOR's error message."""),
-
-    code(r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -58,9 +29,10 @@ for _p in ("xvfb", "x11-utils", "mesa-utils", "libgl1", "libglu1-mesa",
            "libxi6", "libxss1", "libnss3", "libvulkan1", "vulkan-tools"):
     if cmd(f"apt-get install -y -qq --no-install-recommends {_p}", must=False) != 0:
         cmd(f"apt-get install -y -qq --no-install-recommends {_p}t64", must=False)
-print("env setup done")'''),
+print("env setup done")
 
-    code(r'''%%time
+# ---- cell 3 ----------------------------------------
+# %%time
 import subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -100,9 +72,10 @@ def probe(c, tag, action):
            "standing": m["agent"].get("isStanding"),
            "error": (m.get("errorMessage") or "")[:160]}
     print(json.dumps(rec))
-    return rec'''),
+    return rec
 
-    code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 RECORDS = []
 
 # ---------- A: default grid (whatever THOR uses) -------------------------
@@ -137,9 +110,10 @@ try:
     RECORDS.append(probe(c, "Teleport_rot_dict", tp2))
 except Exception as e:
     RECORDS.append({"probe": "Teleport_rot_dict", "exception": repr(e)[:300]})
-c.stop()'''),
+c.stop()
 
-    code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # ---------- C: smaller gridSize, does 0.10 m become possible? ------------
 c2 = build(gridSize=0.05)
 print("gridSize =", getattr(c2, "gridSize", "?"))
@@ -152,42 +126,4 @@ RECORDS.append(probe(c2, "g005_RotateLeft_7.6", dict(action="RotateLeft", degree
 c2.stop()
 
 json.dump(RECORDS, open("/kaggle/working/thor_diag.json", "w"), indent=2)
-print("saved thor_diag.json with", len(RECORDS), "records")'''),
-
-    md("""## How to read this
-
-* `moved_m` after `MoveAhead(moveMagnitude=m)` tells us THOR's real movement
-  resolution. If `m = 0.10` moves 0 but `m = 0.25` moves 0.25, the agent is
-  grid-quantized and the env must use a matching grid / larger step.
-* `yaw_delta_deg` shows whether degree-level rotations are honoured (needed for
-  `ω·dt` with ω up to 0.3 rad/s → up to 5.7°/tick).
-* `Teleport_rot_float_90` validates the spawn-heading call; a wrong type would
-  raise instead of silently landing at yaw 0.
-* `success=False` with a non-empty `error` means the client did NOT raise but
-  the action failed — exactly the silent-no-motion case the pilot hit."""),
-]
-
-for i, c in enumerate(cells):
-    c.setdefault("id", f"cell-{i:02d}")
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {"cells": cells,
-      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                  "name": "python3"},
-                   "language_info": {"name": "python", "version": "3.10"}},
-      "nbformat": 4, "nbformat_minor": 5}
-with open(os.path.join(OUT, "07_thor_diag.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {"id": "pikanigga/vlanav-07-thor-diag", "title": "vlanav-07-thor-diag",
-        "code_file": "07_thor_diag.ipynb", "language": "python",
-        "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true",
-        "enable_t4x2": "true", "enable_internet": "true",
-        "dataset_sources": [], "competition_sources": [], "kernel_sources": []}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
+print("saved thor_diag.json with", len(RECORDS), "records")

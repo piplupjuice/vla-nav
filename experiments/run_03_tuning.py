@@ -1,35 +1,13 @@
-"""Generate kaggle notebook 03_tuning.ipynb: tune B3's threshold on VAL only.
+"""03_tuning: the exact code that ran on Kaggle.
 
-Method (honest tuning protocol):
-    - Same real OmniVLA policy, same AI2-THOR env, val split, condition A.
-    - Sweep threshold_m in {0.05, 0.10, 0.20, 0.40} with stall_limit=2 fixed.
-    - n=6 episodes per threshold (val), SAME seeds across thresholds.
-    - Selection rule: highest SR; tie -> fewer mean inferences; tie -> higher
-      mean final distance improvement? (log only; selection uses SR then cost).
-    - Writes /kaggle/working/results/tuning/threshold_choice.json:
-        {"threshold_m": x, "stall_limit": 2, "selection": "...", "table": ...}
-      This file is the artifact the full-run notebook must consume; the
-      test split is NEVER touched here.
-
-Run:  python scripts/gen_notebook_03.py
-Then: kaggle kernels push -p kaggle_notebooks/03_tuning
-"""
-import ast
-import json
-import os
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "03_tuning")
-os.makedirs(OUT, exist_ok=True)
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
+Extracted from the pushed notebook
+(kaggle_notebooks/03_tuning/03_tuning.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
 
-def _setup_code() -> str:
-    """Shared setup: identical to nb02 (proven v4 chain), plus tuning sweep."""
-    return r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -110,20 +88,10 @@ for _attempt in (1, 2):
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
-                                      for f in NEED if f.endswith((".pt", ".json"))})'''
+                                      for f in NEED if f.endswith((".pt", ".json"))})
 
-
-cells = [
-    md("""# VLA-NAV - Notebook 03: B3 threshold tuning (VAL ONLY)
-
-Sweep `threshold_m` on val, select by SR then inference cost, and write
-`results/tuning/threshold_choice.json`. **Test split is not touched.**
-n=6 per threshold; same seeds across thresholds; all downstream prose must
-cite this file."""),
-
-    code(_setup_code()),
-
-    code(r'''import sys, os
+# ---- cell 3 ----------------------------------------
+import sys, os
 # path-agnostic resolver + ambiguity refusal (v1/v2/v4 evidence)
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
@@ -156,9 +124,10 @@ _vanish = [f for f in NEED
                    and os.path.getsize(os.path.join(VLA_PATH, f)) > 1000)]
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
-print("policy loaded:", json.dumps(policy.provenance, default=str))'''),
+print("policy loaded:", json.dumps(policy.provenance, default=str))
 
-    code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -172,9 +141,10 @@ from ai2thor.controller import Controller
 controller = Controller(scene="FloorPlan5", width=400, height=400,
                         platform="Linux64", server_type="Linux64", gridSize=0.05)
 controller.reset(scene="FloorPlan5")
-print("controller OK (linux64+Xvfb)")'''),
+print("controller OK (linux64+Xvfb)")
 
-    code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # 3-tick smoke episode: v5 evidence says a bad THOR action argument otherwise
 # surfaces only after the 15 GB model load + controller build.
 env_smoke = Ai2ThorNavEnv(controller)
@@ -187,9 +157,10 @@ _smoke = ReliabilityTriggered(policy, threshold_m=0.05, stall_limit=2,
                               max_replans_per_episode=4).run_episode(
     env_smoke, spec_smoke)
 print("SMOKE OK | steps", _smoke.step, "| scene", spec_smoke.extra.get("scene"))
-assert _smoke.step >= 1'''),
+assert _smoke.step >= 1
 
-    code(r'''%%time
+# ---- cell 6 ----------------------------------------
+# %%time
 import math, statistics
 import pandas as pd
 from vlanav.evaluation.logging import EpisodeLogger, ExperimentMeta
@@ -259,39 +230,4 @@ choice = {"threshold_m": best["threshold_m"], "stall_limit": 2,
 with open("/kaggle/working/results/tuning/threshold_choice.json", "w") as f:
     json.dump(choice, f, indent=2)
 print("CHOICE:", json.dumps(choice["threshold_m"], indent=2))
-print("saved threshold_choice.json")'''),
-
-    md("""## Honest readout
-
-- If SR is flat zero across thresholds, the selection falls back to
-  cheapest (fewest inferences) with a logged note that the signal had no
-  effect on val - that is a real finding, not a tuning failure to hide.
-- The test-split runs may only use `threshold_choice.json` from this run."""),
-]
-
-for i, c in enumerate(cells):
-    c.setdefault("id", f"cell-{i:02d}")
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {"cells": cells,
-      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                  "name": "python3"},
-                   "language_info": {"name": "python", "version": "3.10"}},
-      "nbformat": 4, "nbformat_minor": 5}
-
-with open(os.path.join(OUT, "03_tuning.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {"id": "pikanigga/vlanav-03-tuning", "title": "vlanav-03-tuning",
-        "code_file": "03_tuning.ipynb", "language": "python",
-        "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true",
-        "enable_t4x2": "true", "enable_internet": "true",
-        "dataset_sources": ["pikanigga/vlanav-src"],
-        "competition_sources": [], "kernel_sources": []}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
+print("saved threshold_choice.json")

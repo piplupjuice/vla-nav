@@ -1,37 +1,13 @@
-"""Generate the Phase-A smoke kernel (research plan 2026-10-30, §3 Phase A).
+"""08_phase_a: the exact code that ran on Kaggle.
 
-Purpose (Week-1 deliverable of docs/raar_research_plan.md):
-    20 EASY in-distribution validation episodes (straight-line start->goal
-    < 2.5 m, canonical instructions, 60-tick budget) run under
-      - B2 fixed_frequency (the official regime)  -> the GO/NO-GO gate
-      - RAAR triggered (P1, default config)       -> first real-model run
-    with the NEW logging fields (split timing, stall/recovery, standard-SPL
-    probe). Phase A is a DIAGNOSTIC: no threshold tuning happens here, and
-    no number from this kernel is a headline result.
-
-GO/NO-GO rule (pre-registered in the plan): B2 success rate >= 0.5 on the
-easy set => GO for the Phase B/C benchmark freeze; otherwise NO-GO with a
-failure breakdown. The gate is a practical project gate, not a benchmark.
-
-Run:  python scripts/gen_notebook_08_phase_a.py
-Then: kaggle kernels push -p kaggle_notebooks/08_phase_a
-"""
-import ast
-import json
-import os
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
+Extracted from the pushed notebook
+(kaggle_notebooks/08_phase_a/08_phase_a.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
 
-def setup_code() -> str:
-    # verbatim from gen_notebook_04.py (proven across 00/02/03/04a/04b/06):
-    # pins, Xvfb apt set, vulkan guard, OmniVLA clone, transformers patch,
-    # unique per-run model dir + size-verified download with one retry.
-    return r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -125,28 +101,10 @@ for _attempt in (1, 2):
         break
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
-print("setup OK")'''
+print("setup OK")
 
-
-def main() -> None:
-    out = os.path.join(HERE, "kaggle_notebooks", "08_phase_a")
-    os.makedirs(out, exist_ok=True)
-
-    cells = [
-        md("""# VLA-NAV - Notebook 08: Phase A smoke (RAAR research plan)
-
-**Diagnostic, not headline evidence.** 20 EASY in-distribution validation
-episodes (straight-line start->goal < 2.5 m, canonical instructions,
-60-tick budget) under B2 (official regime) and RAAR (P1, default config).
-
-- GO/NO-GO gate (pre-registered): B2 success rate >= 0.5 on the easy set.
-- First real-model RAAR datapoint + the new logging fields (split timing,
-  stall/recovery, standard-SPL probe via THOR GetShortestPath).
-- No threshold tuning here; split=val; never quoted as test evidence."""),
-
-        code(setup_code()),
-
-        code(r'''import sys, os, json
+# ---- cell 3 ----------------------------------------
+import sys, os, json
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
     if "vlanav" in dirs and os.path.isfile(os.path.join(root, "vlanav", "__init__.py")):
@@ -184,9 +142,10 @@ _vanish = [f for f in NEED
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
 assert policy.is_model, "refusing to run Phase A with a mock policy"
-print("POLICY LOADED:", json.dumps(policy.provenance, default=str))'''),
+print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-        code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -199,9 +158,10 @@ from ai2thor.controller import Controller
 controller = Controller(scene="FloorPlan1", width=400, height=400,
                         platform="Linux64", server_type="Linux64", gridSize=0.05)
 ev = controller.reset(scene="FloorPlan1")
-print("CONTROLLER OK | frame", ev.frame.shape, "| val scene rendered")'''),
+print("CONTROLLER OK | frame", ev.frame.shape, "| val scene rendered")
 
-        code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # 3-tick smoke on a VAL scene (movement gate; nb07 evidence)
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = EpisodeSpec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -216,9 +176,10 @@ print("SMOKE OK | steps", _smoke.step, "| inf", _smoke.n_inferences,
 assert _smoke.step >= 1
 assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation broken "
-    "" % _smoke.path_length_m)'''),
+    "" % _smoke.path_length_m)
 
-        code(r'''%%time
+# ---- cell 6 ----------------------------------------
+# %%time
 # ---- easy-episode selection (deterministic; selection is logged) --------
 # Candidate seeds 500..599 on the VAL A_in_dist block; keep the first 20
 # whose STRAIGHT-LINE start->goal distance is < 2.5 m. reset() is metadata
@@ -247,9 +208,10 @@ for i in range(500, 600):
 print("scanned", scanned, "candidates ->", len(easy_specs), "easy episodes")
 assert len(easy_specs) >= 12, "too few easy episodes found; raise seed range"
 SEEDS = [s.seed for s, _ in easy_specs]
-print("easy seeds:", SEEDS)'''),
+print("easy seeds:", SEEDS)
 
-        code(r'''%%time
+# ---- cell 7 ----------------------------------------
+# %%time
 # ---- run B2 + RAAR on the same easy episodes (paired) -------------------
 import time
 import pandas as pd
@@ -353,46 +315,4 @@ gate = {"b2_easy_success_rate": round(sr, 3), "n": int(len(b2)),
         "gate": "GO" if sr >= 0.5 else "NO-GO",
         "rule": "B2 SR >= 0.5 on the 20 easy val episodes (pre-registered)"}
 print(json.dumps(gate, indent=2))
-json.dump(gate, open("/kaggle/working/results/phase_a_gate.json", "w"), indent=2)'''),
-
-        md("""## Readout rules
-
-- The gate reads ONLY the B2 rows: GO continues to the Phase B/C benchmark
-  freeze; NO-GO sends us to failure diagnosis (instruction grounding,
-  actuation, success radius) using the per-episode diagnostics above.
-- RAAR rows here use untuned defaults: they calibrate expectations only.
-- Split timing (vla/sim/controller), stall/recovery counts and the
-  standard-SPL probe are logged per episode from this kernel onward."""),
-    ]
-
-    for i, c in enumerate(cells):
-        c.setdefault("id", f"cell-{i:02d}")
-        if c["cell_type"] == "code":
-            plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                              if not l.lstrip().startswith(("%%", "%")))
-            ast.parse(plain)
-
-    nb = {"cells": cells,
-          "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                      "name": "python3"},
-                       "language_info": {"name": "python", "version": "3.10"}},
-          "nbformat": 4, "nbformat_minor": 5}
-    with open(os.path.join(out, "08_phase_a.ipynb"), "w", encoding="utf-8") as f:
-        json.dump(nb, f, indent=1)
-        print("wrote", f.name)
-
-    meta = {"id": "pikanigga/vlanav-08-phase-a", "title": "vlanav-08-phase-a",
-            "code_file": "08_phase_a.ipynb", "language": "python",
-            "kernel_type": "notebook", "is_private": "true",
-            "enable_gpu": "true", "enable_t4x2": "true",
-            "enable_internet": "true",
-            "dataset_sources": ["pikanigga/vlanav-src"],
-            "kernel_sources": [],
-            "competition_sources": []}
-    with open(os.path.join(out, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-        json.dump(meta, f, indent=2)
-        print("wrote", f.name)
-
-
-if __name__ == "__main__":
-    main()
+json.dump(gate, open("/kaggle/working/results/phase_a_gate.json", "w"), indent=2)

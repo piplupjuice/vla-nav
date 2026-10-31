@@ -1,40 +1,94 @@
-"""Generate the Kaggle notebook 00_preflight.ipynb v3 (+ kernel-metadata.json).
+"""00_preflight: the exact code that ran on Kaggle.
 
-v3 strategy (from the v1 syntax failure and the v2 dependency evidence):
-  - v1: generator-side `\\n` escapes corrupted notebook source -> fixed by
-    local ast-parse of every cell before writing.
-  - v2 evidence: Kaggle runs Python 3.13.15 / torch 2.11.0+cu128 /
-    transformers 5.16.1. OmniVLA's C-extension pins (sentencepiece==0.1.99,
-    tokenizers==0.19.1) have NO cp313 wheels, so the old pinned install
-    broke the deps cell. The checkpoint ships its own trust_remote_code,
-    which expects transformers==4.40.1 (WARN-only on mismatch).
-  - v3: the main kernel only installs PURE-PYTHON pins (timm==0.9.16 is
-    hard-required by the remote code; peft/utm/efficientnet_pytorch are pure
-    python). The official target `transformers==4.40.1` (--no-deps, pure
-    python wheel) is installed INSIDE a fresh subprocess that performs the
-    real official-flow load + inference + timing, so the main kernel's
-    preinstalled 5.16 stack is never disturbed by an in-place downgrade.
-  - The ~15 GB checkpoint downloads to /kaggle/tmp (NOT /kaggle/working) so
-    kernel output stays small.
-  - Every probe stage writes its findings into
-    /kaggle/working/preflight/preflight_report.json even on failure, so a
-    partial run still yields diagnostics.
-Run:  python scripts/gen_notebook_00.py
-Then: kaggle kernels push -p kaggle_notebooks/00_preflight
-"""
-import ast
-import json
+Extracted from the pushed notebook
+(kaggle_notebooks/00_preflight/00_preflight.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
+
+
+# ---- cell 2 ----------------------------------------
+import json, os, platform, subprocess, time
+
+os.makedirs("/kaggle/working/preflight", exist_ok=True)
+report = {
+    "notebook": "00_preflight",
+    "stage": "kernel-env",
+    "ts_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    "python": platform.python_version(),
+}
+
+print(subprocess.run(["nvidia-smi"], capture_output=True, text=True).stdout)
+
+import torch, transformers, numpy as np
+report["torch"] = torch.__version__
+report["cuda_available"] = torch.cuda.is_available()
+report["cuda_version"] = torch.version.cuda
+report["transformers"] = transformers.__version__
+report["numpy"] = np.__version__
+report["gpus"] = []
+if torch.cuda.is_available():
+    for i in range(torch.cuda.device_count()):
+        p = torch.cuda.get_device_properties(i)
+        report["gpus"].append({"name": p.name, "total_mem_gb": round(p.total_memory / 1e9, 1)})
+with open("/kaggle/working/preflight/env_report.json", "w") as f:
+    json.dump(report, f, indent=2)
+print(json.dumps(report, indent=2))
+
+# ---- cell 4 ----------------------------------------
+# %%time
+import os, subprocess, sys
+
+def cmd(s, must=True):
+    print("$", s)
+    r = subprocess.run(s, shell=True, capture_output=True, text=True)
+    print(r.stdout[-3000:]); print(r.stderr[-3000:])
+    if must:
+        assert r.returncode == 0, f"FAILED: {s}"
+    return r.returncode
+
+# pure-python pins (NO torch/sentencepiece/tokenizers — keep Kaggle's stack;
+# draccus==0.8.0 is the repo's own pin — pure python wheel, py3-none-any)
+cmd("pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch'")
+
+import timm, peft, utm, efficientnet_pytorch
+print("timm:", timm.__version__, "| peft:", peft.__version__,
+      "| efficientnet_pytorch:", efficientnet_pytorch.__version__)
+
+# clone the official code, HARD-asserted this time (v2's silent failure path)
+for name, url in [("OmniVLA", "https://github.com/NHirose/OmniVLA.git")]:
+    d = f"/kaggle/tmp/{name}"
+    cmd(f"rm -rf {d}", must=False)
+    cmd(f"git clone --depth 1 {url} {d}")
+    assert os.path.isdir(os.path.join(d, "prismatic")) or not name == "OmniVLA", "clone incomplete"
+os.makedirs("/kaggle/tmp", exist_ok=True)
+print("OmniVLA repo files:", sorted(os.listdir("/kaggle/tmp/OmniVLA"))[:12])
+
+# ---- cell 6 ----------------------------------------
+# %%time
+from huggingface_hub import snapshot_download
 import os
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "00_preflight")
-os.makedirs(OUT, exist_ok=True)
+VLA_PATH = snapshot_download(
+    repo_id="NHirose/omnivla-original",
+    local_dir="/kaggle/tmp/omnivla-original",
+)
+files = {f: os.path.getsize(os.path.join(VLA_PATH, f)) / 1e9
+         for f in os.listdir(VLA_PATH) if os.path.isfile(os.path.join(VLA_PATH, f))}
+for f, gb in sorted(files.items(), key=lambda kv: -kv[1])[:12]:
+    print(f"{gb:6.2f} GB  {f}")
+need = ["model-00001-of-00004.safetensors", "model-00002-of-00004.safetensors",
+        "model-00003-of-00004.safetensors", "model-00004-of-00004.safetensors",
+        "action_head--120000_checkpoint.pt",
+        "proprio_projector--120000_checkpoint.pt", "config.json",
+        "processing_prismatic.py", "modeling_prismatic.py",
+        "configuration_prismatic.py"]
+missing = [f for f in need if not os.path.isfile(os.path.join(VLA_PATH, f))]
+assert not missing, f"checkpoint incomplete: missing {missing}"
+print("checkpoint OK at", VLA_PATH)
 
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
-
-PROBE_SRC = r'''
+# ---- cell 8 ----------------------------------------
+# %%time
+PROBE = r"""
 import json, math, os, statistics, subprocess, sys, time
 
 os.makedirs("/kaggle/working/preflight", exist_ok=True)
@@ -469,147 +523,6 @@ except Exception as e:
     report["timing"] = {"error": traceback.format_exc()[-4000:]}
     save()
     raise
-'''
-
-cells = [
-    md("""# VLA-NAV — Notebook 00: Preflight v3 (real OmniVLA on Kaggle)
-
-**Purpose.** Verify that the pretrained navigation VLA
-[OmniVLA](https://github.com/NHirose/OmniVLA) (arXiv 2509.19480, checkpoint
-`NHirose/omnivla-original`, MIT) loads and runs REAL inference on the Kaggle
-T4 pair through the official inference flow (`run_omnivla.py`, verified
-2026-10-28). This produces *provenance only* — no navigation claims.
-
-**v3 changes from the two failed runs**
-- v1: generator-side `\\n` escapes corrupted the notebook source → local
-  `ast.parse` check added for every cell.
-- v2 evidence: Kaggle is Python 3.13 + transformers 5.16; OmniVLA's
-  C-extension pins (sentencepiece 0.1.99 / tokenizers 0.19.1) have no cp313
-  wheels — the old pinned install broke. This run installs ONLY pure-python
-  packages and runs the official target `transformers==4.40.1` inside a
-  fresh subprocess against the checkpoint's own trust_remote_code.
-- Checkpoint (~15 GB) goes to `/kaggle/tmp` so kernel output stays small."""),
-
-    code(r'''import json, os, platform, subprocess, time
-
-os.makedirs("/kaggle/working/preflight", exist_ok=True)
-report = {
-    "notebook": "00_preflight",
-    "stage": "kernel-env",
-    "ts_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-    "python": platform.python_version(),
-}
-
-print(subprocess.run(["nvidia-smi"], capture_output=True, text=True).stdout)
-
-import torch, transformers, numpy as np
-report["torch"] = torch.__version__
-report["cuda_available"] = torch.cuda.is_available()
-report["cuda_version"] = torch.version.cuda
-report["transformers"] = transformers.__version__
-report["numpy"] = np.__version__
-report["gpus"] = []
-if torch.cuda.is_available():
-    for i in range(torch.cuda.device_count()):
-        p = torch.cuda.get_device_properties(i)
-        report["gpus"].append({"name": p.name, "total_mem_gb": round(p.total_memory / 1e9, 1)})
-with open("/kaggle/working/preflight/env_report.json", "w") as f:
-    json.dump(report, f, indent=2)
-print(json.dumps(report, indent=2))'''),
-
-    md("""## 1. Dependencies — pure-python only
-
-OmniVLA pins `sentencepiece`/`tokenizers` (C extensions) whose wheels do not
-exist for Kaggle's Python 3.13 — v2 proved pip fails on them. Their
-preinstalled stock versions are used unchanged instead (the model's remote
-code only *warns* on version mismatch). `timm` must be **exactly one of
-{0.9.10 … 0.9.16}** (hard check inside the remote code) — timm is pure
-python, so the pin installs cleanly. `peft`, `draccus` (required by the
-`prismatic` package chain — proven by v4's `ModuleNotFoundError`),
-`utm`, `efficientnet_pytorch` are pure python too. The official
-`transformers==4.40.1` is applied inside the probe subprocess."""),
-
-    code(r'''%%time
-import os, subprocess, sys
-
-def cmd(s, must=True):
-    print("$", s)
-    r = subprocess.run(s, shell=True, capture_output=True, text=True)
-    print(r.stdout[-3000:]); print(r.stderr[-3000:])
-    if must:
-        assert r.returncode == 0, f"FAILED: {s}"
-    return r.returncode
-
-# pure-python pins (NO torch/sentencepiece/tokenizers — keep Kaggle's stack;
-# draccus==0.8.0 is the repo's own pin — pure python wheel, py3-none-any)
-cmd("pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch'")
-
-import timm, peft, utm, efficientnet_pytorch
-print("timm:", timm.__version__, "| peft:", peft.__version__,
-      "| efficientnet_pytorch:", efficientnet_pytorch.__version__)
-
-# clone the official code, HARD-asserted this time (v2's silent failure path)
-for name, url in [("OmniVLA", "https://github.com/NHirose/OmniVLA.git")]:
-    d = f"/kaggle/tmp/{name}"
-    cmd(f"rm -rf {d}", must=False)
-    cmd(f"git clone --depth 1 {url} {d}")
-    assert os.path.isdir(os.path.join(d, "prismatic")) or not name == "OmniVLA", "clone incomplete"
-os.makedirs("/kaggle/tmp", exist_ok=True)
-print("OmniVLA repo files:", sorted(os.listdir("/kaggle/tmp/OmniVLA"))[:12])'''),
-
-    md("""## 2. Download the checkpoint (`NHirose/omnivla-original`, MIT)
-
-≈15.1 GB shards + action head (201 MB) + proprio projector (67 MB) +
-LoRA 443 MB. Goes to `/kaggle/tmp` — NOT `/kaggle/working` — so the
-kernel's saved output stays small (v2 accidentally made 15 GB of kernel
-output, which itself could exceed quotas)."""),
-
-    code(r'''%%time
-from huggingface_hub import snapshot_download
-import os
-
-VLA_PATH = snapshot_download(
-    repo_id="NHirose/omnivla-original",
-    local_dir="/kaggle/tmp/omnivla-original",
-)
-files = {f: os.path.getsize(os.path.join(VLA_PATH, f)) / 1e9
-         for f in os.listdir(VLA_PATH) if os.path.isfile(os.path.join(VLA_PATH, f))}
-for f, gb in sorted(files.items(), key=lambda kv: -kv[1])[:12]:
-    print(f"{gb:6.2f} GB  {f}")
-need = ["model-00001-of-00004.safetensors", "model-00002-of-00004.safetensors",
-        "model-00003-of-00004.safetensors", "model-00004-of-00004.safetensors",
-        "action_head--120000_checkpoint.pt",
-        "proprio_projector--120000_checkpoint.pt", "config.json",
-        "processing_prismatic.py", "modeling_prismatic.py",
-        "configuration_prismatic.py"]
-missing = [f for f in need if not os.path.isfile(os.path.join(VLA_PATH, f))]
-assert not missing, f"checkpoint incomplete: missing {missing}"
-print("checkpoint OK at", VLA_PATH)'''),
-
-    md("""## 3. Probe: official-flow load + inference + timing (fresh subprocess)
-
-A generated probe script (`/kaggle/tmp/preflight_probe.py`) runs in a fresh
-Python process. Stages, each recorded in the JSON report even on failure:
-
-1. install official `transformers==4.40.1` + `huggingface_hub==0.29.1`
-   (`--no-deps`, pure-python wheels — no C builds on Python 3.13);
-2. **relax exactly one needle** in transformers' own
-   `dependency_versions_table.py` (`tokenizers>=0.19,<0.20` → `>=0.19`):
-   v3 proved this import-time gate is the only real blocker — Kaggle ships
-   tokenizers 0.23.1 and 0.19.1 has no cp313 wheel, while the model's own
-   code merely *warns* on tokenizers version mismatch;
-3. replicate the official `define_model` + `run_forward_pass` + PD-decode
-   chain from `inference/run_omnivla.py` and time 10 real inferences
-   (3 warmups); the official registration route (`AutoConfig.register` + 
-   `prismatic.extern.hf.*` classes) is used, not `trust_remote_code`.
-
-Device plan: the 8B model ≈15.4 GB bf16 against a 15.6 GB T4 — `device_map
-= "auto"` shards across BOTH T4s if needed (recorded in the report; this is
-what T4×2 is for)."""),
-
-    code(r'''%%time
-PROBE = r"""
-{probe_src}
 """
 
 # write the probe script to a plain file (avoids all nested-quoting hazards
@@ -622,11 +535,10 @@ r = subprocess.run([sys.executable, "/kaggle/tmp/preflight_probe.py"],
                    capture_output=True, text=True, timeout=7200)
 print("PROBE stdout:\\n", r.stdout[-8000:])
 print("PROBE stderr:\\n", r.stderr[-6000:])
-print("probe returncode:", r.returncode)'''),
+print("probe returncode:", r.returncode)
 
-    md("""## 4. Report + explicit gates"""),
-
-    code(r'''import json, os, time
+# ---- cell 10 ----------------------------------------
+import json, os, time
 
 path = "/kaggle/working/preflight/preflight_report.json"
 report = json.load(open(path)) if os.path.exists(path) else {}
@@ -652,74 +564,4 @@ gate_doc = {"gates": gates, "verdict": verdict,
 with open("/kaggle/working/preflight/preflight_report.json", "w") as f:
     merged = dict(report); merged.update(gate_doc)
     json.dump(merged, f, indent=2, default=str)
-print("report saved to", path)'''),
-
-    md("""## 5. What this preflight did and did not establish
-
-**Established:** pinned pure-python dependency set on Kaggle py3.13; the
-official `transformers==4.40.1` stack drives the checkpoint's
-trust_remote_code; the 8-waypoint action head + proprio projector (step
-120000) load; official-flow real inference produces an 8×4 waypoint chunk
-decoded by the official PD + velocity-limitation stages; latency/VRAM
-logged under `results/` provenance rules (downloaded kernel outputs are the
-evidence artifacts).
-
-**NOT established:** nothing about navigation ability; AI2-THOR environment
-validation and regime results come from notebooks 01+.
-
-**Stop rule:** any gate failure ⇒ fix the failing stage, push as a new
-version, never proceed with degraded settings."""),
-]
-
-# embed probe source into the probe-run cell (avoid nested triple-quote breakage)
-probe_cells_idx = next(i for i, c in enumerate(cells) if "preflight_probe.py" in str(c))
-probe_cells_idx = [i for i, c in enumerate(cells) if c["cell_type"] == "code" and "preflight_probe.py" in str(c)]
-assert len(probe_cells_idx) == 1, probe_cells_idx
-probe_code_cell = cells[probe_cells_idx[0]]
-src = "".join(probe_code_cell["source"])
-src = src.replace("{probe_src}", PROBE_SRC.strip())
-probe_code_cell["source"] = src
-
-# ---- syntax check all cells (magics stripped) locally, before writing ----
-for i, c in enumerate(cells):
-    c.setdefault("id", f"cell-{i:02d}")
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {
-    "cells": cells,
-    "metadata": {
-        "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
-        "language_info": {"name": "python", "version": "3.10"},
-    },
-    "nbformat": 4,
-    "nbformat_minor": 5,
-}
-
-with open(os.path.join(OUT, "00_preflight.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {
-    "id": "pikanigga/vlanav-00-preflight",
-    "title": "vlanav-00-preflight",
-    "code_file": "00_preflight.ipynb",
-    "language": "python",
-    "kernel_type": "notebook",
-    "is_private": "true",
-    "enable_gpu": "true",
-    "enable_t4x2": "true",
-    "enable_internet": "true",
-    "dataset_sources": [],
-    "competition_sources": [],
-    "kernel_sources": [],
-}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
-
-# probe file itself must parse too
-ast.parse(PROBE_SRC)
-print("probe script parses OK")
+print("report saved to", path)

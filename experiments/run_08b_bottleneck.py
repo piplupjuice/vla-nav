@@ -1,34 +1,13 @@
-"""Generate the Bottleneck Sweep kernel (08b).
+"""08b_bottleneck: the exact code that ran on Kaggle.
 
-Question (one GPU run, ~2.5 h): is OmniVLA's language-only goal interface
-the bottleneck of the indoor failure, or is the whole indoor domain the wall?
-
-Three methods on the SAME 24 verified-clear-path easy val episodes:
-  1. B2 fixed-frequency, official modality 7 (language only)   [reference]
-  2. B2 fixed-frequency, official modality 8 (language+goal-pose;
-     goal position from the simulator - PRIVILEGED, labelled as such)
-  3. B3 reliability-triggered, modality 7, threshold 0.2 (val artifact)
-     [keeps the cost axis on the clean slice]
-
-Also: GetShortestPath probe (self-debugging) fixes the standard-SPL
-denominator on THOR, and clear-path selection uses it.
-
-Run:  python scripts/gen_notebook_08b.py
-Then: kaggle kernels push -p kaggle_notebooks/08b_bottleneck
-"""
-import ast
-import json
-import os
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
+Extracted from the pushed notebook
+(kaggle_notebooks/08b_bottleneck/08b_bottleneck.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
 
-def setup_code() -> str:
-    return r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -112,33 +91,10 @@ for _attempt in (1, 2):
         break
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
-print("setup OK")'''
+print("setup OK")
 
-
-def main() -> None:
-    out = os.path.join(HERE, "kaggle_notebooks", "08b_bottleneck")
-    os.makedirs(out, exist_ok=True)
-
-    cells = [
-        md("""# VLA-NAV - Notebook 08b: The Bottleneck Sweep
-
-**One question:** is OmniVLA's language-only goal interface the bottleneck
-of the indoor failure, or is the whole indoor domain the wall?
-
-Three methods on the same 24 verified-clear-path easy val episodes
-(straight-line < 2.5 m AND GetShortestPath <= 1.25x straight):
-1. B2 every-step, **modality 7** (language only) - reference
-2. B2 every-step, **modality 8** (language+goal-pose; goal position from
-   the simulator - PRIVILEGED input, an official deployment mode of the
-   model, labelled as such everywhere)
-3. B3 reliability-triggered, modality 7, threshold 0.2 m (val artifact)
-
-Exploratory sweep: both outcomes are reportable findings. Diagnostic val
-data only - never test evidence."""),
-
-        code(setup_code()),
-
-        code(r'''import sys, os, json, types
+# ---- cell 3 ----------------------------------------
+import sys, os, json, types
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
     if "vlanav" in dirs and os.path.isfile(os.path.join(root, "vlanav", "__init__.py")):
@@ -173,9 +129,10 @@ _vanish = [f for f in NEED
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
 assert policy.is_model
-print("POLICY LOADED | modes:", policy.MODALITY_ID)'''),
+print("POLICY LOADED | modes:", policy.MODALITY_ID)
 
-        code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -188,9 +145,10 @@ from ai2thor.controller import Controller
 controller = Controller(scene="FloorPlan1", width=400, height=400,
                         platform="Linux64", server_type="Linux64", gridSize=0.05)
 ev = controller.reset(scene="FloorPlan1")
-print("CONTROLLER OK | frame", ev.frame.shape)'''),
+print("CONTROLLER OK | frame", ev.frame.shape)
 
-        code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # ---- GetShortestPath probe (self-debugging SPL fix) --------------------
 import math
 env_fix = Ai2ThorNavEnv(controller)
@@ -247,9 +205,10 @@ Ai2ThorNavEnv.shortest_path_length_m = _shortest_path_length_m
 # verify on the probe pair: straight distance vs reported path
 d_straight = math.hypot(float(tgt["position"]["x"]) - float(p0["x"]),
                         float(tgt["position"]["z"]) - float(p0["z"]))
-print("probe: straight", round(d_straight, 2), "m")'''),
+print("probe: straight", round(d_straight, 2), "m")
 
-        code(r'''%%time
+# ---- cell 6 ----------------------------------------
+# %%time
 # ---- 3-tick smoke in BOTH modalities (movement gate + conditioning check)
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = EpisodeSpec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -273,9 +232,10 @@ r8 = ChunkedFrozen(policy, "chunked_frozen").run_episode(env_smoke, spec_smoke)
 policy.instruction_mode = "language"; policy.goal_pose_fn = None
 print("smoke m7: moved", round(r7.path_length_m, 3), "| m8: moved", round(r8.path_length_m, 3))
 assert r7.path_length_m > 0.02, "modality 7 actuation broken"
-assert r8.path_length_m > 0.02, "modality 8 actuation broken"'''),
+assert r8.path_length_m > 0.02, "modality 8 actuation broken"
 
-        code(r'''%%time
+# ---- cell 7 ----------------------------------------
+# %%time
 # ---- clear-path easy episode selection (24; provenance logged) ---------
 env_scan = Ai2ThorNavEnv(controller)
 WANT, STRAIGHT_MAX = 24, 2.5
@@ -309,9 +269,10 @@ print("scanned", scanned, "-> easy episodes:", len(easy),
 assert len(easy) >= 12, "not enough easy episodes - investigate scan"
 SEEDS = [s.seed for s, _, _, _ in easy]
 print("selected", len(easy), "episodes")
-print("seeds:", SEEDS)'''),
+print("seeds:", SEEDS)
 
-        code(r'''%%time
+# ---- cell 8 ----------------------------------------
+# %%time
 # ---- the sweep: 3 methods x 24 paired episodes --------------------------
 import time
 import pandas as pd
@@ -428,48 +389,4 @@ read = {"SR_language_only": round(float(b7.success.mean()), 3),
                     else "language interface is NOT the dominant bottleneck; "
                          "the indoor domain itself is the wall")}
 print(json.dumps(read, indent=2))
-json.dump(read, open("/kaggle/working/results/bottleneck_reading.json", "w"), indent=2)'''),
-
-        md("""## Readout rules
-
-- Modality 8 receives the goal position from the simulator: it is an
-  OFFICIAL deployment mode of the model, but a PRIVILEGED input - every
-  table labels it. It is never compared as if it were onboard-only.
-- Both sweep outcomes are findings: the language interface being the
-  bottleneck is actionable for the model authors; it not being one
-  strengthens the transfer-wall evidence.
-- All rows carry goal_modality + shortest_path_m; SPL_standard is now the
-  real walkable-path denominator (probe-verified)."""),
-    ]
-
-    for i, c in enumerate(cells):
-        c.setdefault("id", f"cell-{i:02d}")
-        if c["cell_type"] == "code":
-            plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                              if not l.lstrip().startswith(("%%", "%")))
-            ast.parse(plain)
-
-    nb = {"cells": cells,
-          "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                      "name": "python3"},
-                       "language_info": {"name": "python", "version": "3.10"}},
-          "nbformat": 4, "nbformat_minor": 5}
-    with open(os.path.join(out, "08b_bottleneck.ipynb"), "w", encoding="utf-8") as f:
-        json.dump(nb, f, indent=1)
-        print("wrote", f.name)
-
-    meta = {"id": "pikanigga/vlanav-08b-bottleneck", "title": "vlanav-08b-bottleneck",
-            "code_file": "08b_bottleneck.ipynb", "language": "python",
-            "kernel_type": "notebook", "is_private": "true",
-            "enable_gpu": "true", "enable_t4x2": "true",
-            "enable_internet": "true",
-            "dataset_sources": ["pikanigga/vlanav-src"],
-            "kernel_sources": [],
-            "competition_sources": []}
-    with open(os.path.join(out, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-        json.dump(meta, f, indent=2)
-        print("wrote", f.name)
-
-
-if __name__ == "__main__":
-    main()
+json.dump(read, open("/kaggle/working/results/bottleneck_reading.json", "w"), indent=2)

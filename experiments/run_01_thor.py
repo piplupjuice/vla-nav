@@ -1,70 +1,13 @@
-"""Generate the Kaggle notebook 01_thor.ipynb (+ kernel-metadata.json).
+"""01_thor: the exact code that ran on Kaggle.
 
-Purpose: prove the environment half of the pipeline on Kaggle - AI2-THOR
-renders REAL egocentric RGB, steps are timed, and frames pass sanity gates.
-This is *environment provenance only* (no model claims; notebook 00 proved
-the model half with its v7 ALL PASS report).
+Extracted from the pushed notebook
+(kaggle_notebooks/01_thor/01_thor.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
-v2 (evidence-driven rewrite after v1 failed all three controller modes):
-    v1 report evidence (fetched 2026-10-29, thor_report.json):
-      - cloud  : Unity downloaded+launched but exited returncode=-6
-                 ("Confirm Vulkan ... properly configured") - the classic
-                 missing-NVIDIA-Vulkan-ICD symptom.
-      - headless: TypeError NoneType (ai2thor 5 headless path quirk).
-      - xvfb   : "No valid X display found ... Linux64 requires a X11
-                 server ... with GLX. If you have an NVIDIA GPU, please
-                 run: sudo ai2thor-xorg start".
-    v2 report evidence (fetched 2026-10-29):
-      - apt install DIED ENTIRELY: "E: Package 'libasound2' has no
-        installation candidate" - Kaggle is Ubuntu 24.04 (noble) where
-        several library names are renamed with a t64 suffix, and apt
-        aborts the whole transaction (NO xvfb/vulkan/mesa got installed).
-      - ai2thor_colab.start_xserver() verified to be a no-op off Colab
-        (its code gates the whole X setup behind `import google.colab`);
-        we must start X ourselves.
-      - headless Unity DID start a backend (fifo answered) but the first
-        action timed out at 100 s - deps missing, inconclusive.
-      - my own bug: try_build called `ev.step(...)` (Event has no step).
-    v3 changes:
-      1. per-package apt loop with automatic `pkg -> pkg` + `pkg`t64`
-         fallback so one bad name cannot kill the transaction.
-      2. Xvfb started with `+extension GLX +render` (GLX validation args
-         used by ai2thor-colab itself) + xdpyinfo verification.
-      3. NVIDIA Vulkan ICD write + vulkaninfo summary (now properly
-         installed) recorded in the report.
-      4. every failed controller mode captures the Unity Player.log tail
-         into the report for evidence-driven v4.
-Every generated code cell is ast.parse-checked before writing.
-Every generated code cell is ast.parse-checked before writing.
-Run:  python scripts/gen_notebook_01.py
-Then: kaggle kernels push -p kaggle_notebooks/01_thor
-"""
-import ast
-import json
-import os
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "01_thor")
-os.makedirs(OUT, exist_ok=True)
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
-
-cells = [
-    md("""# VLA-NAV - Notebook 01 v3: AI2-THOR environment preflight (Kaggle T4)
-
-**Purpose.** Verify AI2-THOR produces REAL egocentric RGB frames on the
-Kaggle T4, time the sim step, and save a frame as evidence. Navigation
-claims come from notebooks 02+; this notebook only proves the
-*environment* half of the pipeline.
-
-Report: `/kaggle/working/thor/thor_report.json` (written at every stage,
-even on failure). v1 evidence is quoted in the change log above.""",
-
-        ),
-
-    code(r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/working/thor", exist_ok=True)
@@ -83,18 +26,10 @@ report["gpus"] = [torch.cuda.get_device_properties(i).name
                   for i in range(torch.cuda.device_count())]
 json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
-print(json.dumps(report, indent=2))''',
+print(json.dumps(report, indent=2))
 
-        ),
-
-    md("""## 1. Install ai2thor + the FULL X/GLX/Vulkan dependency set (t64-safe)
-
-v2 evidence: on Ubuntu 24.04 (Kaggle) `libasound2` has no candidate
-(renamed `libasound2t64`), and apt aborts the WHOLE transaction on one
-bad name - nothing got installed. We therefore install package-by-
-package with an automatic `t64` fallback per name."""),
-
-    code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import subprocess
 
 def run(s):
@@ -126,9 +61,6 @@ icd_dir = "/usr/share/vulkan/icd.d"
 icds = globmod.glob(icd_dir + "/*.json")
 icd_txt = {open(p).read() for p in icds} if icds else set()
 if not any("nvidia" in s.lower() for s in icd_txt):
-    # v4 evidence: /usr/share/vulkan/icd.d may not exist -> open(..., "w")
-    # raised FileNotFoundError and aborted the whole diagnostic cell.
-    os.makedirs(icd_dir, exist_ok=True)
     nvidia_icd = os.path.join(icd_dir, "nvidia_icd.json")
     with open(nvidia_icd, "w") as f:
         f.write('{\n'
@@ -152,15 +84,10 @@ import ai2thor
 report["ai2thor_version"] = ai2thor.__version__
 json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
-print("ai2thor", ai2thor.__version__)'''),
+print("ai2thor", ai2thor.__version__)
 
-    md("""## 2. Start Xvfb with GLX (+render) and verify the display
-
-ai2thor_colab.start_xserver() is a verified no-op off Colab (v2
-evidence); we start Xvfb ourselves with the same GLX-extension args
-ai2thor-colab uses, and verify with xdpyinfo."""),
-
-    code(r'''%%time
+# ---- cell 6 ----------------------------------------
+# %%time
 import os, subprocess, time
 
 report["xmode"] = None
@@ -181,18 +108,10 @@ ok_xvfb = ("GLX" in r.stdout) and proc.poll() is None
 report["xmode"] = "xvfb_glx" if ok_xvfb else "xvfb_unverified"
 print("xdpyinfo:", report["xdpyinfo_head"])
 json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
-          indent=2, default=str)''',
+          indent=2, default=str)
 
-        ),
-
-    md("""## 3. Controller ladder: CloudRendering, Linux64(X), headless
-
-Each mode gets its own keywords; every failure is recorded with its
-truncated traceback so the next iteration is evidence-driven.""",
-
-        ),
-
-    code(r'''%%time
+# ---- cell 8 ----------------------------------------
+# %%time
 import os, time, traceback
 
 from ai2thor.controller import Controller
@@ -248,15 +167,10 @@ report["controller"] = {"mode": build_mode,
                         "xmode_used": report.get("xmode")}
 json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
           indent=2, default=str)
-print("controller built:", build_mode, build_secs and round(build_secs, 1), "s")''',
+print("controller built:", build_mode, build_secs and round(build_secs, 1), "s")
 
-        ),
-
-    md("""## 4. Real render + step timings + sanity gates""",
-
-        ),
-
-    code(r'''%%time
+# ---- cell 10 ----------------------------------------
+# %%time
 import numpy as np, statistics, time, traceback
 
 try:
@@ -307,55 +221,11 @@ except Exception:
     report["render"] = {"error": traceback.format_exc()[-3000:]}
     json.dump(report, open("/kaggle/working/thor/thor_report.json", "w"),
               indent=2, default=str)
-    raise''',
+    raise
 
-        ),
-
-    md("""## 5. What v2 establishes / does not establish
-
-**Established on success:** AI2-THOR serves REAL egocentric RGB on the
-Kaggle T4 with a recorded rendering mode; step latency logged; frame +
-JSON report as evidence.
-
-**NOT established:** anything about the model (notebook 00) or any
-navigation result (notebooks 02+).
-
-**Stop rule:** any gate failure => read the recorded errors, fix
-v3, push - never cite until ALL PASS.""",
-
-        ),
-
-    code(r'''import json
+# ---- cell 12 ----------------------------------------
+import json
 report = json.load(open("/kaggle/working/thor/thor_report.json"))
 print(json.dumps({k: report.get(k) for k in
                   ("ai2thor_version", "xmode", "controller", "render",
-                   "gates", "verdict")}, indent=2, default=str))''',
-
-        ),
-]
-
-for i, c in enumerate(cells):
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {"cells": cells,
-      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                  "name": "python3"},
-                   "language_info": {"name": "python", "version": "3.10"}},
-      "nbformat": 4, "nbformat_minor": 5}
-
-with open(os.path.join(OUT, "01_thor.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {"id": "pikanigga/vlanav-01-thor", "title": "vlanav-01-thor",
-        "code_file": "01_thor.ipynb", "language": "python", "kernel_type": "notebook",
-        "is_private": "true", "enable_gpu": "true", "enable_t4x2": "false",
-        "enable_internet": "true", "dataset_sources": [],
-        "competition_sources": [], "kernel_sources": []}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
-
+                   "gates", "verdict")}, indent=2, default=str))

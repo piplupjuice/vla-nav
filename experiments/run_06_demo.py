@@ -1,42 +1,13 @@
-"""Generate notebook 06_demo.ipynb: real THOR frames -> MP4 demo (3 regimes).
+"""06_demo: the exact code that ran on Kaggle.
 
-Honest demo rules:
-  * SAME two val episodes, SAME seeds, recorded for B1, B2 and B3 -> the
-    viewer sees the cost/behaviour difference, not a curated winner.
-  * EVERY tick's real 400x400 frame is kept (no frame cherry-picking).
-  * Overlay values (step, v, w, distance-to-goal, instruction) are the logged
-    values of that exact tick; the pose is captured WITH the frame (no
-    end-of-episode pose reused for earlier frames).
-  * B3 threshold comes from the val-only tuning artifact when available,
-    otherwise 0.2 with the fallback logged in demo_meta.json.
-Output: /kaggle/working/demo/*.mp4 (H.264, 8 fps), keyframes, demo_meta.json.
+Extracted from the pushed notebook
+(kaggle_notebooks/06_demo/06_demo.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
-Run:  python scripts/gen_notebook_06.py
-Then: kaggle kernels push -p kaggle_notebooks/06_demo
-"""
-import ast
-import json
-import os
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "06_demo")
-os.makedirs(OUT, exist_ok=True)
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
-
-cells = [
-    md("""# VLA-NAV - Notebook 06: real-frame MP4 demo (B1 vs B2 vs B3)
-
-Two fixed val episodes, each recorded for all three regimes with the real
-OmniVLA checkpoint in real AI2-THOR. Every control tick is kept; the overlay
-shows that tick's logged command and true distance-to-goal.
-
-**Honest:** no re-runs for a prettier take, no dropped frames, no edited
-overlays. If the robot stalls, spins or collides, it is in the video."""),
-
-    code(r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -114,9 +85,10 @@ for _attempt in (1, 2):
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
-                                      for f in NEED if f.endswith((".pt", ".json"))})'''),
+                                      for f in NEED if f.endswith((".pt", ".json"))})
 
-    code(r'''import sys, os
+# ---- cell 3 ----------------------------------------
+import sys, os
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
     if "vlanav" in dirs and os.path.isfile(os.path.join(root, "vlanav", "__init__.py")):
@@ -150,9 +122,10 @@ _vanish = [f for f in NEED
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
 assert policy.is_model
-print("policy loaded:", policy.provenance.get("load_seconds"), "s")'''),
+print("policy loaded:", policy.provenance.get("load_seconds"), "s")
 
-    code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -165,9 +138,10 @@ from ai2thor.controller import Controller
 controller = Controller(scene="FloorPlan3", width=400, height=400,
                         platform="Linux64", server_type="Linux64", gridSize=0.05)
 ev = controller.reset(scene="FloorPlan3")
-print("controller OK | frame", ev.frame.shape)'''),
+print("controller OK | frame", ev.frame.shape)
 
-    code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # 3-tick smoke episode (action/argument gate; v5 evidence)
 from vlanav.environment.types import EpisodeSpec as _Spec
 env_smoke = Ai2ThorNavEnv(controller)
@@ -183,9 +157,10 @@ assert _smoke.step >= 1
 # movement gate (nb07): a stalled robot would make the demo a video of nothing
 assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation broken"
-    " (grid/yaw); refusing to record an empty demo" % _smoke.path_length_m)'''),
+    " (grid/yaw); refusing to record an empty demo" % _smoke.path_length_m)
 
-    code(r'''# B3 threshold: val-tuning artifact only, else documented fallback
+# ---- cell 6 ----------------------------------------
+# B3 threshold: val-tuning artifact only, else documented fallback
 import glob as _g
 thr_cfg, thr_source = None, None
 for p in _g.glob("/kaggle/input/**/threshold_choice.json", recursive=True):
@@ -202,11 +177,10 @@ if thr_cfg is None:
     thr_source = "(none)"
 THRESHOLD = float(thr_cfg["threshold_m"])
 STALL_LIMIT = int(thr_cfg.get("stall_limit", 2))
-print("threshold", THRESHOLD, "stall", STALL_LIMIT, "from", thr_source)'''),
+print("threshold", THRESHOLD, "stall", STALL_LIMIT, "from", thr_source)
 
-    md("## Record every tick of every regime on the same two episodes"),
-
-    code(r'''%%time
+# ---- cell 8 ----------------------------------------
+# %%time
 import math, os, time
 import numpy as np
 import imageio.v2 as imageio
@@ -327,40 +301,4 @@ json.dump({"threshold_m": THRESHOLD, "stall_limit": STALL_LIMIT,
                     "no cherry-picking or frame edits")},
           open("/kaggle/working/demo/demo_meta.json", "w"), indent=2)
 controller.stop()
-print("DEMO DONE:", len(all_meta), "clips")'''),
-
-    md("""## What the video shows / does not show
-
-Shows: every tick of three real regimes on two identical episodes, with the
-actual decoded (v, ω), the live distance-to-goal, and the language instruction.
-Does not show: edited frames, a re-run for a nicer take, or any claim beyond
-the logged episode result.""")
-]
-
-for i, c in enumerate(cells):
-    c.setdefault("id", f"cell-{i:02d}")
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {"cells": cells,
-      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                  "name": "python3"},
-                   "language_info": {"name": "python", "version": "3.10"}},
-      "nbformat": 4, "nbformat_minor": 5}
-
-with open(os.path.join(OUT, "06_demo.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {"id": "pikanigga/vlanav-06-demo", "title": "vlanav-06-demo",
-        "code_file": "06_demo.ipynb", "language": "python",
-        "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true",
-        "enable_t4x2": "true", "enable_internet": "true",
-        "dataset_sources": ["pikanigga/vlanav-src"],
-        "kernel_sources": ["pikanigga/vlanav-03-tuning"],
-        "competition_sources": []}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
+print("DEMO DONE:", len(all_meta), "clips")

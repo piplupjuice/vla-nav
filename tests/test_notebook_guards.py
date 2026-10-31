@@ -1,8 +1,8 @@
-"""Guards that must exist in the generated Kaggle notebooks.
+"""Guards that must exist in the experiment scripts that ran on Kaggle.
 
 Each assertion here corresponds to a real failure that cost GPU hours
-(`docs/technical_risks.md` R13-R25). The notebooks are build artifacts produced
-by `scripts/gen_notebook_*.py`, so testing the artifacts is testing the build.
+(risk register R13-R25). The scripts under experiments/ are the exact code
+that executed on the Kaggle workers, so testing them is testing the run.
 """
 from __future__ import annotations
 
@@ -13,28 +13,27 @@ import pytest
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-NOTEBOOKS = [
-    "kaggle_notebooks/01_thor/01_thor.ipynb",
-    "kaggle_notebooks/02_thor_pilot/02_thor_pilot.ipynb",
-    "kaggle_notebooks/03_tuning/03_tuning.ipynb",
-    "kaggle_notebooks/04a_test_ab/04a_test.ipynb",
-    "kaggle_notebooks/04b_test_cd/04b_test.ipynb",
-    "kaggle_notebooks/06_demo/06_demo.ipynb",
-    "kaggle_notebooks/07_thor_diag/07_thor_diag.ipynb",
+EXPERIMENTS = [
+    "experiments/run_01_thor.py",
+    "experiments/run_02_thor_pilot.py",
+    "experiments/run_03_tuning.py",
+    "experiments/run_04a_test_ab.py",
+    "experiments/run_04b_test_cd.py",
+    "experiments/run_06_demo.py",
+    "experiments/run_07_thor_diag.py",
 ]
 
-#: notebooks that load the 15 GB checkpoint
-MODEL_NOTEBOOKS = [n for n in NOTEBOOKS
+#: scripts that load the 15 GB checkpoint
+MODEL_NOTEBOOKS = [n for n in EXPERIMENTS
                    if any(k in n for k in ("02_thor_pilot", "03_tuning",
                                            "04a", "04b", "06_demo"))]
 
 
 def _text(path: str) -> str:
-    nb = json.load(open(os.path.join(HERE, path), encoding="utf-8"))
-    return "\n".join("".join(c["source"]) for c in nb["cells"])
+    return open(os.path.join(HERE, path), encoding="utf-8").read()
 
 
-@pytest.mark.parametrize("path", NOTEBOOKS)
+@pytest.mark.parametrize("path", EXPERIMENTS)
 def test_every_notebook_has_a_resolver_that_refuses_ambiguity(path):
     txt = _text(path)
     if "vlanav" not in txt:              # nb01 / nb07 do not import the package
@@ -57,16 +56,16 @@ def test_model_notebooks_refuse_a_stale_dataset(path):
     assert "contains_D_recovery_yaw=True" in txt
 
 
-@pytest.mark.parametrize("path", ["kaggle_notebooks/04a_test_ab/04a_test.ipynb",
-                                  "kaggle_notebooks/04b_test_cd/04b_test.ipynb",
-                                  "kaggle_notebooks/06_demo/06_demo.ipynb"])
+@pytest.mark.parametrize("path", ["experiments/run_04a_test_ab.py",
+                                  "experiments/run_04b_test_cd.py",
+                                  "experiments/run_06_demo.py"])
 def test_long_runs_gate_on_real_movement(path):
     txt = _text(path)
     assert "_smoke.path_length_m > 0.02" in txt          # R22
 
 
-@pytest.mark.parametrize("path", ["kaggle_notebooks/04a_test_ab/04a_test.ipynb",
-                                  "kaggle_notebooks/04b_test_cd/04b_test.ipynb"])
+@pytest.mark.parametrize("path", ["experiments/run_04a_test_ab.py",
+                                  "experiments/run_04b_test_cd.py"])
 def test_test_matrix_logs_the_instruction_and_scene_per_row(path):
     txt = _text(path)
     assert 'row["instruction"] = spec.instruction' in txt
@@ -84,8 +83,8 @@ def test_controller_is_always_built_with_the_actuation_grid():
 
 def test_test_matrix_uses_canonical_regime_names():
     # dry-run regression: class-derived names silently dropped B2 from summaries
-    for path in ("kaggle_notebooks/04a_test_ab/04a_test.ipynb",
-                 "kaggle_notebooks/04b_test_cd/04b_test.ipynb"):
+    for path in ("experiments/run_04a_test_ab.py",
+                 "experiments/run_04b_test_cd.py"):
         txt = _text(path)
         assert '"fixed_frequency"' in txt
         assert "FixedFrequencyReplan(policy, \"fixed_frequency\")" in txt

@@ -1,51 +1,13 @@
-"""Generate the FULL test-matrix notebooks (04a: A+B, 04b: C+D).
+"""04a_test_ab: the exact code that ran on Kaggle.
 
-Why two kernels instead of one:
-    B2 (official fixed-frequency regime) costs ~3.6 min/episode (60 ticks x
-    3.56 s measured VLA latency). A single 4-condition kernel would be ~5.6 h
-    of GPU time with no checkpointing across a session kill. Splitting into
-    two ~2.8 h kernels (A+B and C+D) keeps each run well inside the session
-    limit AND lets results be fetched/verified incrementally.
-
-Protocol (frozen before running):
-    - test split only (FloorPlan401..430); val was used for threshold tuning.
-    - n = 16 episodes per condition, seeds = upper half of the condition's
-      seed range (the `episodes.py` test convention), shared by B1/B2/B3
-      (paired design -> McNemar is valid).
-    - max_steps = 60 for every regime and condition (documented; ~6 m of
-      travel at v=0.3 m/s, dt=1/3 s).
-    - B3 threshold read from the tuning kernel's threshold_choice.json;
-      if absent, falls back to configs/reliability.yaml and LOGS the fallback
-      (never silently).
-    - resume-aware: already-logged episode_ids are skipped, so a re-push
-      continues instead of duplicating rows.
-
-Run:  python scripts/gen_notebook_04.py a     -> kaggle_notebooks/04a_test_ab
-      python scripts/gen_notebook_04.py b     -> kaggle_notebooks/04b_test_cd
-Then: kaggle kernels push -p kaggle_notebooks/04a_test_ab
-      kaggle kernels push -p kaggle_notebooks/04b_test_cd
-"""
-import ast
-import json
-import os
-import sys
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-PARTS = {
-    "a": dict(conds=["A_in_dist", "B_env_shift"], slug="vlanav-04a-test-ab",
-              title="vlanav-04a-test-ab", outdir="04a_test_ab"),
-    "b": dict(conds=["C_instr_shift", "D_recovery"], slug="vlanav-04b-test-cd",
-              title="vlanav-04b-test-cd", outdir="04b_test_cd"),
-}
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
+Extracted from the pushed notebook
+(kaggle_notebooks/04a_test_ab/04a_test.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
 
-def setup_code(part: str) -> str:
-    return r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -53,7 +15,7 @@ os.makedirs("/kaggle/working/results", exist_ok=True)
 os.environ["AI2THOR_DOWNLOAD_DIR"] = "/kaggle/tmp/aa"
 os.environ["OBJECT_CACHE_DIR"] = "/kaggle/tmp/thor_objcache"
 os.environ["XDG_CACHE_HOME"] = "/kaggle/tmp/xdgcache"
-report = {"notebook": "04_test_PART", "stage": "kernel-env",
+report = {"notebook": "04_test_a", "stage": "kernel-env",
           "ts_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
           "python": platform.python_version()}
 import torch
@@ -61,7 +23,7 @@ report["torch"] = torch.__version__
 report["gpus"] = [torch.cuda.get_device_properties(i).name
                   for i in range(torch.cuda.device_count())]
 print(json.dumps(report, indent=2))
-json.dump(report, open("/kaggle/working/full_env_PART.json", "w"), indent=2)
+json.dump(report, open("/kaggle/working/full_env_a.json", "w"), indent=2)
 
 def cmd(s, must=True):
     print("$", s)
@@ -151,31 +113,10 @@ for _attempt in (1, 2):
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
-                                      for f in NEED if f.endswith((".pt", ".json"))})'''.replace("PART", part)
+                                      for f in NEED if f.endswith((".pt", ".json"))})
 
-
-def main() -> None:
-    part = (sys.argv[1] if len(sys.argv) > 1 else "a").lower()
-    if part not in PARTS:
-        raise SystemExit("usage: python scripts/gen_notebook_04.py [a|b]")
-    cfg = PARTS[part]
-    out = os.path.join(HERE, "kaggle_notebooks", cfg["outdir"])
-    os.makedirs(out, exist_ok=True)
-
-    cells = [
-        md(f"""# VLA-NAV - Notebook 04{part}: FULL test matrix ({', '.join(cfg['conds'])})
-
-Frozen protocol: **test split only** (FloorPlan401..430), n=16 per condition,
-paired seeds across B1/B2/B3, max_steps=60, B3 threshold from the val-only
-tuning kernel. Every row is appended to
-`results/raw/<exp_id>/episodes.jsonl` as the episode finishes (resume-aware).
-
-Honest notes are written into every `meta.json`: seeds, budget, threshold
-source, and the `policy_is_model` flag per row."""),
-
-        code(setup_code(part)),
-
-        code(r'''import sys, os, json
+# ---- cell 3 ----------------------------------------
+import sys, os, json
 # path-agnostic dataset resolver + ambiguity refusal (v1/v2/v4 evidence)
 cands = []
 for root, dirs, _files in os.walk("/kaggle/input"):
@@ -214,9 +155,10 @@ _vanish = [f for f in NEED
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()
 assert policy.is_model, "refusing to run the test matrix with a mock policy"
-print("POLICY LOADED:", json.dumps(policy.provenance, default=str))'''),
+print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-        code(r'''%%time
+# ---- cell 4 ----------------------------------------
+# %%time
 import os, subprocess, time
 os.environ["DISPLAY"] = ":0"
 subprocess.run("pkill Xvfb || true", shell=True)
@@ -229,9 +171,10 @@ from ai2thor.controller import Controller
 controller = Controller(scene="FloorPlan401", width=400, height=400,
                         platform="Linux64", server_type="Linux64", gridSize=0.05)
 ev = controller.reset(scene="FloorPlan401")
-print("CONTROLLER OK | frame", ev.frame.shape, "| test scene rendered")'''),
+print("CONTROLLER OK | frame", ev.frame.shape, "| test scene rendered")
 
-        code(r'''%%time
+# ---- cell 5 ----------------------------------------
+# %%time
 # 3-tick smoke episode: v5 evidence says a bad THOR action argument otherwise
 # surfaces only after the 15 GB model load + controller build.
 from vlanav.environment.types import EpisodeSpec as _Spec
@@ -250,9 +193,10 @@ assert _smoke.step >= 1
 # and every "result" would be an actuation artefact, not a model outcome.
 assert _smoke.path_length_m > 0.02, (
     "SMOKE FAILED: robot moved %.3f m in 3 ticks -> actuation is broken "
-    "(gridSize/yaw); refusing to spend GPU hours" % _smoke.path_length_m)'''),
+    "(gridSize/yaw); refusing to spend GPU hours" % _smoke.path_length_m)
 
-        code(r'''# ---- B3 threshold: val-tuning artifact ONLY (never test) -------------
+# ---- cell 6 ----------------------------------------
+# ---- B3 threshold: val-tuning artifact ONLY (never test) -------------
 import glob as _g
 
 thr_source, thr_cfg = None, None
@@ -290,13 +234,14 @@ print("THRESHOLD SOURCE:", thr_source)
 print(json.dumps(thr_cfg, indent=2)[:900])
 
 THRESHOLD = float(thr_cfg["threshold_m"])
-STALL_LIMIT = int(thr_cfg.get("stall_limit", 2))'''),
+STALL_LIMIT = int(thr_cfg.get("stall_limit", 2))
 
-        code(r'''%%time
+# ---- cell 7 ----------------------------------------
+# %%time
 import json, time
 import pandas as pd
 
-CONDS = PART_CONDS
+CONDS = ['A_in_dist', 'B_env_shift']
 N_PER_COND = 16
 MAX_STEPS = 60
 SEED_RANGES = {"A_in_dist": (10000, 10199), "B_env_shift": (20000, 20199),
@@ -407,47 +352,5 @@ summary = (df.groupby(["condition", "method"])
                   lat_mean_s=("infer_latency_s_mean", "mean"))
              .round(3))
 print(summary.to_string())
-summary.to_json("/kaggle/working/results/full_summary_PART.json", orient="index")
-print("rows:", len(df), "| saved full_summary_PART.json")'''.replace("PART_CONDS", repr(cfg["conds"])).replace("PART", part)),
-
-        md("""## Honest readout rules
-
-- SR/SPL are computed downstream from these JSONL rows only; no number is
-  quoted unless it recomputes.
-- B3 is allowed to spend MORE inferences than B1 but is never allowed to
-  exceed B2's per-episode inference count: if it does, that is reported.
-- A flat zero across all conditions is a valid, reportable outcome for a
-  pretrained outdoor VLA dropped into indoor THOR.""")
-    ]
-
-    for i, c in enumerate(cells):
-        c.setdefault("id", f"cell-{i:02d}")
-        if c["cell_type"] == "code":
-            plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                              if not l.lstrip().startswith(("%%", "%")))
-            ast.parse(plain)
-
-    nb = {"cells": cells,
-          "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                      "name": "python3"},
-                       "language_info": {"name": "python", "version": "3.10"}},
-          "nbformat": 4, "nbformat_minor": 5}
-    with open(os.path.join(out, f"04{part}_test.ipynb"), "w", encoding="utf-8") as f:
-        json.dump(nb, f, indent=1)
-        print("wrote", f.name)
-
-    meta = {"id": f"pikanigga/{cfg['slug']}", "title": cfg["title"],
-            "code_file": f"04{part}_test.ipynb", "language": "python",
-            "kernel_type": "notebook", "is_private": "true",
-            "enable_gpu": "true", "enable_t4x2": "true",
-            "enable_internet": "true",
-            "dataset_sources": ["pikanigga/vlanav-src"],
-            "kernel_sources": ["pikanigga/vlanav-03-tuning"],
-            "competition_sources": []}
-    with open(os.path.join(out, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-        json.dump(meta, f, indent=2)
-        print("wrote", f.name)
-
-
-if __name__ == "__main__":
-    main()
+summary.to_json("/kaggle/working/results/full_summary_a.json", orient="index")
+print("rows:", len(df), "| saved full_summary_a.json")

@@ -1,63 +1,13 @@
-"""Generate the Kaggle notebook 02_thor_pilot.ipynb (+ kernel-metadata.json).
+"""02_thor_pilot: the exact code that ran on Kaggle.
 
-PURPOSE (the first REAL navigation results of the project):
-    run regimes B1 / B2 / B3 with the REAL OmniVLA checkpoint on the REAL
-    AI2-THOR environment, val split, condition A_in_dist, n=10 deterministic
-    episodes each, and log every episode under results/raw/<exp_id>/ with
-    full provenance. No simulation, no mock: `sim_family=ai2thor`,
-    `is_model=True`. This is a PILOT (documented limits: n=10, max_steps=40,
-    threshold values carried from configs/reliability.yaml which was tuned
-    on MiniNav+mock and must be re-tuned before any headline claim).
+Extracted from the pushed notebook
+(kaggle_notebooks/02_thor_pilot/02_thor_pilot.ipynb); markdown cells omitted, cell
+boundaries marked. Cell magics are kept as comments so the file
+stays plain Python."""
 
-Wall-time budget (from the 00-preflight measured latency, mean 3.56 s per
-inference):
-    B2 ≈ 40 ticks x (3.6 s model + ~0.6 s sim) ≈ 2.8 min/episode
-    B1 ≈ 40 x 0.6 + 5 x 3.6            ≈ 42 s/episode
-    B3 ≈ between B1 and B2
-    total ≲ 1 h for the whole pilot.
 
-Setup inheritance from notebook 00 (v6 evidence-driven):
-    pure-python pins; transformers==4.40.1 + huggingface_hub==0.29.1 with
-    --no-deps; exact-needle relaxation of transformers'
-    dependency_versions_table (tokenizers>=0.19,<0.20 -> >=0.19); official
-    OmniVLA clone; prismatic stub-parent packages (bypass the eager RLDS
-    init chain); checkpoint to /kaggle/tmp (not /kaggle/working).
-Run:  python scripts/gen_notebook_02.py
-Then: kaggle kernels push -p kaggle_notebooks/02_thor_pilot
-"""
-import ast
-import json
-import os
-
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(HERE, "kaggle_notebooks", "02_thor_pilot")
-os.makedirs(OUT, exist_ok=True)
-
-md = lambda t: {"cell_type": "markdown", "metadata": {}, "source": t}
-code = lambda t: {"cell_type": "code", "execution_count": None, "metadata": {},
-                  "outputs": [], "source": t}
-
-cells = [
-    md("""# VLA-NAV — Notebook 02: REAL VLA pilot on AI2-THOR (B1 vs B2 vs B3)
-
-**Provenance-based claims allowed after this notebook:** real OmniVLA
-inference navigating a real AI2-THOR scene, three regimes compared on the
-SAME deterministic episodes, all logged to `results/raw/<exp_id>/`.
-
-**Honest pilot limits (logged in meta.json):** n=10 (val, condition
-A_in_dist), max_steps=40, goal radius 0.6 m; B3 threshold is the
-MiniNav-mock placeholder from `configs/reliability.yaml` — headline claims
-require the real-VLA val re-tune and larger n.
-
-**Latency reality (00 preflight):** mean 3.56 s / p95 3.77 s per inference,
-16.1 GB peak VRAM over both T4s.
-
-Env setup replicates the validated 00-preflight v7 chain exactly
-(pure-python pins; transformers 4.40.1 `--no-deps` + hub 0.29.1; exact-
-needle tokenizers spec patch; official clone; prismatic stub parents;
-checkpoint to /kaggle/tmp)."""),
-
-    code(r'''%%time
+# ---- cell 2 ----------------------------------------
+# %%time
 import json, os, platform, subprocess, time
 
 os.makedirs("/kaggle/tmp", exist_ok=True)
@@ -171,11 +121,10 @@ for _attempt in (1, 2):
 if _miss:
     raise RuntimeError(f"checkpoint incomplete after retry: {_miss}")
 print("setup OK | head sizes MB:", {f: round(os.path.getsize(os.path.join(VLA_PATH, f)) / 1e6, 1)
-                                      for f in NEED if f.endswith((".pt", ".json"))})'''),
+                                      for f in NEED if f.endswith((".pt", ".json"))})
 
-    md("""## 1. Import the committed pipeline + build the real policy"""),
-
-    code(r'''import sys, os, json
+# ---- cell 4 ----------------------------------------
+import sys, os, json
 # The dataset mount layout/zip roots have bitten us twice (v1/v2/v4 evidence:
 # stale nested copy at src/vlanav vs fresh src/src/vlanav). Resolve by finding
 # EVERY candidate package root and REFUSING ambiguity, then print the dataset
@@ -224,11 +173,10 @@ _vanish = [f for f in NEED
                    and os.path.getsize(os.path.join(VLA_PATH, f)) > 1000)]
 assert not _vanish, f"checkpoint files missing before load: {_vanish}"
 policy.load()   # single load (constructor excludes it)
-print("POLICY LOADED:", json.dumps(policy.provenance, default=str))'''),
+print("POLICY LOADED:", json.dumps(policy.provenance, default=str))
 
-    md("""## 2. Policy sanity: language-mode inference BEFORE any episode"""),
-
-    code(r'''%%time
+# ---- cell 6 ----------------------------------------
+# %%time
 import numpy as np
 from vlanav.environment.types import Observation
 
@@ -243,15 +191,10 @@ cmd = chunk.decode()
 print("SANITY OK | waypoints[0,0] =", w[0].round(3),
       "| decoded cmd =", cmd.as_tuple())
 one = policy.provenance_summary()
-print("n_calls:", one["n_inference_calls"])'''),
+print("n_calls:", one["n_inference_calls"])
 
-    md("""## 3. X server + AI2-THOR controller (ladder from nb01 v2 evidence)
-
-`start_xserver()` is ai2thor's own Xorg helper for NVIDIA GPU hosts;
-Xvfb is the fallback. Controller ladder: CloudRendering -> Linux64(X)
--> headless."""),
-
-    code(r'''%%time
+# ---- cell 8 ----------------------------------------
+# %%time
 import os, subprocess, time
 
 os.environ.setdefault("DISPLAY", ":0")
@@ -300,16 +243,10 @@ for mode in ("cloud", "linux64", "headless"):
         with open("/kaggle/working/pilot_env.json", "w") as f:
             json.dump(report, f, indent=2, default=str)
 assert controller is not None, "no controller mode worked"
-print("CONTROLLER:", build_mode, "x:", xmode, round(build_secs, 1), "s")'''),
+print("CONTROLLER:", build_mode, "x:", xmode, round(build_secs, 1), "s")
 
-    md("""## 3b. Three-tick smoke episode (action/argument gate)
-
-v5 evidence (2026-10-30): `Teleport(rotateOnTeleport=...)` is not a valid
-AI2-THOR 5.0 argument, and the failure only surfaced *after* the 15 GB model
-load and the controller build. This 3-tick run makes any action-argument error
-surface in seconds instead of a 10-minute round trip."""),
-
-    code(r'''%%time
+# ---- cell 10 ----------------------------------------
+# %%time
 from vlanav.environment.types import EpisodeSpec as _Spec
 env_smoke = Ai2ThorNavEnv(controller)
 spec_smoke = _Spec(episode_id="smoke-000", condition="A_in_dist", split="val",
@@ -322,11 +259,10 @@ print("SMOKE OK | steps", smoke_res.step, "| inf", smoke_res.n_inferences,
       "| scene", spec_smoke.extra.get("scene"),
       "| moved", round(smoke_res.path_length_m, 3), "m",
       "| instr", spec_smoke.instruction)
-assert smoke_res.step >= 1, "smoke episode did not execute a single tick"'''),
+assert smoke_res.step >= 1, "smoke episode did not execute a single tick"
 
-    md("""## 4. Real-frame language inference sanity + episode definitions"""),
-
-    code(r'''import numpy as np
+# ---- cell 12 ----------------------------------------
+import numpy as np
 from vlanav.environment.types import Observation
 
 env_sanity = Ai2ThorNavEnv(controller)
@@ -356,11 +292,10 @@ def make_spec(i):
         max_steps=40,          # 40 ticks = up to ~13 s of robot time
         goal_radius_m=0.6,
         extra={"pilot": True, "max_steps_note": "longer passes during full run"},
-    )'''),
+    )
 
-    md("""## 5. Run the regimes (B1 -> B2 -> B3), same episodes, full logging"""),
-
-    code(r'''%%time
+# ---- cell 14 ----------------------------------------
+# %%time
 import json, time
 import pandas as pd
 
@@ -427,43 +362,4 @@ summary = (df.groupby("method")
              .round(3))
 print(summary.to_string())
 summary.to_json("/kaggle/working/results/pilot_summary.json", orient="index")
-print("SAVED /kaggle/working/results/pilot_summary.json")'''),
-
-    md("""## 6. Honest readout
-
-- `results/raw/pilot-thor-20261029-*/episodes.jsonl` (+ `meta.json`) are the
-  evidence. Any claim must recompute against those rows (Wilson CIs shows up
-  in notebook 05, not here).
-- SPL is computed OFFLINE from these rows (progress-to-goal / max(1,
-  path/start-dist)) — the pilot prints a path-length aggregate only; do not
-  derive SPL here to avoid denominator bugs.
-- If the model fails broadly (SR ~ 0), that is a REAL finding — language
-  conditioning +*iTHOR* is far from OmniVLA's outdoor training distribution
-  (see R4) — report it, don't tune the environment to flatter the model."""),
-]
-
-for i, c in enumerate(cells):
-    c.setdefault("id", f"cell-{i:02d}")
-    if c["cell_type"] == "code":
-        plain = "\n".join(l for l in "".join(c["source"]).split("\n")
-                          if not l.lstrip().startswith(("%%", "%")))
-        ast.parse(plain)
-
-nb = {"cells": cells,
-      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python",
-                                  "name": "python3"},
-                   "language_info": {"name": "python", "version": "3.10"}},
-      "nbformat": 4, "nbformat_minor": 5}
-
-with open(os.path.join(OUT, "02_thor_pilot.ipynb"), "w", encoding="utf-8") as f:
-    json.dump(nb, f, indent=1)
-    print("wrote", f.name)
-
-meta = {"id": "pikanigga/vlanav-02-thor-pilot", "title": "vlanav-02-thor-pilot",
-        "code_file": "02_thor_pilot.ipynb", "language": "python", "kernel_type": "notebook",
-        "is_private": "true", "enable_gpu": "true", "enable_t4x2": "true",
-        "enable_internet": "true", "dataset_sources": ["pikanigga/vlanav-src"],
-        "competition_sources": [], "kernel_sources": []}
-with open(os.path.join(OUT, "kernel-metadata.json"), "w", encoding="utf-8") as f:
-    json.dump(meta, f, indent=2)
-    print("wrote", f.name)
+print("SAVED /kaggle/working/results/pilot_summary.json")

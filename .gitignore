@@ -8,3 +8,5 @@ __pycache__/
 .ipynb_checkpoints/
 *.egg-info/
 .DS_Store
+kaggle_notebooks/**/*.ipynb
+kaggle_notebooks/**/kernel-metadata.json

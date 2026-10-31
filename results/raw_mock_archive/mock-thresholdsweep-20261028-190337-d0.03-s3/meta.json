@@ -1,0 +1,31 @@
+{
+  "experiment_id": "mock-thresholdsweep-20261028-190337-d0.03-s3",
+  "created_utc": "2026-10-28T13:03:40Z",
+  "method": "reliability_triggered",
+  "env_family": "mininav",
+  "env_commit_hash": "unknown",
+  "model_name": null,
+  "model_revision": null,
+  "gpu_name": null,
+  "torch_version": null,
+  "python_version": null,
+  "seeds_version": "v1",
+  "conditions": [
+    "A_in_dist",
+    "B_env_shift",
+    "C_instr_shift",
+    "D_recovery"
+  ],
+  "split": "val",
+  "action_budget": -1,
+  "termination_rule": "auto-stop within goal_radius, else max_steps; collision-kill at max_collisions",
+  "notes": "mock threshold sweep (pipeline validation; NOT VLA evidence). tuning_candidate d_t=0.03 m, stall_limit=3",
+  "extra": {
+    "tuning_candidate": {
+      "threshold_m": 0.03,
+      "stall_limit": 3
+    },
+    "policy": "mock_nav",
+    "is_model": false
+  }
+}

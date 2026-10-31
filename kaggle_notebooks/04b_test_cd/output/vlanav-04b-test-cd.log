@@ -1,0 +1,648 @@
+[{"stream_name":"stderr","time":7.950512932,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.950553516,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.950559505,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.950563683,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.587204618,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.587244114,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.587248005,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.587250513,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":17.887785911,"data":"{\n"}
+,{"stream_name":"stdout","time":17.887814692,"data":"  \"notebook\": \"04_test_b\",\n"}
+,{"stream_name":"stdout","time":17.887819925,"data":"  \"stage\": \"kernel-env\",\n"}
+,{"stream_name":"stdout","time":17.887823767,"data":"  \"ts_utc\": \"2026-10-30T09:03:28Z\",\n"}
+,{"stream_name":"stdout","time":17.887827595,"data":"  \"python\": \"3.13.15\",\n"}
+,{"stream_name":"stdout","time":17.887831278,"data":"  \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":17.887835353,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":17.887839424,"data":"    \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":17.887843534,"data":"    \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":17.887847229,"data":"  ]\n"}
+,{"stream_name":"stdout","time":17.887851169,"data":"}\n"}
+,{"stream_name":"stdout","time":17.887855177,"data":"$ pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch' 'ai2thor'\n"}
+,{"stream_name":"stdout","time":28.071614473,"data":"\n"}
+,{"stream_name":"stdout","time":28.07164114,"data":"\n"}
+,{"stream_name":"stdout","time":28.071645887,"data":"$ apt-get update -qq\n"}
+,{"stream_name":"stdout","time":32.235225366,"data":"\n"}
+,{"stream_name":"stdout","time":32.235268056,"data":"W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.\n"}
+,{"stream_name":"stdout","time":32.235273446,"data":"W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":32.235276891,"data":"\n"}
+,{"stream_name":"stdout","time":32.235297166,"data":"$ apt-get install -y -qq --no-install-recommends xvfb\n"}
+,{"stream_name":"stdout","time":34.379139334,"data":"\n"}
+,{"stream_name":"stdout","time":34.379167359,"data":"\n"}
+,{"stream_name":"stdout","time":34.379171599,"data":"$ apt-get install -y -qq --no-install-recommends x11-utils\n"}
+,{"stream_name":"stdout","time":44.672982436,"data":"/libur_adapter_level_zero.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673022744,"data":"\n"}
+,{"stream_name":"stdout","time":44.673026796,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673029901,"data":"\n"}
+,{"stream_name":"stdout","time":44.673032627,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673062307,"data":"\n"}
+,{"stream_name":"stdout","time":44.673067062,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673088759,"data":"\n"}
+,{"stream_name":"stdout","time":44.67309249,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673095977,"data":"\n"}
+,{"stream_name":"stdout","time":44.67309901,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673102368,"data":"\n"}
+,{"stream_name":"stdout","time":44.673105359,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673108704,"data":"\n"}
+,{"stream_name":"stdout","time":44.673111812,"data":"/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.67311668,"data":"\n"}
+,{"stream_name":"stdout","time":44.673123177,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673125996,"data":"\n"}
+,{"stream_name":"stdout","time":44.673128105,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.67313044,"data":"\n"}
+,{"stream_name":"stdout","time":44.673132531,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673134872,"data":"\n"}
+,{"stream_name":"stdout","time":44.673136967,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673139221,"data":"\n"}
+,{"stream_name":"stdout","time":44.673141306,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":44.673143652,"data":"\n"}
+,{"stream_name":"stdout","time":44.673145727,"data":"\n"}
+,{"stream_name":"stdout","time":44.6731478,"data":"\n"}
+,{"stream_name":"stdout","time":44.673149916,"data":"$ apt-get install -y -qq --no-install-recommends mesa-utils\n"}
+,{"stream_name":"stdout","time":51.547183227,"data":"/libur_adapter_level_zero.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547214545,"data":"\n"}
+,{"stream_name":"stdout","time":51.547219746,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547224113,"data":"\n"}
+,{"stream_name":"stdout","time":51.547228017,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547232112,"data":"\n"}
+,{"stream_name":"stdout","time":51.547243445,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547248025,"data":"\n"}
+,{"stream_name":"stdout","time":51.547251723,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547255699,"data":"\n"}
+,{"stream_name":"stdout","time":51.547259307,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547263337,"data":"\n"}
+,{"stream_name":"stdout","time":51.547267189,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547271271,"data":"\n"}
+,{"stream_name":"stdout","time":51.547286864,"data":"/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547291486,"data":"\n"}
+,{"stream_name":"stdout","time":51.54729522,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.54729908,"data":"\n"}
+,{"stream_name":"stdout","time":51.54730291,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.5473072,"data":"\n"}
+,{"stream_name":"stdout","time":51.547310869,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547314834,"data":"\n"}
+,{"stream_name":"stdout","time":51.547318663,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547322809,"data":"\n"}
+,{"stream_name":"stdout","time":51.547326517,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":51.547330653,"data":"\n"}
+,{"stream_name":"stdout","time":51.547334412,"data":"\n"}
+,{"stream_name":"stdout","time":51.547338254,"data":"\n"}
+,{"stream_name":"stdout","time":51.547342083,"data":"$ apt-get install -y -qq --no-install-recommends libgl1\n"}
+,{"stream_name":"stdout","time":53.671412465,"data":"\n"}
+,{"stream_name":"stdout","time":53.671441588,"data":"\n"}
+,{"stream_name":"stdout","time":53.671445581,"data":"$ apt-get install -y -qq --no-install-recommends libglu1-mesa\n"}
+,{"stream_name":"stdout","time":58.38094586,"data":"/libur_adapter_level_zero.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.380991257,"data":"\n"}
+,{"stream_name":"stdout","time":58.380996329,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381000596,"data":"\n"}
+,{"stream_name":"stdout","time":58.381004103,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381007916,"data":"\n"}
+,{"stream_name":"stdout","time":58.38101151,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381014939,"data":"\n"}
+,{"stream_name":"stdout","time":58.381018038,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.38102134,"data":"\n"}
+,{"stream_name":"stdout","time":58.381024414,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381027702,"data":"\n"}
+,{"stream_name":"stdout","time":58.381030742,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381034129,"data":"\n"}
+,{"stream_name":"stdout","time":58.381038866,"data":"/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381046643,"data":"\n"}
+,{"stream_name":"stdout","time":58.38104879,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381051454,"data":"\n"}
+,{"stream_name":"stdout","time":58.381053635,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381055934,"data":"\n"}
+,{"stream_name":"stdout","time":58.381058087,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.3810987,"data":"\n"}
+,{"stream_name":"stdout","time":58.381105542,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381108984,"data":"\n"}
+,{"stream_name":"stdout","time":58.38111208,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":58.381115333,"data":"\n"}
+,{"stream_name":"stdout","time":58.381118451,"data":"\n"}
+,{"stream_name":"stdout","time":58.381121402,"data":"\n"}
+,{"stream_name":"stdout","time":58.381124494,"data":"$ apt-get install -y -qq --no-install-recommends libegl1\n"}
+,{"stream_name":"stdout","time":60.499430825,"data":"\n"}
+,{"stream_name":"stdout","time":60.499476063,"data":"\n"}
+,{"stream_name":"stdout","time":60.499479331,"data":"$ apt-get install -y -qq --no-install-recommends libxcursor1\n"}
+,{"stream_name":"stdout","time":62.721904499,"data":"\n"}
+,{"stream_name":"stdout","time":62.721954213,"data":"\n"}
+,{"stream_name":"stdout","time":62.721957869,"data":"$ apt-get install -y -qq --no-install-recommends libxinerama1\n"}
+,{"stream_name":"stdout","time":64.767803907,"data":"\n"}
+,{"stream_name":"stdout","time":64.767840261,"data":"\n"}
+,{"stream_name":"stdout","time":64.767843901,"data":"$ apt-get install -y -qq --no-install-recommends libxrandr2\n"}
+,{"stream_name":"stdout","time":66.833834926,"data":"\n"}
+,{"stream_name":"stdout","time":66.833866871,"data":"\n"}
+,{"stream_name":"stdout","time":66.833872384,"data":"$ apt-get install -y -qq --no-install-recommends libxi6\n"}
+,{"stream_name":"stdout","time":68.956873783,"data":"\n"}
+,{"stream_name":"stdout","time":68.956910445,"data":"\n"}
+,{"stream_name":"stdout","time":68.956920023,"data":"$ apt-get install -y -qq --no-install-recommends libxss1\n"}
+,{"stream_name":"stdout","time":71.054382961,"data":"\n"}
+,{"stream_name":"stdout","time":71.05445685,"data":"\n"}
+,{"stream_name":"stdout","time":71.054461986,"data":"$ apt-get install -y -qq --no-install-recommends libnss3\n"}
+,{"stream_name":"stdout","time":76.200165515,"data":"/libur_adapter_level_zero.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.20019472,"data":"\n"}
+,{"stream_name":"stdout","time":76.200200345,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200204942,"data":"\n"}
+,{"stream_name":"stdout","time":76.200209,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200213305,"data":"\n"}
+,{"stream_name":"stdout","time":76.20021737,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero_v2.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.20022184,"data":"\n"}
+,{"stream_name":"stdout","time":76.200225797,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200230048,"data":"\n"}
+,{"stream_name":"stdout","time":76.20023407,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200238267,"data":"\n"}
+,{"stream_name":"stdout","time":76.200242305,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200246518,"data":"\n"}
+,{"stream_name":"stdout","time":76.200252095,"data":"/sbin/ldconfig.real: /usr/local/lib/libumf.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200267061,"data":"\n"}
+,{"stream_name":"stdout","time":76.200269403,"data":"/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.20027175,"data":"\n"}
+,{"stream_name":"stdout","time":76.200273904,"data":"/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200276178,"data":"\n"}
+,{"stream_name":"stdout","time":76.200278243,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200280494,"data":"\n"}
+,{"stream_name":"stdout","time":76.200282859,"data":"/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200285123,"data":"\n"}
+,{"stream_name":"stdout","time":76.200287186,"data":"/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link\n"}
+,{"stream_name":"stdout","time":76.200289411,"data":"\n"}
+,{"stream_name":"stdout","time":76.200291579,"data":"\n"}
+,{"stream_name":"stdout","time":76.200293641,"data":"\n"}
+,{"stream_name":"stdout","time":76.20029571,"data":"$ apt-get install -y -qq --no-install-recommends libvulkan1\n"}
+,{"stream_name":"stdout","time":78.25091643,"data":"\n"}
+,{"stream_name":"stdout","time":78.250948773,"data":"\n"}
+,{"stream_name":"stdout","time":78.250953948,"data":"$ apt-get install -y -qq --no-install-recommends vulkan-tools\n"}
+,{"stream_name":"stdout","time":84.2283996,"data":"Selecting previously unselected package vulkan-tools.\n"}
+,{"stream_name":"stdout","time":84.228443847,"data":"(Reading database ... \n"}
+,{"stream_name":"stdout","time":84.228449016,"data":"(Reading database ... 5%\n"}
+,{"stream_name":"stdout","time":84.228452625,"data":"(Reading database ... 10%\n"}
+,{"stream_name":"stdout","time":84.228456459,"data":"(Reading database ... 15%\n"}
+,{"stream_name":"stdout","time":84.228459802,"data":"(Reading database ... 20%\n"}
+,{"stream_name":"stdout","time":84.228463632,"data":"(Reading database ... 25%\n"}
+,{"stream_name":"stdout","time":84.228467247,"data":"(Reading database ... 30%\n"}
+,{"stream_name":"stdout","time":84.228471241,"data":"(Reading database ... 35%\n"}
+,{"stream_name":"stdout","time":84.228474512,"data":"(Reading database ... 40%\n"}
+,{"stream_name":"stdout","time":84.228477983,"data":"(Reading database ... 45%\n"}
+,{"stream_name":"stdout","time":84.228481119,"data":"(Reading database ... 50%\n"}
+,{"stream_name":"stdout","time":84.22848434,"data":"(Reading database ... 55%\n"}
+,{"stream_name":"stdout","time":84.228487437,"data":"(Reading database ... 60%\n"}
+,{"stream_name":"stdout","time":84.228490675,"data":"(Reading database ... 65%\n"}
+,{"stream_name":"stdout","time":84.228493843,"data":"(Reading database ... 70%\n"}
+,{"stream_name":"stdout","time":84.228501763,"data":"(Reading database ... 75%\n"}
+,{"stream_name":"stdout","time":84.228504425,"data":"(Reading database ... 80%\n"}
+,{"stream_name":"stdout","time":84.228506649,"data":"(Reading database ... 85%\n"}
+,{"stream_name":"stdout","time":84.228508807,"data":"(Reading database ... 90%\n"}
+,{"stream_name":"stdout","time":84.228510969,"data":"(Reading database ... 95%\n"}
+,{"stream_name":"stdout","time":84.228513137,"data":"(Reading database ... 100%\n"}
+,{"stream_name":"stdout","time":84.228515527,"data":"(Reading database ... 129935 files and directories currently installed.)\n"}
+,{"stream_name":"stdout","time":84.228517951,"data":"Preparing to unpack .../vulkan-tools_1.3.275.0+dfsg1-1_amd64.deb ...\n"}
+,{"stream_name":"stdout","time":84.22852826,"data":"Unpacking vulkan-tools (1.3.275.0+dfsg1-1) ...\n"}
+,{"stream_name":"stdout","time":84.228530864,"data":"Setting up vulkan-tools (1.3.275.0+dfsg1-1) ...\n"}
+,{"stream_name":"stdout","time":84.228546615,"data":"Processing triggers for man-db (2.12.0-4build2) ...\n"}
+,{"stream_name":"stdout","time":84.228550322,"data":"\n"}
+,{"stream_name":"stdout","time":84.228554061,"data":"\n"}
+,{"stream_name":"stdout","time":84.228557399,"data":"vulkan ICD ok\n"}
+,{"stream_name":"stdout","time":84.228561189,"data":"$ rm -rf /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":84.228564859,"data":"\n"}
+,{"stream_name":"stdout","time":84.228567967,"data":"\n"}
+,{"stream_name":"stdout","time":84.228571054,"data":"$ git clone --depth 1 https://github.com/NHirose/OmniVLA.git /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":84.949950318,"data":"\n"}
+,{"stream_name":"stdout","time":84.949987938,"data":"Cloning into '/kaggle/tmp/OmniVLA'...\n"}
+,{"stream_name":"stdout","time":84.949991225,"data":"\n"}
+,{"stream_name":"stdout","time":84.949993555,"data":"$ pip install -q --no-deps 'transformers==4.40.1' 'huggingface_hub==0.29.1'\n"}
+,{"stream_name":"stdout","time":96.424596803,"data":"\n"}
+,{"stream_name":"stdout","time":96.42462537,"data":"\n"}
+,{"stream_name":"stdout","time":96.424629834,"data":"tokenizers spec patched (exact needle)\n"}
+,{"stream_name":"stdout","time":164.273008552,"data":"download attempt 1 | missing: []\n"}
+,{"stream_name":"stdout","time":164.273045742,"data":"setup OK | head sizes MB: {'action_head--120000_checkpoint.pt': 201.5, 'proprio_projector--120000_checkpoint.pt': 67.2, 'config.json': 0.1}\n"}
+,{"stream_name":"stdout","time":164.273053322,"data":"CPU times: user 29.8 s, sys: 30.8 s, total: 1min\n"}
+,{"stream_name":"stdout","time":164.273084131,"data":"Wall time: 2min 34s\n"}
+,{"stream_name":"stdout","time":173.891181878,"data":"SRC_ROOT = /kaggle/input/datasets/pikanigga/vlanav-src/src\n"}
+,{"stream_name":"stdout","time":173.891222928,"data":"BUILD: built_utc=2026-10-30T07:59:09Z\n"}
+,{"stream_name":"stdout","time":173.891230851,"data":"adapter_sha256_16=3eda6b1e906b19d1\n"}
+,{"stream_name":"stdout","time":173.891239241,"data":"contains_pad_sequence=True\n"}
+,{"stream_name":"stdout","time":173.891242443,"data":"contains_detach=True\n"}
+,{"stream_name":"stdout","time":173.891245504,"data":"contains_RotateLeft=True\n"}
+,{"stream_name":"stdout","time":173.891248836,"data":"contains_D_recovery_yaw=True\n"}
+,{"stream_name":"stdout","time":173.891251899,"data":"\n"}
+,{"stream_name":"stdout","time":194.475491789,"data":"Using OmniVLA constants:\n"}
+,{"stream_name":"stdout","time":194.475519716,"data":"  NUM_ACTIONS_CHUNK = 8\n"}
+,{"stream_name":"stdout","time":194.475525014,"data":"  ACTION_DIM = 4\n"}
+,{"stream_name":"stdout","time":194.475529338,"data":"  POSE_DIM = 4\n"}
+,{"stream_name":"stdout","time":194.475533572,"data":"  ACTION_PROPRIO_NORMALIZATION_TYPE = NormalizationType.BOUNDS_Q99\n"}
+,{"stream_name":"stdout","time":194.475537793,"data":"If needed, manually set the correct constants in `prismatic/vla/constants.py`!\n"}
+,{"stream_name":"stderr","time":211.111936169,"data":"Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.40.1` and `tokenizers==0.23.1`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.\n"}
+,{"stream_name":"stderr","time":211.111963715,"data":"\n"}
+,{"stream_name":"stderr","time":211.111985926,"data":"Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.40.1` and `tokenizers==0.23.1`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.\n"}
+,{"stream_name":"stderr","time":212.321204923,"data":"The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.\n"}
+,{"stream_name":"stderr","time":212.321267355,"data":"\n"}
+,{"stream_name":"stderr","time":212.321273071,"data":"The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.\n"}
+,{"stream_name":"stdout","time":237.677198688,"data":"POLICY LOADED: {\"policy\": \"OmniVLA\", \"is_model\": true, \"model_name\": \"NHirose/omnivla-original\", \"model_checkpoint_step\": 120000, \"vla_path\": \"/kaggle/tmp/omnivla-original\", \"num_patches\": 513, \"device_map\": \"auto\", \"load_seconds\": 26.9, \"llm_dim\": 4096}\n"}
+,{"stream_name":"stderr","time":242.5809661,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m   0.0 s/B]  of 769.MB\n"}
+,{"stream_name":"stderr","time":242.701423421,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m   0.0 s/B]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m 803.4 KiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":242.824754191,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m 803.4 KiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m   2.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":242.922420502,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;0;0m  0%\u001b[39m   2.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;2;0m  0%\u001b[39m   9.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.028196912,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;2;0m  0%\u001b[39m   9.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;6;0m  0%\u001b[39m  16.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.130339012,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;6;0m  0%\u001b[39m  16.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;12;0m  1%\u001b[39m  27.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.221314115,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;12;0m  1%\u001b[39m  27.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;16;0m  2%\u001b[39m  31.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.302161787,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;16;0m  2%\u001b[39m  31.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;21;0m  3%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.360393764,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;21;0m  3%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;25;0m  3%\u001b[39m  37.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.460371736,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;25;0m  3%\u001b[39m  37.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;30;0m  4%\u001b[39m  39.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.519124331,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;30;0m  4%\u001b[39m  39.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;33;0m  5%\u001b[39m  41.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.620180259,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;33;0m  5%\u001b[39m  41.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;39;0m  5%\u001b[39m  43.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.719355183,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;39;0m  5%\u001b[39m  43.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;45;0m  6%\u001b[39m  45.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.819853831,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;45;0m  6%\u001b[39m  45.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;50;0m  7%\u001b[39m  47.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":243.920908945,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;50;0m  7%\u001b[39m  47.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;78;0m  8%\u001b[39m  48.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.019869668,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;78;0m  8%\u001b[39m  48.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;81;0m  9%\u001b[39m  49.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.114637442,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;81;0m  9%\u001b[39m  49.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;83;0m 10%\u001b[39m  50.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.279402565,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;83;0m 10%\u001b[39m  50.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;85;0m 10%\u001b[39m  49.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.38213647,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;85;0m 10%\u001b[39m  49.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;88;0m 11%\u001b[39m  50.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.481115513,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;88;0m 11%\u001b[39m  50.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;90;0m 12%\u001b[39m  51.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.613139784,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;90;0m 12%\u001b[39m  51.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;92;0m 13%\u001b[39m  50.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.725318001,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;92;0m 13%\u001b[39m  50.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;93;0m 13%\u001b[39m  50.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.825243876,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;93;0m 13%\u001b[39m  50.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;95;0m 14%\u001b[39m  49.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":244.927133247,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;95;0m 14%\u001b[39m  49.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;96;0m 14%\u001b[39m  48.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.013703743,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;96;0m 14%\u001b[39m  48.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;97;0m 15%\u001b[39m  48.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.112492674,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;97;0m 15%\u001b[39m  48.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;99;0m 15%\u001b[39m  47.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.213016807,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;99;0m 15%\u001b[39m  47.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;100;0m 16%\u001b[39m  47.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.275394527,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;100;0m 16%\u001b[39m  47.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;101;0m 16%\u001b[39m  47.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.374032314,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;101;0m 16%\u001b[39m  47.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;102;0m 16%\u001b[39m  46.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.480584567,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;102;0m 16%\u001b[39m  46.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;103;0m 17%\u001b[39m  46.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.564898761,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;103;0m 17%\u001b[39m  46.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;104;0m 17%\u001b[39m  45.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.656807484,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;104;0m 17%\u001b[39m  45.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;105;0m 18%\u001b[39m  45.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.768680904,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;105;0m 18%\u001b[39m  45.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;107;0m 18%\u001b[39m  45.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.851826702,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;107;0m 18%\u001b[39m  45.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;108;0m 18%\u001b[39m  44.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":245.937862948,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;108;0m 18%\u001b[39m  44.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;109;0m 19%\u001b[39m  44.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.037731535,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;109;0m 19%\u001b[39m  44.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;110;0m 19%\u001b[39m  44.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.125571077,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;110;0m 19%\u001b[39m  44.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;111;0m 20%\u001b[39m  44.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.222402734,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;111;0m 20%\u001b[39m  44.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;112;0m 20%\u001b[39m  43.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.331757824,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;112;0m 20%\u001b[39m  43.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;113;0m 20%\u001b[39m  43.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.424380519,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;113;0m 20%\u001b[39m  43.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;114;0m 21%\u001b[39m  42.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.491182358,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;114;0m 21%\u001b[39m  42.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;115;0m 21%\u001b[39m  42.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.591790267,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;115;0m 21%\u001b[39m  42.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;116;0m 21%\u001b[39m  41.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.69594533,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;116;0m 21%\u001b[39m  41.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;117;0m 22%\u001b[39m  41.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.793351102,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;117;0m 22%\u001b[39m  41.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;118;0m 22%\u001b[39m  41.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.85843581,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;118;0m 22%\u001b[39m  41.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;118;0m 22%\u001b[39m  41.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":246.958915815,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;118;0m 22%\u001b[39m  41.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;119;0m 23%\u001b[39m  40.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.062532888,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;119;0m 23%\u001b[39m  40.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;120;0m 23%\u001b[39m  40.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.160995231,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;120;0m 23%\u001b[39m  40.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;121;0m 23%\u001b[39m  40.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.22623875,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;121;0m 23%\u001b[39m  40.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;122;0m 24%\u001b[39m  39.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.318558131,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;122;0m 24%\u001b[39m  39.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;123;0m 24%\u001b[39m  39.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.419004122,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;123;0m 24%\u001b[39m  39.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;124;0m 24%\u001b[39m  39.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.518719311,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;124;0m 24%\u001b[39m  39.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;125;0m 25%\u001b[39m  39.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.576593338,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;125;0m 25%\u001b[39m  39.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;125;0m 25%\u001b[39m  39.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.679190961,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;125;0m 25%\u001b[39m  39.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;127;0m 25%\u001b[39m  38.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.779920608,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;127;0m 25%\u001b[39m  38.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;128;0m 26%\u001b[39m  38.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.881826487,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;128;0m 26%\u001b[39m  38.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;129;0m 26%\u001b[39m  38.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":247.982533516,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;129;0m 26%\u001b[39m  38.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;130;0m 26%\u001b[39m  38.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.083785034,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;130;0m 26%\u001b[39m  38.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;131;0m 27%\u001b[39m  38.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.186778699,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;131;0m 27%\u001b[39m  38.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;132;0m 27%\u001b[39m  37.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.242655266,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;132;0m 27%\u001b[39m  37.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;132;0m 27%\u001b[39m  37.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.341082903,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;132;0m 27%\u001b[39m  37.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;133;0m 28%\u001b[39m  37.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.443278275,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;133;0m 28%\u001b[39m  37.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;135;0m 28%\u001b[39m  37.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.541933542,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;135;0m 28%\u001b[39m  37.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;136;0m 28%\u001b[39m  37.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.643557081,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;136;0m 28%\u001b[39m  37.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;137;0m 29%\u001b[39m  37.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.742653806,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;137;0m 29%\u001b[39m  37.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;138;0m 29%\u001b[39m  37.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.84280461,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;138;0m 29%\u001b[39m  37.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;139;0m 30%\u001b[39m  37.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":248.918811959,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;139;0m 30%\u001b[39m  37.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;140;0m 30%\u001b[39m  36.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.01940814,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;140;0m 30%\u001b[39m  36.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;141;0m 30%\u001b[39m  36.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.120811991,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;141;0m 30%\u001b[39m  36.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;142;0m 31%\u001b[39m  36.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.220888258,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;142;0m 31%\u001b[39m  36.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;143;0m 31%\u001b[39m  36.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.321828094,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;143;0m 31%\u001b[39m  36.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;144;0m 31%\u001b[39m  36.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.423055217,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;144;0m 31%\u001b[39m  36.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;145;0m 32%\u001b[39m  36.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.523670665,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;145;0m 32%\u001b[39m  36.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;146;0m 32%\u001b[39m  36.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.624540766,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;146;0m 32%\u001b[39m  36.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;148;0m 33%\u001b[39m  36.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.723914993,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;148;0m 33%\u001b[39m  36.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;148;0m 33%\u001b[39m  36.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.824723429,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;148;0m 33%\u001b[39m  36.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;150;0m 34%\u001b[39m  36.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":249.925216059,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;150;0m 34%\u001b[39m  36.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;151;0m 34%\u001b[39m  36.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.024996713,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;151;0m 34%\u001b[39m  36.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;152;0m 34%\u001b[39m  36.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.127821938,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;152;0m 34%\u001b[39m  36.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;153;0m 35%\u001b[39m  35.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.186877056,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;153;0m 35%\u001b[39m  35.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;154;0m 35%\u001b[39m  35.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.289811649,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;154;0m 35%\u001b[39m  35.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;155;0m 35%\u001b[39m  35.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.390874004,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;155;0m 35%\u001b[39m  35.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;156;0m 36%\u001b[39m  35.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.49180005,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;156;0m 36%\u001b[39m  35.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;157;0m 36%\u001b[39m  35.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.591494184,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;157;0m 36%\u001b[39m  35.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;158;0m 37%\u001b[39m  35.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.693811364,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;158;0m 37%\u001b[39m  35.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;159;0m 37%\u001b[39m  35.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.794175673,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;159;0m 37%\u001b[39m  35.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;160;0m 37%\u001b[39m  35.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.895854328,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;160;0m 37%\u001b[39m  35.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;162;0m 38%\u001b[39m  35.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":250.997004834,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;162;0m 38%\u001b[39m  35.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;163;0m 38%\u001b[39m  35.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.098700404,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;163;0m 38%\u001b[39m  35.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;164;0m 39%\u001b[39m  35.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.198454757,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;164;0m 39%\u001b[39m  35.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;165;0m 39%\u001b[39m  35.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.300135553,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;165;0m 39%\u001b[39m  35.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;166;0m 39%\u001b[39m  35.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.400117181,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;166;0m 39%\u001b[39m  35.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;167;0m 40%\u001b[39m  35.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.5022497,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;167;0m 40%\u001b[39m  35.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;168;0m 40%\u001b[39m  35.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.602541576,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;168;0m 40%\u001b[39m  35.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;170;0m 41%\u001b[39m  35.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.704080371,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;170;0m 41%\u001b[39m  35.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;171;0m 41%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.764950303,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;171;0m 41%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;168;0m 41%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.86626112,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;168;0m 41%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;171;0m 42%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":251.967145646,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;171;0m 42%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;173;0m 42%\u001b[39m  34.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.068294526,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;173;0m 42%\u001b[39m  34.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;175;0m 43%\u001b[39m  34.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.170332944,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;175;0m 43%\u001b[39m  34.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;177;0m 43%\u001b[39m  34.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.270384758,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;177;0m 43%\u001b[39m  34.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;180;0m 43%\u001b[39m  34.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.370533868,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;180;0m 43%\u001b[39m  34.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;182;0m 44%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.472973277,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;182;0m 44%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;185;0m 44%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.573175064,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;185;0m 44%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;187;0m 45%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.674928265,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;187;0m 45%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;189;0m 45%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.775726568,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;189;0m 45%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;191;0m 45%\u001b[39m  34.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.877284251,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;191;0m 45%\u001b[39m  34.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;194;0m 46%\u001b[39m  34.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":252.977568438,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;194;0m 46%\u001b[39m  34.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;196;0m 46%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.080057345,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;196;0m 46%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;198;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.180596331,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;198;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;200;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.282923998,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;200;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;203;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.382538367,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;203;0m 47%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;205;0m 48%\u001b[39m  34.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.484472546,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;205;0m 48%\u001b[39m  34.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;208;0m 48%\u001b[39m  34.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.584556572,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;208;0m 48%\u001b[39m  34.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;209;0m 49%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.637994035,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;209;0m 49%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;211;0m 49%\u001b[39m  34.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.7391039,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;211;0m 49%\u001b[39m  34.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;213;0m 49%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.840038734,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;213;0m 49%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;215;0m 50%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":253.938582808,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;215;0m 50%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;218;0m 50%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.039101383,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;218;0m 50%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;220;0m 50%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.139352298,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;220;0m 50%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;222;0m 51%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.239755361,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;222;0m 51%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;224;0m 51%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.339484644,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;224;0m 51%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;227;0m 52%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.440054032,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;227;0m 52%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;229;0m 52%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.540176479,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;229;0m 52%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;232;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.640403474,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;232;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;233;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.740690406,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;233;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;236;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.840613486,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;236;0m 53%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;238;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.893476588,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;238;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;239;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":254.993797517,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;239;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;242;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.094150451,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;242;0m 54%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;244;0m 55%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.194583203,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;244;0m 55%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;246;0m 55%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.293975448,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;246;0m 55%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;248;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.395113547,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;248;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;251;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.494975716,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;251;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;253;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.59563103,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;253;0m 56%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;255;0m 57%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.697915387,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;255;0m 57%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;257;0m 57%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.797527319,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;257;0m 57%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;260;0m 58%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.897681983,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;255;260;0m 58%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;251;255;0m 58%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":255.997477673,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;251;255;0m 58%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;249;255;0m 58%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.097564411,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;249;255;0m 58%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;248;255;0m 59%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.198729322,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;248;255;0m 59%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;247;255;0m 59%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.298242312,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;247;255;0m 59%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;246;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.398201374,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;246;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;245;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.499914683,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;245;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;244;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.600505428,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;244;255;0m 60%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;243;255;0m 61%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.700897272,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;243;255;0m 61%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;241;255;0m 61%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.761877087,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;241;255;0m 61%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;241;255;0m 62%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.86235204,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;241;255;0m 62%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;240;255;0m 62%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":256.963351013,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;240;255;0m 62%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;239;255;0m 62%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.058339433,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;239;255;0m 62%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;237;255;0m 63%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.158936811,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;237;255;0m 63%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;236;255;0m 63%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.260763331,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;236;255;0m 63%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;235;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.358984673,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;235;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;234;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.45920012,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;234;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;233;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.55986981,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;233;255;0m 64%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;232;255;0m 65%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.659829972,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;232;255;0m 65%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;230;255;0m 65%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.759960247,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;230;255;0m 65%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;229;255;0m 66%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.864359357,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;229;255;0m 66%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;228;255;0m 66%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":257.959966352,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;228;255;0m 66%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;227;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.060615509,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;227;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;226;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.160623691,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;226;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;224;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.260981708,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;224;255;0m 67%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;223;255;0m 68%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.362491298,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;223;255;0m 68%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;222;255;0m 68%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.462987037,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;222;255;0m 68%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;221;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.563853375,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;221;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;220;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.664316915,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;220;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;219;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.764955796,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;219;255;0m 69%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;217;255;0m 70%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.865682345,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;217;255;0m 70%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;216;255;0m 70%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":258.967017187,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;216;255;0m 70%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;215;255;0m 71%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.067519529,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;215;255;0m 71%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;214;255;0m 71%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.161212235,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;214;255;0m 71%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;212;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.261213903,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;212;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;211;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.365971943,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;211;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;210;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.450538284,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;210;255;0m 72%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;209;255;0m 73%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.551129386,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;209;255;0m 73%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;208;255;0m 73%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.651990032,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;208;255;0m 73%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;206;255;0m 74%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.731491038,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;206;255;0m 74%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;205;255;0m 74%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.833115683,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;205;255;0m 74%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;204;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":259.933203002,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;204;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;203;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.014916689,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;203;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;202;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.115331877,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;202;255;0m 75%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;201;255;0m 76%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.215664648,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;201;255;0m 76%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;199;255;0m 76%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.296345135,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;199;255;0m 76%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;198;255;0m 77%\u001b[39m  33.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.39778589,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;198;255;0m 77%\u001b[39m  33.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;197;255;0m 77%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.498016431,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;197;255;0m 77%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;196;255;0m 78%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.576941454,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;196;255;0m 78%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;195;255;0m 78%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.67683251,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;195;255;0m 78%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;193;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.77767062,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;193;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;192;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.832277875,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;192;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;191;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":260.931722132,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;191;255;0m 79%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;190;255;0m 80%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.032304387,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;190;255;0m 80%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;189;255;0m 80%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.117235554,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;189;255;0m 80%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;188;255;0m 81%\u001b[39m  33.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.215828387,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;188;255;0m 81%\u001b[39m  33.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;186;255;0m 81%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.317428906,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;186;255;0m 81%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;185;255;0m 82%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.415886486,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;185;255;0m 82%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;183;255;0m 82%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.516242532,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;183;255;0m 82%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;182;255;0m 83%\u001b[39m  33.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.617699882,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;182;255;0m 83%\u001b[39m  33.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;181;255;0m 83%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.717079383,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;181;255;0m 83%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;179;255;0m 83%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.817371274,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;179;255;0m 83%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;178;255;0m 84%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.87970595,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;178;255;0m 84%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;177;255;0m 84%\u001b[39m  33.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":261.980276943,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;177;255;0m 84%\u001b[39m  33.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;176;255;0m 85%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.080386925,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;176;255;0m 85%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;174;255;0m 85%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.182042752,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;174;255;0m 85%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;173;255;0m 86%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.283431304,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;173;255;0m 86%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;171;255;0m 86%\u001b[39m  33.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.374122966,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;171;255;0m 86%\u001b[39m  33.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;170;255;0m 87%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.471924442,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;170;255;0m 87%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;168;255;0m 87%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.572942257,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;168;255;0m 87%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;167;255;0m 88%\u001b[39m  34.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.672587028,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;167;255;0m 88%\u001b[39m  34.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;165;255;0m 88%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.772807351,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;165;255;0m 88%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;164;255;0m 89%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.849761127,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;164;255;0m 89%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;163;255;0m 89%\u001b[39m  34.1 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":262.94918676,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;163;255;0m 89%\u001b[39m  34.1 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;161;255;0m 90%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.049964492,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;161;255;0m 90%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;160;255;0m 90%\u001b[39m  34.2 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.150157664,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;160;255;0m 90%\u001b[39m  34.2 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;158;255;0m 91%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.250622755,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;158;255;0m 91%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;96;255;0m 92%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.300545551,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;96;255;0m 92%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;93;255;0m 92%\u001b[39m  34.3 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.401281087,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;93;255;0m 92%\u001b[39m  34.3 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;85;255;0m 93%\u001b[39m  34.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.501689182,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;85;255;0m 93%\u001b[39m  34.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;79;255;0m 93%\u001b[39m  34.4 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.601864616,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;79;255;0m 93%\u001b[39m  34.4 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;72;255;0m 94%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.701519587,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;72;255;0m 94%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;65;255;0m 94%\u001b[39m  34.5 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.802034653,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;65;255;0m 94%\u001b[39m  34.5 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;57;255;0m 95%\u001b[39m  34.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":263.901880348,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;57;255;0m 95%\u001b[39m  34.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;50;255;0m 95%\u001b[39m  34.6 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.001804224,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;50;255;0m 95%\u001b[39m  34.6 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;42;255;0m 96%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.103406389,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;42;255;0m 96%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;35;255;0m 97%\u001b[39m  34.7 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.158424243,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;35;255;0m 97%\u001b[39m  34.7 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;31;255;0m 97%\u001b[39m  34.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.259017363,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;31;255;0m 97%\u001b[39m  34.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;23;255;0m 98%\u001b[39m  34.8 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.359714445,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;23;255;0m 98%\u001b[39m  34.8 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;15;255;0m 98%\u001b[39m  34.9 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.460574758,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;15;255;0m 98%\u001b[39m  34.9 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;7;255;0m 99%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.562002612,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;7;255;0m 99%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;0;255;0m 99%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.564776738,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;0;255;0m 99%\u001b[39m  35.0 MiB/s]  of 769.MB\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;0;255;0m100%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.627588445,"data":"\rthor-Linux64-f0825767cd50d69f666c7f282e54abfe58f1e917.zip: [ \u001b[38;2;0;255;0m100%\u001b[39m  35.0 MiB/s]  of 769.MB\n"}
+,{"stream_name":"stderr","time":264.627617258,"data":"\n"}
+,{"stream_name":"stderr","time":264.627622448,"data":"\n"}
+,{"stream_name":"stdout","time":295.888962944,"data":"CONTROLLER OK | frame (400, 400, 3) | test scene rendered\n"}
+,{"stream_name":"stdout","time":295.889017188,"data":"CPU times: user 17.7 s, sys: 2.07 s, total: 19.7 s\n"}
+,{"stream_name":"stdout","time":295.88902173,"data":"Wall time: 58.2 s\n"}
+,{"stream_name":"stdout","time":307.501462586,"data":"SMOKE OK | steps 3 | inf 1 | scene FloorPlan421 | moved 0.3 m\n"}
+,{"stream_name":"stdout","time":307.501496853,"data":"CPU times: user 2.04 s, sys: 431 ms, total: 2.47 s\n"}
+,{"stream_name":"stdout","time":307.501503038,"data":"Wall time: 11.6 s\n"}
+,{"stream_name":"stdout","time":309.043539196,"data":"THRESHOLD SOURCE: /kaggle/input/notebooks/pikanigga/vlanav-03-tuning/results/tuning/threshold_choice.json\n"}
+,{"stream_name":"stdout","time":309.043574286,"data":"{\n"}
+,{"stream_name":"stdout","time":309.043579041,"data":"  \"threshold_m\": 0.2,\n"}
+,{"stream_name":"stdout","time":309.043583462,"data":"  \"stall_limit\": 2,\n"}
+,{"stream_name":"stdout","time":309.043587752,"data":"  \"selection_rule\": \"max SR, tie -\u003e min mean inferences (val only)\",\n"}
+,{"stream_name":"stdout","time":309.043592934,"data":"  \"table\": [\n"}
+,{"stream_name":"stdout","time":309.043596988,"data":"    {\n"}
+,{"stream_name":"stdout","time":309.043601076,"data":"      \"threshold_m\": 0.05,\n"}
+,{"stream_name":"stdout","time":309.043605136,"data":"      \"n\": 6,\n"}
+,{"stream_name":"stdout","time":309.043611073,"data":"      \"SR\": 0.0,\n"}
+,{"stream_name":"stdout","time":309.043619604,"data":"      \"inferences_mean\": 23.2,\n"}
+,{"stream_name":"stdout","time":309.043622654,"data":"      \"steps_mean\": 45.2,\n"}
+,{"stream_name":"stdout","time":309.043625332,"data":"      \"dist_final_mean\": 2.21\n"}
+,{"stream_name":"stdout","time":309.043628109,"data":"    },\n"}
+,{"stream_name":"stdout","time":309.043630791,"data":"    {\n"}
+,{"stream_name":"stdout","time":309.043633559,"data":"      \"threshold_m\": 0.1,\n"}
+,{"stream_name":"stdout","time":309.043636323,"data":"      \"n\": 6,\n"}
+,{"stream_name":"stdout","time":309.043639186,"data":"      \"SR\": 0.0,\n"}
+,{"stream_name":"stdout","time":309.043660033,"data":"      \"inferences_mean\": 15.8,\n"}
+,{"stream_name":"stdout","time":309.043664767,"data":"      \"steps_mean\": 45.2,\n"}
+,{"stream_name":"stdout","time":309.043669122,"data":"      \"dist_final_mean\": 2.08\n"}
+,{"stream_name":"stdout","time":309.043678063,"data":"    },\n"}
+,{"stream_name":"stdout","time":309.043682109,"data":"    {\n"}
+,{"stream_name":"stdout","time":309.043686117,"data":"      \"threshold_m\": 0.2,\n"}
+,{"stream_name":"stdout","time":309.043690191,"data":"      \"n\": 6,\n"}
+,{"stream_name":"stdout","time":309.043694376,"data":"      \"SR\": 0.0,\n"}
+,{"stream_name":"stdout","time":309.043698521,"data":"      \"inferences_mean\": 15.3,\n"}
+,{"stream_name":"stdout","time":309.043702651,"data":"      \"steps_mean\": 45.2,\n"}
+,{"stream_name":"stdout","time":309.043706759,"data":"      \"dist_final_mean\": 2.18\n"}
+,{"stream_name":"stdout","time":309.043710962,"data":"    },\n"}
+,{"stream_name":"stdout","time":309.043714901,"data":"    {\n"}
+,{"stream_name":"stdout","time":309.043718826,"data":"      \"threshold_m\": 0.4,\n"}
+,{"stream_name":"stdout","time":309.043722895,"data":"      \"n\": 6,\n"}
+,{"stream_name":"stdout","time":309.043726932,"data":"      \"SR\": 0.0,\n"}
+,{"stream_name":"stdout","time":309.043739363,"data":"      \"inferences_mean\": 15.8,\n"}
+,{"stream_name":"stdout","time":309.043756758,"data":"      \"steps_mean\": 45.2,\n"}
+,{"stream_name":"stdout","time":309.043761789,"data":"      \"dist_final_mean\": 2.08\n"}
+,{"stream_name":"stdout","time":309.043782499,"data":"    }\n"}
+,{"stream_name":"stdout","time":309.043786146,"data":"  ],\n"}
+,{"stream_name":"stdout","time":309.043789396,"data":"  \"seeds\": [\n"}
+,{"stream_name":"stdout","time":309.043792691,"data":"    20001,\n"}
+,{"stream_name":"stdout","time":309.043795848,"data":"    20112,\n"}
+,{"stream_name":"stdout","time":309.043798985,"data":"    20223,\n"}
+,{"stream_name":"stdout","time":309.043802062,"data":"    20334,\n"}
+,{"stream_name":"stdout","time":309.043804987,"data":"    20445,\n"}
+,{"stream_name":"stdout","time":309.043808177,"data":"    20556\n"}
+,{"stream_name":"stdout","time":309.043811307,"data":"  ],\n"}
+,{"stream_name":"stdout","time":309.043814342,"data":"  \"n_per_threshold\": 6,\n"}
+,{"stream_name":"stdout","time":309.043817629,"data":"  \"val_scenes\": \"FloorPlan1..30 (e\n"}
+,{"stream_name":"stdout","time":309.247800166,"data":"===  test-thor-20261030-C_instr_shift-chunked_frozen  ===\n"}
+,{"stream_name":"stdout","time":377.871336469,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/000\", \"succ\": false, \"steps\": 44, \"d_final\": 1.63, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 1.1}\n"}
+,{"stream_name":"stdout","time":412.709739404,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/001\", \"succ\": false, \"steps\": 40, \"d_final\": 1.57, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 1.7}\n"}
+,{"stream_name":"stdout","time":458.754235982,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/002\", \"succ\": false, \"steps\": 32, \"d_final\": 1.37, \"inf\": 4, \"replans\": 0, \"elapsed_min\": 2.5}\n"}
+,{"stream_name":"stdout","time":505.120964109,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/003\", \"succ\": false, \"steps\": 42, \"d_final\": 2.32, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 3.3}\n"}
+,{"stream_name":"stdout","time":549.40029831,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/004\", \"succ\": false, \"steps\": 42, \"d_final\": 1.23, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 4.0}\n"}
+,{"stream_name":"stdout","time":600.651558437,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/005\", \"succ\": false, \"steps\": 48, \"d_final\": 1.43, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 4.9}\n"}
+,{"stream_name":"stdout","time":673.844338986,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/006\", \"succ\": false, \"steps\": 60, \"d_final\": 3.2, \"inf\": 9, \"replans\": 0, \"elapsed_min\": 6.1}\n"}
+,{"stream_name":"stdout","time":721.851762892,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/007\", \"succ\": false, \"steps\": 38, \"d_final\": 1.78, \"inf\": 5, \"replans\": 0, \"elapsed_min\": 6.9}\n"}
+,{"stream_name":"stdout","time":805.413416032,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/008\", \"succ\": false, \"steps\": 53, \"d_final\": 0.61, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 8.3}\n"}
+,{"stream_name":"stdout","time":886.11718017,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/009\", \"succ\": false, \"steps\": 47, \"d_final\": 2.78, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 9.6}\n"}
+,{"stream_name":"stdout","time":929.629287257,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/010\", \"succ\": false, \"steps\": 37, \"d_final\": 2.07, \"inf\": 5, \"replans\": 0, \"elapsed_min\": 10.3}\n"}
+,{"stream_name":"stdout","time":983.758637982,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/011\", \"succ\": false, \"steps\": 52, \"d_final\": 2.18, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 11.2}\n"}
+,{"stream_name":"stdout","time":1011.596323254,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/012\", \"succ\": false, \"steps\": 32, \"d_final\": 1.79, \"inf\": 4, \"replans\": 0, \"elapsed_min\": 11.7}\n"}
+,{"stream_name":"stdout","time":1039.518210021,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/013\", \"succ\": true, \"steps\": 25, \"d_final\": 0.55, \"inf\": 4, \"replans\": 0, \"elapsed_min\": 12.2}\n"}
+,{"stream_name":"stdout","time":1083.213990741,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/014\", \"succ\": false, \"steps\": 42, \"d_final\": 2.08, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 12.9}\n"}
+,{"stream_name":"stdout","time":1130.847577095,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-chunked_frozen\", \"ep\": \"C_instr_shift/test/v1/015\", \"succ\": false, \"steps\": 31, \"d_final\": 1.09, \"inf\": 4, \"replans\": 0, \"elapsed_min\": 13.7}\n"}
+,{"stream_name":"stdout","time":1130.847615635,"data":"===  test-thor-20261030-C_instr_shift-fixed_frequency  ===\n"}
+,{"stream_name":"stdout","time":1297.099015052,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/000\", \"succ\": false, \"steps\": 35, \"d_final\": 1.47, \"inf\": 35, \"replans\": 0, \"elapsed_min\": 16.5}\n"}
+,{"stream_name":"stdout","time":1455.611613442,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/001\", \"succ\": false, \"steps\": 38, \"d_final\": 1.52, \"inf\": 38, \"replans\": 0, \"elapsed_min\": 19.1}\n"}
+,{"stream_name":"stdout","time":1606.147651009,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/002\", \"succ\": false, \"steps\": 32, \"d_final\": 1.37, \"inf\": 32, \"replans\": 0, \"elapsed_min\": 21.6}\n"}
+,{"stream_name":"stdout","time":1771.21197401,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/003\", \"succ\": false, \"steps\": 37, \"d_final\": 2.22, \"inf\": 37, \"replans\": 0, \"elapsed_min\": 24.4}\n"}
+,{"stream_name":"stdout","time":1940.50238784,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/004\", \"succ\": false, \"steps\": 37, \"d_final\": 0.93, \"inf\": 37, \"replans\": 0, \"elapsed_min\": 27.2}\n"}
+,{"stream_name":"stdout","time":2112.298163803,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/005\", \"succ\": false, \"steps\": 38, \"d_final\": 1.79, \"inf\": 38, \"replans\": 0, \"elapsed_min\": 30.0}\n"}
+,{"stream_name":"stdout","time":2346.788570205,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/006\", \"succ\": false, \"steps\": 51, \"d_final\": 2.98, \"inf\": 51, \"replans\": 0, \"elapsed_min\": 34.0}\n"}
+,{"stream_name":"stdout","time":2503.489225397,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/007\", \"succ\": false, \"steps\": 35, \"d_final\": 1.75, \"inf\": 35, \"replans\": 0, \"elapsed_min\": 36.6}\n"}
+,{"stream_name":"stdout","time":2706.557577051,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/008\", \"succ\": false, \"steps\": 41, \"d_final\": 0.78, \"inf\": 41, \"replans\": 0, \"elapsed_min\": 40.0}\n"}
+,{"stream_name":"stdout","time":2918.61759165,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/009\", \"succ\": false, \"steps\": 43, \"d_final\": 2.75, \"inf\": 43, \"replans\": 0, \"elapsed_min\": 43.5}\n"}
+,{"stream_name":"stdout","time":3084.293637913,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/010\", \"succ\": false, \"steps\": 36, \"d_final\": 2.08, \"inf\": 36, \"replans\": 0, \"elapsed_min\": 46.2}\n"}
+,{"stream_name":"stdout","time":3290.568318173,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/011\", \"succ\": false, \"steps\": 45, \"d_final\": 2.26, \"inf\": 45, \"replans\": 0, \"elapsed_min\": 49.7}\n"}
+,{"stream_name":"stdout","time":3431.710529671,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/012\", \"succ\": false, \"steps\": 32, \"d_final\": 1.79, \"inf\": 32, \"replans\": 0, \"elapsed_min\": 52.0}\n"}
+,{"stream_name":"stdout","time":3651.291732828,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/013\", \"succ\": false, \"steps\": 46, \"d_final\": 0.71, \"inf\": 46, \"replans\": 0, \"elapsed_min\": 55.7}\n"}
+,{"stream_name":"stdout","time":3805.661709423,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/014\", \"succ\": false, \"steps\": 35, \"d_final\": 2.13, \"inf\": 35, \"replans\": 0, \"elapsed_min\": 58.3}\n"}
+,{"stream_name":"stdout","time":4086.237664257,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-fixed_frequency\", \"ep\": \"C_instr_shift/test/v1/015\", \"succ\": false, \"steps\": 60, \"d_final\": 3.4, \"inf\": 60, \"replans\": 0, \"elapsed_min\": 62.9}\n"}
+,{"stream_name":"stdout","time":4086.237705021,"data":"===  test-thor-20261030-C_instr_shift-reliability_triggered  ===\n"}
+,{"stream_name":"stdout","time":4181.224947992,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/000\", \"succ\": false, \"steps\": 43, \"d_final\": 1.59, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 64.5}\n"}
+,{"stream_name":"stdout","time":4264.10389018,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/001\", \"succ\": false, \"steps\": 41, \"d_final\": 1.55, \"inf\": 17, \"replans\": 16, \"elapsed_min\": 65.9}\n"}
+,{"stream_name":"stdout","time":4349.256941033,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/002\", \"succ\": false, \"steps\": 32, \"d_final\": 1.37, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 67.3}\n"}
+,{"stream_name":"stdout","time":4430.078731642,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/003\", \"succ\": false, \"steps\": 38, \"d_final\": 2.26, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 68.7}\n"}
+,{"stream_name":"stdout","time":4523.167555958,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/004\", \"succ\": false, \"steps\": 49, \"d_final\": 1.73, \"inf\": 17, \"replans\": 16, \"elapsed_min\": 70.2}\n"}
+,{"stream_name":"stdout","time":4615.252282935,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/005\", \"succ\": false, \"steps\": 43, \"d_final\": 1.43, \"inf\": 17, \"replans\": 14, \"elapsed_min\": 71.8}\n"}
+,{"stream_name":"stdout","time":4704.199611161,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/006\", \"succ\": false, \"steps\": 60, \"d_final\": 3.39, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 73.2}\n"}
+,{"stream_name":"stdout","time":4788.731884185,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/007\", \"succ\": false, \"steps\": 38, \"d_final\": 1.78, \"inf\": 16, \"replans\": 14, \"elapsed_min\": 74.7}\n"}
+,{"stream_name":"stdout","time":4903.21365533,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/008\", \"succ\": false, \"steps\": 49, \"d_final\": 0.88, \"inf\": 18, \"replans\": 17, \"elapsed_min\": 76.6}\n"}
+,{"stream_name":"stdout","time":5010.205034429,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/009\", \"succ\": false, \"steps\": 42, \"d_final\": 2.67, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 78.3}\n"}
+,{"stream_name":"stdout","time":5097.560006498,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/010\", \"succ\": false, \"steps\": 38, \"d_final\": 2.08, \"inf\": 16, \"replans\": 14, \"elapsed_min\": 79.8}\n"}
+,{"stream_name":"stdout","time":5193.518428145,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/011\", \"succ\": false, \"steps\": 50, \"d_final\": 2.39, \"inf\": 17, \"replans\": 16, \"elapsed_min\": 81.4}\n"}
+,{"stream_name":"stdout","time":5268.406679957,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/012\", \"succ\": false, \"steps\": 32, \"d_final\": 1.79, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 82.7}\n"}
+,{"stream_name":"stdout","time":5295.564619622,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/013\", \"succ\": true, \"steps\": 21, \"d_final\": 0.6, \"inf\": 4, \"replans\": 3, \"elapsed_min\": 83.1}\n"}
+,{"stream_name":"stdout","time":5388.8758451,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/014\", \"succ\": false, \"steps\": 46, \"d_final\": 2.07, \"inf\": 17, \"replans\": 15, \"elapsed_min\": 84.7}\n"}
+,{"stream_name":"stdout","time":5491.204583646,"data":"{\"exp\": \"test-thor-20261030-C_instr_shift-reliability_triggered\", \"ep\": \"C_instr_shift/test/v1/015\", \"succ\": false, \"steps\": 39, \"d_final\": 1.78, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 86.4}\n"}
+,{"stream_name":"stdout","time":5491.204614469,"data":"condition done: C_instr_shift | total elapsed min 86.4\n"}
+,{"stream_name":"stdout","time":5491.204641814,"data":"===  test-thor-20261030-D_recovery-chunked_frozen  ===\n"}
+,{"stream_name":"stdout","time":5539.105597162,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/000\", \"succ\": false, \"steps\": 52, \"d_final\": 3.83, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 87.2}\n"}
+,{"stream_name":"stdout","time":5584.260383731,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/001\", \"succ\": false, \"steps\": 38, \"d_final\": 2.43, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 87.9}\n"}
+,{"stream_name":"stdout","time":5653.237218357,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/002\", \"succ\": false, \"steps\": 60, \"d_final\": 2.34, \"inf\": 9, \"replans\": 0, \"elapsed_min\": 89.1}\n"}
+,{"stream_name":"stdout","time":5700.569619612,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/003\", \"succ\": false, \"steps\": 45, \"d_final\": 3.25, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 89.9}\n"}
+,{"stream_name":"stdout","time":5747.767340167,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/004\", \"succ\": false, \"steps\": 39, \"d_final\": 2.14, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 90.6}\n"}
+,{"stream_name":"stdout","time":5792.99431428,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/005\", \"succ\": false, \"steps\": 48, \"d_final\": 2.11, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 91.4}\n"}
+,{"stream_name":"stdout","time":5834.236682761,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/006\", \"succ\": false, \"steps\": 35, \"d_final\": 2.92, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 92.1}\n"}
+,{"stream_name":"stdout","time":5891.22068383,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/007\", \"succ\": false, \"steps\": 38, \"d_final\": 1.98, \"inf\": 5, \"replans\": 0, \"elapsed_min\": 93.0}\n"}
+,{"stream_name":"stdout","time":5932.836253376,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/008\", \"succ\": false, \"steps\": 37, \"d_final\": 2.14, \"inf\": 5, \"replans\": 0, \"elapsed_min\": 93.7}\n"}
+,{"stream_name":"stdout","time":5990.936110662,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/009\", \"succ\": false, \"steps\": 50, \"d_final\": 2.63, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 94.7}\n"}
+,{"stream_name":"stdout","time":6039.974944042,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/010\", \"succ\": false, \"steps\": 46, \"d_final\": 3.6, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 95.5}\n"}
+,{"stream_name":"stdout","time":6089.375834042,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/011\", \"succ\": false, \"steps\": 53, \"d_final\": 2.52, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 96.3}\n"}
+,{"stream_name":"stdout","time":6125.78126273,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/012\", \"succ\": false, \"steps\": 35, \"d_final\": 2.14, \"inf\": 5, \"replans\": 0, \"elapsed_min\": 96.9}\n"}
+,{"stream_name":"stdout","time":6175.998193426,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/013\", \"succ\": false, \"steps\": 50, \"d_final\": 2.91, \"inf\": 7, \"replans\": 0, \"elapsed_min\": 97.8}\n"}
+,{"stream_name":"stdout","time":6208.462170396,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/014\", \"succ\": false, \"steps\": 40, \"d_final\": 1.88, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 98.3}\n"}
+,{"stream_name":"stdout","time":6255.458399437,"data":"{\"exp\": \"test-thor-20261030-D_recovery-chunked_frozen\", \"ep\": \"D_recovery/test/v1/015\", \"succ\": false, \"steps\": 41, \"d_final\": 1.97, \"inf\": 6, \"replans\": 0, \"elapsed_min\": 99.1}\n"}
+,{"stream_name":"stdout","time":6255.458431734,"data":"===  test-thor-20261030-D_recovery-fixed_frequency  ===\n"}
+,{"stream_name":"stdout","time":6469.357988973,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/000\", \"succ\": false, \"steps\": 47, \"d_final\": 3.99, \"inf\": 47, \"replans\": 0, \"elapsed_min\": 102.7}\n"}
+,{"stream_name":"stdout","time":6634.498502744,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/001\", \"succ\": false, \"steps\": 36, \"d_final\": 2.4, \"inf\": 36, \"replans\": 0, \"elapsed_min\": 105.4}\n"}
+,{"stream_name":"stdout","time":6836.975686733,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/002\", \"succ\": false, \"steps\": 43, \"d_final\": 2.43, \"inf\": 43, \"replans\": 0, \"elapsed_min\": 108.8}\n"}
+,{"stream_name":"stdout","time":7009.182680291,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/003\", \"succ\": false, \"steps\": 38, \"d_final\": 3.11, \"inf\": 38, \"replans\": 0, \"elapsed_min\": 111.7}\n"}
+,{"stream_name":"stdout","time":7184.931667827,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/004\", \"succ\": false, \"steps\": 37, \"d_final\": 2.25, \"inf\": 37, \"replans\": 0, \"elapsed_min\": 114.6}\n"}
+,{"stream_name":"stdout","time":7352.495215873,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/005\", \"succ\": false, \"steps\": 38, \"d_final\": 2.32, \"inf\": 38, \"replans\": 0, \"elapsed_min\": 117.4}\n"}
+,{"stream_name":"stdout","time":7501.952537095,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/006\", \"succ\": false, \"steps\": 34, \"d_final\": 2.85, \"inf\": 34, \"replans\": 0, \"elapsed_min\": 119.9}\n"}
+,{"stream_name":"stdout","time":7708.970194715,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/007\", \"succ\": false, \"steps\": 42, \"d_final\": 2.38, \"inf\": 42, \"replans\": 0, \"elapsed_min\": 123.3}\n"}
+,{"stream_name":"stdout","time":7873.685201143,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/008\", \"succ\": false, \"steps\": 36, \"d_final\": 2.14, \"inf\": 36, \"replans\": 0, \"elapsed_min\": 126.1}\n"}
+,{"stream_name":"stdout","time":8171.526972694,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/009\", \"succ\": false, \"steps\": 60, \"d_final\": 2.63, \"inf\": 60, \"replans\": 0, \"elapsed_min\": 131.0}\n"}
+,{"stream_name":"stdout","time":8441.509123084,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/010\", \"succ\": false, \"steps\": 60, \"d_final\": 1.37, \"inf\": 60, \"replans\": 0, \"elapsed_min\": 135.5}\n"}
+,{"stream_name":"stdout","time":8663.297345637,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/011\", \"succ\": false, \"steps\": 49, \"d_final\": 2.59, \"inf\": 49, \"replans\": 0, \"elapsed_min\": 139.2}\n"}
+,{"stream_name":"stdout","time":8823.330940745,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/012\", \"succ\": false, \"steps\": 35, \"d_final\": 2.19, \"inf\": 35, \"replans\": 0, \"elapsed_min\": 141.9}\n"}
+,{"stream_name":"stdout","time":8997.592737182,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/013\", \"succ\": false, \"steps\": 38, \"d_final\": 2.57, \"inf\": 38, \"replans\": 0, \"elapsed_min\": 144.8}\n"}
+,{"stream_name":"stdout","time":9154.633706,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/014\", \"succ\": false, \"steps\": 35, \"d_final\": 1.88, \"inf\": 35, \"replans\": 0, \"elapsed_min\": 147.4}\n"}
+,{"stream_name":"stdout","time":9370.847955063,"data":"{\"exp\": \"test-thor-20261030-D_recovery-fixed_frequency\", \"ep\": \"D_recovery/test/v1/015\", \"succ\": false, \"steps\": 46, \"d_final\": 2.34, \"inf\": 46, \"replans\": 0, \"elapsed_min\": 151.0}\n"}
+,{"stream_name":"stdout","time":9370.847996652,"data":"===  test-thor-20261030-D_recovery-reliability_triggered  ===\n"}
+,{"stream_name":"stdout","time":9463.322608096,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/000\", \"succ\": false, \"steps\": 51, \"d_final\": 3.84, \"inf\": 18, \"replans\": 17, \"elapsed_min\": 152.6}\n"}
+,{"stream_name":"stdout","time":9549.723492755,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/001\", \"succ\": false, \"steps\": 38, \"d_final\": 2.43, \"inf\": 17, \"replans\": 14, \"elapsed_min\": 154.0}\n"}
+,{"stream_name":"stdout","time":9643.256712664,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/002\", \"succ\": false, \"steps\": 50, \"d_final\": 2.52, \"inf\": 18, \"replans\": 16, \"elapsed_min\": 155.6}\n"}
+,{"stream_name":"stdout","time":9727.52659505,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/003\", \"succ\": false, \"steps\": 41, \"d_final\": 3.09, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 157.0}\n"}
+,{"stream_name":"stdout","time":9818.951827861,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/004\", \"succ\": false, \"steps\": 41, \"d_final\": 2.25, \"inf\": 17, \"replans\": 16, \"elapsed_min\": 158.5}\n"}
+,{"stream_name":"stdout","time":9910.873846779,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/005\", \"succ\": false, \"steps\": 44, \"d_final\": 2.34, \"inf\": 18, \"replans\": 15, \"elapsed_min\": 160.0}\n"}
+,{"stream_name":"stdout","time":9996.917184607,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/006\", \"succ\": false, \"steps\": 35, \"d_final\": 2.92, \"inf\": 17, \"replans\": 14, \"elapsed_min\": 161.5}\n"}
+,{"stream_name":"stdout","time":10102.29111967,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/007\", \"succ\": false, \"steps\": 45, \"d_final\": 2.44, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 163.2}\n"}
+,{"stream_name":"stdout","time":10184.032570882,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/008\", \"succ\": false, \"steps\": 36, \"d_final\": 2.16, \"inf\": 15, \"replans\": 14, \"elapsed_min\": 164.6}\n"}
+,{"stream_name":"stdout","time":10290.96993629,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/009\", \"succ\": false, \"steps\": 57, \"d_final\": 3.27, \"inf\": 20, \"replans\": 18, \"elapsed_min\": 166.4}\n"}
+,{"stream_name":"stdout","time":10397.140207461,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/010\", \"succ\": false, \"steps\": 60, \"d_final\": 2.96, \"inf\": 20, \"replans\": 18, \"elapsed_min\": 168.1}\n"}
+,{"stream_name":"stdout","time":10487.168718496,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/011\", \"succ\": false, \"steps\": 55, \"d_final\": 2.61, \"inf\": 17, \"replans\": 14, \"elapsed_min\": 169.6}\n"}
+,{"stream_name":"stdout","time":10568.700862619,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/012\", \"succ\": false, \"steps\": 35, \"d_final\": 2.14, \"inf\": 16, \"replans\": 14, \"elapsed_min\": 171.0}\n"}
+,{"stream_name":"stdout","time":10653.38921816,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/013\", \"succ\": false, \"steps\": 43, \"d_final\": 2.93, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 172.4}\n"}
+,{"stream_name":"stdout","time":10734.283878035,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/014\", \"succ\": false, \"steps\": 38, \"d_final\": 1.94, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 173.7}\n"}
+,{"stream_name":"stdout","time":10825.965081952,"data":"{\"exp\": \"test-thor-20261030-D_recovery-reliability_triggered\", \"ep\": \"D_recovery/test/v1/015\", \"succ\": false, \"steps\": 46, \"d_final\": 2.12, \"inf\": 16, \"replans\": 15, \"elapsed_min\": 175.3}\n"}
+,{"stream_name":"stdout","time":10825.965120072,"data":"condition done: D_recovery | total elapsed min 175.3\n"}
+,{"stream_name":"stdout","time":10825.965127778,"data":"                                        SR   n  inference_mean  replans_mean  steps_mean  dist_final  lat_mean_s\n"}
+,{"stream_name":"stdout","time":10825.965133977,"data":"condition     method                                                                                            \n"}
+,{"stream_name":"stdout","time":10825.965151921,"data":"C_instr_shift chunked_frozen         0.062  16           5.875         0.000      41.562       1.730       3.906\n"}
+,{"stream_name":"stdout","time":10825.965157203,"data":"              fixed_frequency        0.000  16          40.062         0.000      40.062       1.869       3.993\n"}
+,{"stream_name":"stdout","time":10825.965160933,"data":"              reliability_triggered  0.062  16          15.375        14.062      41.312       1.834       4.117\n"}
+,{"stream_name":"stdout","time":10825.96516523,"data":"D_recovery    chunked_frozen         0.000  16           6.375         0.000      44.188       2.549       4.106\n"}
+,{"stream_name":"stdout","time":10825.965169523,"data":"              fixed_frequency        0.000  16          42.125         0.000      42.125       2.465       4.038\n"}
+,{"stream_name":"stdout","time":10825.965174489,"data":"              reliability_triggered  0.000  16          17.062        15.312      44.688       2.622       4.040\n"}
+,{"stream_name":"stdout","time":10825.965178877,"data":"rows: 96 | saved full_summary_b.json\n"}
+,{"stream_name":"stdout","time":10825.96518282,"data":"CPU times: user 1h 46min 28s, sys: 30min 58s, total: 2h 17min 26s\n"}
+,{"stream_name":"stdout","time":10825.965186835,"data":"Wall time: 2h 55min 16s\n"}
+,{"stream_name":"stderr","time":10831.81051464,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":10831.810542917,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":10832.003210886,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":10832.003237434,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":10832.806820951,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":10832.96298069,"data":"[NbConvertApp] Writing 375043 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":10835.386487423,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":10836.001216746,"data":"[NbConvertApp] Writing 636430 bytes to __results__.html\n"}
+]

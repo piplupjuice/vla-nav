@@ -1,0 +1,6 @@
+{
+  "b2_easy_success_rate": 0.2,
+  "n": 20,
+  "gate": "NO-GO",
+  "rule": "B2 SR >= 0.5 on the 20 easy val episodes (pre-registered)"
+}

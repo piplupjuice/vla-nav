@@ -1,0 +1,52 @@
+{
+  "threshold_m": 0.2,
+  "stall_limit": 2,
+  "selection_rule": "max SR, tie -> min mean inferences (val only)",
+  "table": [
+    {
+      "threshold_m": 0.05,
+      "n": 6,
+      "SR": 0.0,
+      "inferences_mean": 23.2,
+      "steps_mean": 45.2,
+      "dist_final_mean": 2.21
+    },
+    {
+      "threshold_m": 0.1,
+      "n": 6,
+      "SR": 0.0,
+      "inferences_mean": 15.8,
+      "steps_mean": 45.2,
+      "dist_final_mean": 2.08
+    },
+    {
+      "threshold_m": 0.2,
+      "n": 6,
+      "SR": 0.0,
+      "inferences_mean": 15.3,
+      "steps_mean": 45.2,
+      "dist_final_mean": 2.18
+    },
+    {
+      "threshold_m": 0.4,
+      "n": 6,
+      "SR": 0.0,
+      "inferences_mean": 15.8,
+      "steps_mean": 45.2,
+      "dist_final_mean": 2.08
+    }
+  ],
+  "seeds": [
+    20001,
+    20112,
+    20223,
+    20334,
+    20445,
+    20556
+  ],
+  "n_per_threshold": 6,
+  "val_scenes": "FloorPlan1..30 (env picks by seed)",
+  "note": "test split untouched; this file is the ONLY threshold source",
+  "degenerate_val": true,
+  "degenerate_note": "All val thresholds produced the same success rate (SR = 0.000), so success does not identify a threshold; the pre-registered cost tie-break picked threshold_m = 0.2 (mean inferences 15.3). Treat the value as 'cheapest working setting', not as a tuned optimum."
+}

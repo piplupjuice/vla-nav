@@ -1,0 +1,385 @@
+[
+  {
+    "probe": "build_default",
+    "gridSize": null,
+    "scene": "FloorPlan5_physics",
+    "pose": [
+      0.75,
+      0.901,
+      0.0,
+      270.0
+    ]
+  },
+  {
+    "tag": "default_MoveAhead",
+    "action": {
+      "action": "MoveAhead"
+    },
+    "before": [
+      0.75,
+      0.901,
+      0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.25,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "MoveAhead_0.25",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.25"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": 0.0,
+    "success": false,
+    "standing": true,
+    "error": "StandardCounterHeightWidth is blocking Agent 0 from moving by (-0.2500, 0.0000, 0.0000)."
+  },
+  {
+    "tag": "MoveAhead_0.10",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.1"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": 0.0,
+    "success": false,
+    "standing": true,
+    "error": "StandardCounterHeightWidth is blocking Agent 0 from moving by (-0.1000, 0.0000, 0.0000)."
+  },
+  {
+    "tag": "MoveAhead_0.05",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.05"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "RotateLeft_30",
+    "action": {
+      "action": "RotateLeft",
+      "degrees": "30"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      240.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": -30.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "RotateRight_30",
+    "action": {
+      "action": "RotateRight",
+      "degrees": "30"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      240.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": 30.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "RotateLeft_7.6",
+    "action": {
+      "action": "RotateLeft",
+      "degrees": "7.6"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      262.4
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": -7.6,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "Teleport_rot_float_90",
+    "action": {
+      "action": "Teleport",
+      "position": "{'x': 0.5, 'y': 0.9009991884231567, 'z': -0.0}",
+      "rotation": "90.0",
+      "forceAction": "True"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      262.4
+    ],
+    "after": [
+      0.5,
+      0.901,
+      0.0,
+      90.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": -172.4,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "MoveAhead_after_teleport_0.10",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.1"
+    },
+    "before": [
+      0.5,
+      0.901,
+      0.0,
+      90.0
+    ],
+    "after": [
+      0.5,
+      0.901,
+      -0.0,
+      90.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "MoveAhead_after_teleport_0.25",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.25"
+    },
+    "before": [
+      0.5,
+      0.901,
+      -0.0,
+      90.0
+    ],
+    "after": [
+      0.75,
+      0.901,
+      -0.0,
+      90.0
+    ],
+    "moved_m": 0.25,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "Teleport_rot_dict",
+    "action": {
+      "action": "Teleport",
+      "position": "{'x': 0.75, 'y': 0.9009991884231567, 'z': -0.0}",
+      "rotation": "{'x': 0.0, 'y': 0.0, 'z': 0.0}",
+      "forceAction": "True"
+    },
+    "before": [
+      0.75,
+      0.901,
+      -0.0,
+      90.0
+    ],
+    "after": [
+      0.75,
+      0.901,
+      0.0,
+      0.0
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": -90.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "probe": "build_grid005",
+    "gridSize": null,
+    "pose": [
+      0.75,
+      0.901,
+      0.0,
+      270.0
+    ]
+  },
+  {
+    "tag": "g005_MoveAhead_0.10",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.1"
+    },
+    "before": [
+      0.75,
+      0.901,
+      0.0,
+      270.0
+    ],
+    "after": [
+      0.65,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.1,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "g005_MoveAhead_0.05",
+    "action": {
+      "action": "MoveAhead",
+      "moveMagnitude": "0.05"
+    },
+    "before": [
+      0.65,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.6,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.05,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "g005_MoveAhead_default",
+    "action": {
+      "action": "MoveAhead"
+    },
+    "before": [
+      0.6,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.55,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "moved_m": 0.05,
+    "yaw_delta_deg": 0.0,
+    "success": true,
+    "standing": true,
+    "error": ""
+  },
+  {
+    "tag": "g005_RotateLeft_7.6",
+    "action": {
+      "action": "RotateLeft",
+      "degrees": "7.6"
+    },
+    "before": [
+      0.55,
+      0.901,
+      -0.0,
+      270.0
+    ],
+    "after": [
+      0.55,
+      0.901,
+      -0.0,
+      262.4
+    ],
+    "moved_m": 0.0,
+    "yaw_delta_deg": -7.6,
+    "success": true,
+    "standing": true,
+    "error": ""
+  }
+]

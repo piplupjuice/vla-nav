@@ -1,0 +1,63 @@
+[{"stream_name":"stderr","time":7.006383646,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.006426904,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.00643129,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.00643401,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.592910602,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.592951414,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.59295622,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.592959847,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":15.342698273,"data":"{\n"}
+,{"stream_name":"stdout","time":15.342726207,"data":"  \"notebook\": \"02_thor_pilot\",\n"}
+,{"stream_name":"stdout","time":15.342730707,"data":"  \"stage\": \"kernel-env\",\n"}
+,{"stream_name":"stdout","time":15.342734212,"data":"  \"ts_utc\": \"2026-10-29T10:03:54Z\",\n"}
+,{"stream_name":"stdout","time":15.342743913,"data":"  \"python\": \"3.13.15\",\n"}
+,{"stream_name":"stdout","time":15.342746818,"data":"  \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":15.34274915,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":15.342751397,"data":"    \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":15.342753692,"data":"    \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":15.342755879,"data":"  ]\n"}
+,{"stream_name":"stdout","time":15.342758103,"data":"}\n"}
+,{"stream_name":"stdout","time":15.342760302,"data":"$ pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch' 'ai2thor'\n"}
+,{"stream_name":"stdout","time":24.822826693,"data":"\n"}
+,{"stream_name":"stdout","time":24.822851696,"data":"\n"}
+,{"stream_name":"stdout","time":24.822856062,"data":"$ apt-get update -qq\n"}
+,{"stream_name":"stdout","time":28.657919479,"data":"\n"}
+,{"stream_name":"stdout","time":28.65794986,"data":"W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.\n"}
+,{"stream_name":"stdout","time":28.657954683,"data":"W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":28.657957489,"data":"\n"}
+,{"stream_name":"stdout","time":28.657959919,"data":"$ apt-get install -y -qq xvfb xserver-xorg xserver-xorg-core xserver-xorg-video-dummy mesa-utils libgl1 libglu1-mesa libegl1 libxcursor1 libxinerama1 libxrandr2 libxi6 libxss1 libasound2 libnss3 libatk1.0-0 libatk-bridge2.0-0 libgtk-3-0 libvulkan1 vulkan-tools\n"}
+,{"stream_name":"stdout","time":30.15027622,"data":"\n"}
+,{"stream_name":"stdout","time":30.150303906,"data":"E: Package 'libasound2' has no installation candidate\n"}
+,{"stream_name":"stdout","time":30.15030813,"data":"\n"}
+,{"stream_name":"stderr","time":33.19639109,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":33.197062464,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":33.19707226,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":33.197089247,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":33.197094282,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":33.197098652,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":33.197102302,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":33.197105988,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":33.19710962,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":33.197112772,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":33.197116023,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":33.197119328,"data":"Exception encountered at \"In [2]\":\n"}
+,{"stream_name":"stderr","time":33.197122715,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":33.19712607,"data":"ModuleNotFoundError                       Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":33.197131033,"data":"/tmp/ipykernel_23/2382674220.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":33.197134542,"data":"      2 sys.path.insert(0, \"/kaggle/input/vlanav-src/src\")\n"}
+,{"stream_name":"stderr","time":33.197142135,"data":"      3 \n"}
+,{"stream_name":"stderr","time":33.19714447,"data":"----\u003e 4 from vlanav.model.omnivla_adapter import OmnivlaNavPolicy\n"}
+,{"stream_name":"stderr","time":33.19714683,"data":"      5 from vlanav.environment.ai2thor_env import Ai2ThorNavEnv\n"}
+,{"stream_name":"stderr","time":33.19714906,"data":"      6 from vlanav.reliability.replanning import (ChunkedFrozen, FixedFrequencyReplan,\n"}
+,{"stream_name":"stderr","time":33.197151424,"data":"\n"}
+,{"stream_name":"stderr","time":33.197153525,"data":"ModuleNotFoundError: No module named 'vlanav'\n"}
+,{"stream_name":"stderr","time":33.197155719,"data":"\n"}
+,{"stream_name":"stderr","time":35.370077796,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":35.370103655,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":35.540002646,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":35.540025255,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":36.304841174,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":36.381752091,"data":"[NbConvertApp] Writing 25303 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":38.799300396,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":39.327294964000004,"data":"[NbConvertApp] Writing 336589 bytes to __results__.html\n"}
+]

@@ -1,0 +1,201 @@
+[{"stream_name":"stderr","time":7.471257655,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.471332854,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.471339943,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.471344171,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.063869956,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.063910082,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.063915552,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.063920021,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.790951809,"data":"Wed Oct 28 13:59:26 2026       \n"}
+,{"stream_name":"stdout","time":11.790987148,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.790991825999999,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":11.790995603,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.790999327,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":11.791002937,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":11.791006541,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":11.791014904,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":11.791017740000001,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":11.791020134,"data":"| N/A   55C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":11.791022571,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":11.791025113,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.791027648,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":11.791030212,"data":"| N/A   53C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":11.791034468,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":11.791036952,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.791039436,"data":"\n"}
+,{"stream_name":"stdout","time":11.791041682,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.791044068,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":11.791046522,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":11.791058486,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":11.791061136,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":11.791063528,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":11.791067,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.791069566000001,"data":"\n"}
+,{"stream_name":"stdout","time":30.381609466,"data":"{\n"}
+,{"stream_name":"stdout","time":30.381652312,"data":"  \"notebook\": \"00_preflight\",\n"}
+,{"stream_name":"stdout","time":30.381656993,"data":"  \"stage\": \"kernel-env\",\n"}
+,{"stream_name":"stdout","time":30.381665617,"data":"  \"ts_utc\": \"2026-10-28T13:59:26Z\",\n"}
+,{"stream_name":"stdout","time":30.381669189,"data":"  \"python\": \"3.13.15\",\n"}
+,{"stream_name":"stdout","time":30.381671604,"data":"  \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":30.381673923,"data":"  \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":30.38167628,"data":"  \"cuda_version\": \"12.8\",\n"}
+,{"stream_name":"stdout","time":30.381678583,"data":"  \"transformers\": \"5.16.1\",\n"}
+,{"stream_name":"stdout","time":30.381680871,"data":"  \"numpy\": \"2.1.3\",\n"}
+,{"stream_name":"stdout","time":30.381683067,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":30.381685265,"data":"    {\n"}
+,{"stream_name":"stdout","time":30.381687413,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":30.381689778,"data":"      \"total_mem_gb\": 15.6\n"}
+,{"stream_name":"stdout","time":30.381692024,"data":"    },\n"}
+,{"stream_name":"stdout","time":30.381694102,"data":"    {\n"}
+,{"stream_name":"stdout","time":30.381696192,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":30.381698503,"data":"      \"total_mem_gb\": 15.6\n"}
+,{"stream_name":"stdout","time":30.381701505,"data":"    }\n"}
+,{"stream_name":"stdout","time":30.381715957,"data":"  ]\n"}
+,{"stream_name":"stdout","time":30.381719632,"data":"}\n"}
+,{"stream_name":"stdout","time":30.58193145,"data":"$ pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch'\n"}
+,{"stream_name":"stdout","time":38.865590172,"data":"\n"}
+,{"stream_name":"stdout","time":38.865616397,"data":"\n"}
+,{"stream_name":"stdout","time":50.403311747,"data":"timm: 0.9.16 | peft: 0.11.1 | efficientnet_pytorch: 0.7.1\n"}
+,{"stream_name":"stdout","time":50.403339919,"data":"$ rm -rf /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":50.403345579,"data":"\n"}
+,{"stream_name":"stdout","time":50.403349433,"data":"\n"}
+,{"stream_name":"stdout","time":50.403353582,"data":"$ git clone --depth 1 https://github.com/NHirose/OmniVLA.git /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":51.116162336,"data":"\n"}
+,{"stream_name":"stdout","time":51.116186575,"data":"Cloning into '/kaggle/tmp/OmniVLA'...\n"}
+,{"stream_name":"stdout","time":51.116192576,"data":"\n"}
+,{"stream_name":"stdout","time":51.116197054,"data":"OmniVLA repo files: ['.git', '.gitignore', 'LICENSE', 'README.md', 'SETUP.md', 'config_nav', 'experiments', 'inference', 'prismatic', 'pyproject.toml', 'vla-scripts']\n"}
+,{"stream_name":"stdout","time":51.116202078,"data":"CPU times: user 8.27 s, sys: 758 ms, total: 9.02 s\n"}
+,{"stream_name":"stdout","time":51.116214693,"data":"Wall time: 20.7 s\n"}
+,{"stream_name":"stderr","time":51.520420657,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":51.520463304,"data":"\n"}
+,{"stream_name":"stderr","time":51.52046942,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":107.624022049,"data":"  4.95 GB  model-00003-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":107.624052235,"data":"  4.95 GB  model-00002-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":107.624058105,"data":"  4.93 GB  model-00001-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":107.62406327,"data":"  0.26 GB  model-00004-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":107.62406767,"data":"  0.20 GB  action_head--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":107.624071786,"data":"  0.20 GB  dist_head--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":107.624075732,"data":"  0.07 GB  proprio_projector--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":107.624080184,"data":"  0.00 GB  tokenizer.json\n"}
+,{"stream_name":"stdout","time":107.624084544,"data":"  0.00 GB  tokenizer.model\n"}
+,{"stream_name":"stdout","time":107.624088804,"data":"  0.00 GB  modeling_prismatic_____.py\n"}
+,{"stream_name":"stdout","time":107.624101121,"data":"  0.00 GB  modeling_prismatic.py\n"}
+,{"stream_name":"stdout","time":107.624105383,"data":"  0.00 GB  model.safetensors.index.json\n"}
+,{"stream_name":"stdout","time":107.624109692,"data":"checkpoint OK at /kaggle/tmp/omnivla-original\n"}
+,{"stream_name":"stdout","time":107.624114421,"data":"CPU times: user 1min 7s, sys: 43 s, total: 1min 50s\n"}
+,{"stream_name":"stdout","time":107.624118999,"data":"Wall time: 56.5 s\n"}
+,{"stream_name":"stdout","time":199.991128377,"data":"PROBE stdout:\\n Using OmniVLA constants:\n"}
+,{"stream_name":"stdout","time":199.991202525,"data":"  NUM_ACTIONS_CHUNK = 8\n"}
+,{"stream_name":"stdout","time":199.991212948,"data":"  ACTION_DIM = 4\n"}
+,{"stream_name":"stdout","time":199.991216375,"data":"  POSE_DIM = 4\n"}
+,{"stream_name":"stdout","time":199.991219361,"data":"  ACTION_PROPRIO_NORMALIZATION_TYPE = NormalizationType.BOUNDS_Q99\n"}
+,{"stream_name":"stdout","time":199.991222437,"data":"If needed, manually set the correct constants in `prismatic/vla/constants.py`!\n"}
+,{"stream_name":"stdout","time":199.991226362,"data":"\n"}
+,{"stream_name":"stdout","time":199.991240613,"data":"PROBE stderr:\\n The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.\n"}
+,{"stream_name":"stdout","time":199.99124857,"data":"\n"}
+,{"stream_name":"stdout","time":199.991253804,"data":"0it [00:00, ?it/s]\n"}
+,{"stream_name":"stdout","time":199.991258495,"data":"0it [00:00, ?it/s]\n"}
+,{"stream_name":"stdout","time":199.991262641,"data":"Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.40.1` and `tokenizers==0.23.1`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.\n"}
+,{"stream_name":"stdout","time":199.991268198,"data":"The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.\n"}
+,{"stream_name":"stdout","time":199.991282341,"data":"\n"}
+,{"stream_name":"stdout","time":199.991285798,"data":"Loading checkpoint shards:   0%|          | 0/4 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":199.991290577,"data":"Loading checkpoint shards:  25%|██▌       | 1/4 [00:04\u003c00:12,  4.21s/it]\n"}
+,{"stream_name":"stdout","time":199.991295433,"data":"Loading checkpoint shards:  50%|█████     | 2/4 [00:12\u003c00:12,  6.48s/it]\n"}
+,{"stream_name":"stdout","time":199.991299167,"data":"Loading checkpoint shards:  75%|███████▌  | 3/4 [00:26\u003c00:09,  9.80s/it]\n"}
+,{"stream_name":"stdout","time":199.991302927,"data":"Loading checkpoint shards: 100%|██████████| 4/4 [00:27\u003c00:00,  6.46s/it]\n"}
+,{"stream_name":"stdout","time":199.991307012,"data":"Loading checkpoint shards: 100%|██████████| 4/4 [00:27\u003c00:00,  6.84s/it]\n"}
+,{"stream_name":"stdout","time":199.99131091,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":199.991314614,"data":"  File \"/kaggle/tmp/preflight_probe.py\", line 396, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":199.991318592,"data":"    tick_ms, fwd_ms, waypoints, lin, ang = one_tick()\n"}
+,{"stream_name":"stdout","time":199.991322206,"data":"                                           ~~~~~~~~^^\n"}
+,{"stream_name":"stdout","time":199.991325907,"data":"  File \"/kaggle/tmp/preflight_probe.py\", line 388, in one_tick\n"}
+,{"stream_name":"stdout","time":199.991329938,"data":"    waypoints, lin, ang = decode_tick(actions)\n"}
+,{"stream_name":"stdout","time":199.991333684,"data":"                          ~~~~~~~~~~~^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":199.991337449,"data":"  File \"/kaggle/tmp/preflight_probe.py\", line 340, in decode_tick\n"}
+,{"stream_name":"stdout","time":199.991341414,"data":"    waypoints = actions.float().cpu().numpy()\n"}
+,{"stream_name":"stdout","time":199.991344996,"data":"RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.\n"}
+,{"stream_name":"stdout","time":199.991349035,"data":"\n"}
+,{"stream_name":"stdout","time":199.991352516,"data":"probe returncode: 1\n"}
+,{"stream_name":"stdout","time":199.991356215,"data":"CPU times: user 18 ms, sys: 10.4 ms, total: 28.4 ms\n"}
+,{"stream_name":"stdout","time":199.991359728,"data":"Wall time: 1min 32s\n"}
+,{"stream_name":"stdout","time":200.011744485,"data":"{\n"}
+,{"stream_name":"stdout","time":200.011767522,"data":"  \"notebook\": \"00_preflight\",\n"}
+,{"stream_name":"stdout","time":200.011772139,"data":"  \"stage\": \"probe-subprocess\",\n"}
+,{"stream_name":"stdout","time":200.011775773,"data":"  \"reference\": \"inference/run_omnivla.py @ NHirose/OmniVLA, fetched 2026-10-28\",\n"}
+,{"stream_name":"stdout","time":200.011779551,"data":"  \"ts_utc\": \"2026-10-28T14:01:22Z\",\n"}
+,{"stream_name":"stdout","time":200.011783121,"data":"  \"pip_transformers_4401\": {\n"}
+,{"stream_name":"stdout","time":200.011786642,"data":"    \"tokenizers_spec_patched\": true,\n"}
+,{"stream_name":"stdout","time":200.011790142,"data":"    \"patched_file\": \"/usr/local/lib/python3.13/dist-packages/transformers/dependency_versions_table.py\",\n"}
+,{"stream_name":"stdout","time":200.011793733,"data":"    \"patch\": \"\\\"tokenizers\\\": \\\"tokenizers\u003e=0.19,\u003c0.20\\\"  -\u003e  \\\"tokenizers\\\": \\\"tokenizers\u003e=0.19\\\"\",\n"}
+,{"stream_name":"stdout","time":200.011798635,"data":"    \"reason\": \"transformers 4.40.1 import-time gate vs Kaggle tokenizers 0.23.1 (no cp313 wheel for 0.19.1); model code is warn-only on tokenizers version\"\n"}
+,{"stream_name":"stdout","time":200.01180267,"data":"  },\n"}
+,{"stream_name":"stdout","time":200.011815219,"data":"  \"probe_env\": {\n"}
+,{"stream_name":"stdout","time":200.011819166,"data":"    \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\",\n"}
+,{"stream_name":"stdout","time":200.011822712,"data":"    \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":200.011826176,"data":"    \"transformers\": \"4.40.1\",\n"}
+,{"stream_name":"stdout","time":200.011829429,"data":"    \"tokenizers\": \"0.23.1\",\n"}
+,{"stream_name":"stdout","time":200.011833151,"data":"    \"timm\": \"0.9.16\",\n"}
+,{"stream_name":"stdout","time":200.011836792,"data":"    \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":200.011840019,"data":"    \"cuda_count\": 2,\n"}
+,{"stream_name":"stdout","time":200.011843291,"data":"    \"gpus\": [\n"}
+,{"stream_name":"stdout","time":200.011846347,"data":"      \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":200.011849967,"data":"      \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":200.011853406,"data":"    ]\n"}
+,{"stream_name":"stdout","time":200.011857227,"data":"  },\n"}
+,{"stream_name":"stdout","time":200.011860665,"data":"  \"prismatic_stub_pkgs\": {\n"}
+,{"stream_name":"stdout","time":200.011864431,"data":"    \"stubbed\": [\n"}
+,{"stream_name":"stdout","time":200.011867802,"data":"      \"prismatic\",\n"}
+,{"stream_name":"stdout","time":200.011870906,"data":"      \"prismatic.vla\",\n"}
+,{"stream_name":"stdout","time":200.011879689,"data":"      \"prismatic.models\",\n"}
+,{"stream_name":"stdout","time":200.01188341,"data":"      \"prismatic.models.backbones\",\n"}
+,{"stream_name":"stdout","time":200.011887279,"data":"      \"prismatic.models.backbones.llm\",\n"}
+,{"stream_name":"stdout","time":200.011890908,"data":"      \"prismatic.training\",\n"}
+,{"stream_name":"stdout","time":200.011894312,"data":"      \"prismatic.extern\",\n"}
+,{"stream_name":"stdout","time":200.01189743,"data":"      \"prismatic.extern.hf\"\n"}
+,{"stream_name":"stdout","time":200.011900702,"data":"    ],\n"}
+,{"stream_name":"stdout","time":200.011903909,"data":"    \"reason\": \"bypass eager __init__ chain that imports the RLDS training stack (dlimp/tensorflow); inference-relevant modules load verbatim, documented \u0026 surgical\"\n"}
+,{"stream_name":"stdout","time":200.011907876,"data":"  },\n"}
+,{"stream_name":"stdout","time":200.011911122,"data":"  \"constants\": {\n"}
+,{"stream_name":"stdout","time":200.011914316,"data":"    \"NUM_ACTIONS_CHUNK\": 8,\n"}
+,{"stream_name":"stdout","time":200.011917541,"data":"    \"ACTION_DIM\": 4,\n"}
+,{"stream_name":"stdout","time":200.01192082,"data":"    \"POSE_DIM\": 4,\n"}
+,{"stream_name":"stdout","time":200.011924046,"data":"    \"NORM\": \"NormalizationType.BOUNDS_Q99\"\n"}
+,{"stream_name":"stdout","time":200.011927455,"data":"  },\n"}
+,{"stream_name":"stdout","time":200.011930589,"data":"  \"model_load\": {\n"}
+,{"stream_name":"stdout","time":200.011933791,"data":"    \"seconds\": 31.3,\n"}
+,{"stream_name":"stdout","time":200.011937056,"data":"    \"llm_dim\": 4096,\n"}
+,{"stream_name":"stdout","time":200.011940252,"data":"    \"num_patches\": 513,\n"}
+,{"stream_name":"stdout","time":200.011943532,"data":"    \"tokenizer_class\": \"LlamaTokenizerFast\",\n"}
+,{"stream_name":"stdout","time":200.011946859,"data":"    \"processor_class\": \"PrismaticProcessor\",\n"}
+,{"stream_name":"stdout","time":200.011950077,"data":"    \"model_class\": \"OpenVLAForActionPrediction_MMNv1\",\n"}
+,{"stream_name":"stdout","time":200.011953376,"data":"    \"device_map\": \"auto (documented deviation from official single-GPU .to())\",\n"}
+,{"stream_name":"stdout","time":200.011965819,"data":"    \"hf_device_map_module_counts\": {\n"}
+,{"stream_name":"stdout","time":200.011968331,"data":"      \"0\": 17,\n"}
+,{"stream_name":"stdout","time":200.01197049,"data":"      \"1\": 20\n"}
+,{"stream_name":"stdout","time":200.011972632,"data":"    },\n"}
+,{"stream_name":"stdout","time":200.011974747,"data":"    \"vram_after_load_gb\": [\n"}
+,{"stream_name":"stdout","time":200.011976912,"data":"      7.8,\n"}
+,{"stream_name":"stdout","time":200.011979122,"data":"      7.57\n"}
+,{"stream_name":"stdout","time":200.011981212,"data":"    ]\n"}
+,{"stream_name":"stdout","time":200.011983276,"data":"  },\n"}
+,{"stream_name":"stdout","time":200.011985331,"data":"  \"timing\": {\n"}
+,{"stream_name":"stdout","time":200.011990782,"data":"    \"error\": \"Traceback (most recent call last):\\n  File \\\"/kaggle/tmp/preflight_probe.py\\\", line 396, in \u003cmodule\u003e\\n    tick_ms, fwd_ms, waypoints, lin, ang = one_tick()\\n                                           ~~~~~~~~^^\\n  File \\\"/kaggle/tmp/preflight_probe.py\\\", line 388, in one_tick\\n    waypoints, lin, ang = decode_tick(actions)\\n                          ~~~~~~~~~~~^^^^^^^^^\\n  File \\\"/kaggle/tmp/preflight_probe.py\\\", line 340, in decode_tick\\n    waypoints = actions.float().cpu().numpy()\\nRuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.\\n\"\n"}
+,{"stream_name":"stdout","time":200.011997592,"data":"  }\n"}
+,{"stream_name":"stdout","time":200.011999676,"data":"}\n"}
+,{"stream_name":"stdout","time":200.012015344,"data":"\\nPREFLIGHT GATES: {\n"}
+,{"stream_name":"stdout","time":200.012019607,"data":"  \"constants_correct\": true,\n"}
+,{"stream_name":"stdout","time":200.012023429,"data":"  \"model_loaded\": true,\n"}
+,{"stream_name":"stdout","time":200.012026869,"data":"  \"inference_ran\": true,\n"}
+,{"stream_name":"stdout","time":200.012030461,"data":"  \"vram_recorded\": false\n"}
+,{"stream_name":"stdout","time":200.012034173,"data":"}\n"}
+,{"stream_name":"stdout","time":200.012037306,"data":"*** GATES FAILED — see report ***\n"}
+,{"stream_name":"stdout","time":200.012041046,"data":"report saved to /kaggle/working/preflight/preflight_report.json\n"}
+,{"stream_name":"stderr","time":204.892932307,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":204.892962553,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":205.063372107,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":205.063396736,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":205.796435425,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":205.877984374,"data":"[NbConvertApp] Writing 87974 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":208.244658281,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":208.752083871,"data":"[NbConvertApp] Writing 378710 bytes to __results__.html\n"}
+]

@@ -1,0 +1,11 @@
+{
+  "notebook": "02_thor_pilot",
+  "stage": "kernel-env",
+  "ts_utc": "2026-10-30T07:11:24Z",
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ]
+}

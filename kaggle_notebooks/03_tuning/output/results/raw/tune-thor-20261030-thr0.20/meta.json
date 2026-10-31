@@ -1,0 +1,33 @@
+{
+  "experiment_id": "tune-thor-20261030-thr0.20",
+  "created_utc": "2026-10-30T08:42:29Z",
+  "method": "reliability_triggered",
+  "env_family": "ai2thor",
+  "env_commit_hash": "unknown",
+  "model_name": "NHirose/omnivla-original",
+  "model_revision": "omnivla-original@120000",
+  "gpu_name": "Tesla T4;Tesla T4",
+  "torch_version": "2.11.0+cu128",
+  "python_version": null,
+  "seeds_version": "v1",
+  "conditions": [
+    "A_in_dist"
+  ],
+  "split": "val",
+  "action_budget": 60,
+  "termination_rule": "auto-stop within goal_radius, else max_steps; collision-kill at max_collisions",
+  "notes": "VAL-ONLY threshold sweep; every row is logged so the table recomputes from episodes.jsonl; test split untouched.",
+  "extra": {
+    "threshold_m": 0.2,
+    "stall_limit": 2,
+    "seeds": [
+      20001,
+      20112,
+      20223,
+      20334,
+      20445,
+      20556
+    ],
+    "threshold_source": "this sweep (val only)"
+  }
+}

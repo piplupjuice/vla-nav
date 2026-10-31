@@ -1,0 +1,419 @@
+{
+  "per_cell": {
+    "A_in_dist|chunked_frozen": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 6.88,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.376,
+      "collisions_per_ep": 29.19,
+      "dist_final_mean_m": 1.829,
+      "path_length_mean_m": 1.217
+    },
+    "A_in_dist|fixed_frequency": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 41.25,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.415,
+      "collisions_per_ep": 30.0,
+      "dist_final_mean_m": 1.649,
+      "path_length_mean_m": 1.137
+    },
+    "A_in_dist|reliability_triggered": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 16.75,
+      "replans_per_ep": 15.44,
+      "latency_mean_s": 4.424,
+      "collisions_per_ep": 30.0,
+      "dist_final_mean_m": 1.654,
+      "path_length_mean_m": 1.086
+    },
+    "B_env_shift|chunked_frozen": {
+      "n": 16,
+      "successes": 1,
+      "SR": 0.0625,
+      "wilson95": [
+        0.0111,
+        0.2833
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 7.56,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.436,
+      "collisions_per_ep": 21.0,
+      "dist_final_mean_m": 2.144,
+      "path_length_mean_m": 1.672
+    },
+    "B_env_shift|fixed_frequency": {
+      "n": 16,
+      "successes": 1,
+      "SR": 0.0625,
+      "wilson95": [
+        0.0111,
+        0.2833
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 42.25,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.406,
+      "collisions_per_ep": 27.75,
+      "dist_final_mean_m": 2.014,
+      "path_length_mean_m": 1.499
+    },
+    "B_env_shift|reliability_triggered": {
+      "n": 16,
+      "successes": 1,
+      "SR": 0.0625,
+      "wilson95": [
+        0.0111,
+        0.2833
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 16.38,
+      "replans_per_ep": 14.25,
+      "latency_mean_s": 4.426,
+      "collisions_per_ep": 26.69,
+      "dist_final_mean_m": 2.252,
+      "path_length_mean_m": 1.604
+    },
+    "C_instr_shift|chunked_frozen": {
+      "n": 16,
+      "successes": 1,
+      "SR": 0.0625,
+      "wilson95": [
+        0.0111,
+        0.2833
+      ],
+      "SPL_proxy": 0.0625,
+      "inferences_per_ep": 5.88,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 3.906,
+      "collisions_per_ep": 27.56,
+      "dist_final_mean_m": 1.73,
+      "path_length_mean_m": 0.88
+    },
+    "C_instr_shift|fixed_frequency": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 40.06,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 3.993,
+      "collisions_per_ep": 30.0,
+      "dist_final_mean_m": 1.869,
+      "path_length_mean_m": 1.031
+    },
+    "C_instr_shift|reliability_triggered": {
+      "n": 16,
+      "successes": 1,
+      "SR": 0.0625,
+      "wilson95": [
+        0.0111,
+        0.2833
+      ],
+      "SPL_proxy": 0.0625,
+      "inferences_per_ep": 15.38,
+      "replans_per_ep": 14.06,
+      "latency_mean_s": 4.117,
+      "collisions_per_ep": 27.75,
+      "dist_final_mean_m": 1.834,
+      "path_length_mean_m": 1.01
+    },
+    "D_recovery|chunked_frozen": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 6.38,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.106,
+      "collisions_per_ep": 30.0,
+      "dist_final_mean_m": 2.549,
+      "path_length_mean_m": 0.923
+    },
+    "D_recovery|fixed_frequency": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 42.12,
+      "replans_per_ep": 0.0,
+      "latency_mean_s": 4.038,
+      "collisions_per_ep": 29.62,
+      "dist_final_mean_m": 2.465,
+      "path_length_mean_m": 1.267
+    },
+    "D_recovery|reliability_triggered": {
+      "n": 16,
+      "successes": 0,
+      "SR": 0.0,
+      "wilson95": [
+        0.0,
+        0.1936
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 17.06,
+      "replans_per_ep": 15.31,
+      "latency_mean_s": 4.04,
+      "collisions_per_ep": 29.88,
+      "dist_final_mean_m": 2.622,
+      "path_length_mean_m": 1.064
+    }
+  },
+  "paired": {
+    "A_in_dist|reliability_triggered_vs_fixed_frequency": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 16.75,
+      "inferences_B": 41.25,
+      "inference_ratio_A_over_B": 0.406
+    },
+    "A_in_dist|reliability_triggered_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 16.75,
+      "inferences_B": 6.88,
+      "inference_ratio_A_over_B": 2.436
+    },
+    "A_in_dist|fixed_frequency_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 41.25,
+      "inferences_B": 6.88,
+      "inference_ratio_A_over_B": 6.0
+    },
+    "B_env_shift|reliability_triggered_vs_fixed_frequency": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 16.38,
+      "inferences_B": 42.25,
+      "inference_ratio_A_over_B": 0.388
+    },
+    "B_env_shift|reliability_triggered_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 16.38,
+      "inferences_B": 7.56,
+      "inference_ratio_A_over_B": 2.165
+    },
+    "B_env_shift|fixed_frequency_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 42.25,
+      "inferences_B": 7.56,
+      "inference_ratio_A_over_B": 5.587
+    },
+    "C_instr_shift|reliability_triggered_vs_fixed_frequency": {
+      "n_pairs": 16,
+      "only_A_success": 1,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0625,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.1875
+      ],
+      "inferences_A": 15.38,
+      "inferences_B": 40.06,
+      "inference_ratio_A_over_B": 0.384
+    },
+    "C_instr_shift|reliability_triggered_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 15.38,
+      "inferences_B": 5.88,
+      "inference_ratio_A_over_B": 2.617
+    },
+    "C_instr_shift|fixed_frequency_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 1,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": -0.0625,
+      "delta_SR_bootstrap95": [
+        -0.1875,
+        0.0
+      ],
+      "inferences_A": 40.06,
+      "inferences_B": 5.88,
+      "inference_ratio_A_over_B": 6.819
+    },
+    "D_recovery|reliability_triggered_vs_fixed_frequency": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 17.06,
+      "inferences_B": 42.12,
+      "inference_ratio_A_over_B": 0.405
+    },
+    "D_recovery|reliability_triggered_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 17.06,
+      "inferences_B": 6.38,
+      "inference_ratio_A_over_B": 2.676
+    },
+    "D_recovery|fixed_frequency_vs_chunked_frozen": {
+      "n_pairs": 16,
+      "only_A_success": 0,
+      "only_B_success": 0,
+      "mcnemar_exact_p": 1.0,
+      "delta_SR": 0.0,
+      "delta_SR_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "inferences_A": 42.12,
+      "inferences_B": 6.38,
+      "inference_ratio_A_over_B": 6.608
+    }
+  },
+  "n_rows": 192,
+  "excluded_mock_rows": 0,
+  "coverage": {
+    "expected": [
+      "A_in_dist",
+      "B_env_shift",
+      "C_instr_shift",
+      "D_recovery"
+    ],
+    "present": [
+      "A_in_dist",
+      "B_env_shift",
+      "C_instr_shift",
+      "D_recovery"
+    ],
+    "missing": [],
+    "complete": true
+  },
+  "pooled": {
+    "chunked_frozen": {
+      "n": 64,
+      "successes": 2,
+      "SR": 0.03125,
+      "wilson95": [
+        0.0086,
+        0.107
+      ],
+      "SPL_proxy": 0.0156,
+      "inferences_per_ep": 6.67
+    },
+    "fixed_frequency": {
+      "n": 64,
+      "successes": 1,
+      "SR": 0.015625,
+      "wilson95": [
+        0.0028,
+        0.0833
+      ],
+      "SPL_proxy": 0.0,
+      "inferences_per_ep": 41.42
+    },
+    "reliability_triggered": {
+      "n": 64,
+      "successes": 2,
+      "SR": 0.03125,
+      "wilson95": [
+        0.0086,
+        0.107
+      ],
+      "SPL_proxy": 0.0156,
+      "inferences_per_ep": 16.39
+    }
+  }
+}

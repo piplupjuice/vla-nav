@@ -1,0 +1,14 @@
+{
+  "id": "pikanigga/vlanav-01-thor",
+  "title": "vlanav-01-thor",
+  "code_file": "01_thor.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_t4x2": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

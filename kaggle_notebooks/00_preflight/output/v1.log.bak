@@ -1,0 +1,37 @@
+[{"stream_name":"stderr","time":10.872139192,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":10.872185973,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":12.434957703,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.434986642,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.434991863,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.434996061,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":13.251950954,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":13.251976407,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":13.251981067,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":13.25198467,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":15.048702009,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":15.049393851,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":15.04941416,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":15.04942142,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":15.049425918,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":15.049430194,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":15.049434354,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":15.049438226,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":15.049443298,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":15.049447438,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":15.049451323,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":15.049455543,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":15.049459634,"data":"  File \"/tmp/ipykernel_23/1615298049.py\", line 26\n"}
+,{"stream_name":"stderr","time":15.049463669,"data":"    print(\"\n"}
+,{"stream_name":"stderr","time":15.049467378,"data":"          ^\n"}
+,{"stream_name":"stderr","time":15.049470929,"data":"SyntaxError: unterminated string literal (detected at line 26)\n"}
+,{"stream_name":"stderr","time":15.04947481,"data":"\n"}
+,{"stream_name":"stderr","time":15.049489307,"data":"\n"}
+,{"stream_name":"stderr","time":17.442433089,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":17.442459922,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":17.669817989,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":17.669840941,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":18.4980325,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":18.57530598,"data":"[NbConvertApp] Writing 25579 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":21.062628486,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":21.672934473,"data":"[NbConvertApp] Writing 351962 bytes to __results__.html\n"}
+]

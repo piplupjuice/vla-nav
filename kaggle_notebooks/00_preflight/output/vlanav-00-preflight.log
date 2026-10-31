@@ -1,0 +1,244 @@
+[{"stream_name":"stderr","time":7.290788126,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.290832953,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.290839064,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.290843354,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.889057909,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.889087909,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.889093086,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.889096687,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.290171389,"data":"Thu Oct 29 09:20:31 2026       \n"}
+,{"stream_name":"stdout","time":11.29019678,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.290201239,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":11.290204801,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.290208268,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":11.290211888,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":11.290215266,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":11.290218695,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":11.29022231,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":11.290225806,"data":"| N/A   52C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":11.290229419,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":11.290236836,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.290239295,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":11.290241632,"data":"| N/A   51C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":11.290244177,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":11.29024673,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":11.290249206,"data":"\n"}
+,{"stream_name":"stdout","time":11.290251431,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.29025425,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":11.290264943,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":11.290267493,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":11.290269873,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":11.290272252,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":11.290276097,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.290278658,"data":"\n"}
+,{"stream_name":"stdout","time":29.343687287,"data":"{\n"}
+,{"stream_name":"stdout","time":29.343717722,"data":"  \"notebook\": \"00_preflight\",\n"}
+,{"stream_name":"stdout","time":29.343723266,"data":"  \"stage\": \"kernel-env\",\n"}
+,{"stream_name":"stdout","time":29.343727677,"data":"  \"ts_utc\": \"2026-10-29T09:20:31Z\",\n"}
+,{"stream_name":"stdout","time":29.343738098,"data":"  \"python\": \"3.13.15\",\n"}
+,{"stream_name":"stdout","time":29.343742279,"data":"  \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":29.343745341,"data":"  \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":29.343748243,"data":"  \"cuda_version\": \"12.8\",\n"}
+,{"stream_name":"stdout","time":29.343751359,"data":"  \"transformers\": \"5.16.1\",\n"}
+,{"stream_name":"stdout","time":29.343754256,"data":"  \"numpy\": \"2.1.3\",\n"}
+,{"stream_name":"stdout","time":29.343757026,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":29.343759904,"data":"    {\n"}
+,{"stream_name":"stdout","time":29.343762618,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":29.343765493,"data":"      \"total_mem_gb\": 15.6\n"}
+,{"stream_name":"stdout","time":29.343768281,"data":"    },\n"}
+,{"stream_name":"stdout","time":29.343770977,"data":"    {\n"}
+,{"stream_name":"stdout","time":29.343773596,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":29.343776349,"data":"      \"total_mem_gb\": 15.6\n"}
+,{"stream_name":"stdout","time":29.343779151,"data":"    }\n"}
+,{"stream_name":"stdout","time":29.343781855,"data":"  ]\n"}
+,{"stream_name":"stdout","time":29.34378448,"data":"}\n"}
+,{"stream_name":"stdout","time":29.544029169,"data":"$ pip install -q 'timm==0.9.16' 'peft==0.11.1' 'draccus==0.8.0' 'utm' 'efficientnet_pytorch'\n"}
+,{"stream_name":"stdout","time":38.008553809,"data":"\n"}
+,{"stream_name":"stdout","time":38.008583894,"data":"\n"}
+,{"stream_name":"stdout","time":49.729947676,"data":"timm: 0.9.16 | peft: 0.11.1 | efficientnet_pytorch: 0.7.1\n"}
+,{"stream_name":"stdout","time":49.729977783,"data":"$ rm -rf /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":49.729981959,"data":"\n"}
+,{"stream_name":"stdout","time":49.729995283,"data":"\n"}
+,{"stream_name":"stdout","time":49.73000067,"data":"$ git clone --depth 1 https://github.com/NHirose/OmniVLA.git /kaggle/tmp/OmniVLA\n"}
+,{"stream_name":"stdout","time":50.383913482,"data":"\n"}
+,{"stream_name":"stdout","time":50.383941081,"data":"Cloning into '/kaggle/tmp/OmniVLA'...\n"}
+,{"stream_name":"stdout","time":50.383946602,"data":"\n"}
+,{"stream_name":"stdout","time":50.3839517,"data":"OmniVLA repo files: ['.git', '.gitignore', 'LICENSE', 'README.md', 'SETUP.md', 'config_nav', 'experiments', 'inference', 'prismatic', 'pyproject.toml', 'vla-scripts']\n"}
+,{"stream_name":"stdout","time":50.38396638,"data":"CPU times: user 8.15 s, sys: 789 ms, total: 8.94 s\n"}
+,{"stream_name":"stdout","time":50.383970273,"data":"Wall time: 21 s\n"}
+,{"stream_name":"stderr","time":50.750252596,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":50.750274609,"data":"\n"}
+,{"stream_name":"stderr","time":50.750279698,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":116.413727409,"data":"  4.95 GB  model-00003-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":116.413762216,"data":"  4.95 GB  model-00002-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":116.413768721,"data":"  4.93 GB  model-00001-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":116.413773699,"data":"  0.26 GB  model-00004-of-00004.safetensors\n"}
+,{"stream_name":"stdout","time":116.413778457,"data":"  0.20 GB  action_head--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":116.413783091,"data":"  0.20 GB  dist_head--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":116.413787732,"data":"  0.07 GB  proprio_projector--120000_checkpoint.pt\n"}
+,{"stream_name":"stdout","time":116.413792687,"data":"  0.00 GB  tokenizer.json\n"}
+,{"stream_name":"stdout","time":116.413797422,"data":"  0.00 GB  tokenizer.model\n"}
+,{"stream_name":"stdout","time":116.413802213,"data":"  0.00 GB  modeling_prismatic_____.py\n"}
+,{"stream_name":"stdout","time":116.413807173,"data":"  0.00 GB  modeling_prismatic.py\n"}
+,{"stream_name":"stdout","time":116.413811997,"data":"  0.00 GB  model.safetensors.index.json\n"}
+,{"stream_name":"stdout","time":116.41381662,"data":"checkpoint OK at /kaggle/tmp/omnivla-original\n"}
+,{"stream_name":"stdout","time":116.413821287,"data":"CPU times: user 1min 7s, sys: 41 s, total: 1min 48s\n"}
+,{"stream_name":"stdout","time":116.413825904,"data":"Wall time: 1min 6s\n"}
+,{"stream_name":"stdout","time":241.84071348,"data":"PROBE stdout:\\n Using OmniVLA constants:\n"}
+,{"stream_name":"stdout","time":241.840779353,"data":"  NUM_ACTIONS_CHUNK = 8\n"}
+,{"stream_name":"stdout","time":241.840787042,"data":"  ACTION_DIM = 4\n"}
+,{"stream_name":"stdout","time":241.840792138,"data":"  POSE_DIM = 4\n"}
+,{"stream_name":"stdout","time":241.840796982,"data":"  ACTION_PROPRIO_NORMALIZATION_TYPE = NormalizationType.BOUNDS_Q99\n"}
+,{"stream_name":"stdout","time":241.840801494,"data":"If needed, manually set the correct constants in `prismatic/vla/constants.py`!\n"}
+,{"stream_name":"stdout","time":241.840805968,"data":"PROBE DONE\n"}
+,{"stream_name":"stdout","time":241.840810576,"data":"\n"}
+,{"stream_name":"stdout","time":241.840814884,"data":"PROBE stderr:\\n The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.\n"}
+,{"stream_name":"stdout","time":241.840821983,"data":"\n"}
+,{"stream_name":"stdout","time":241.840826414,"data":"0it [00:00, ?it/s]\n"}
+,{"stream_name":"stdout","time":241.840830793,"data":"0it [00:00, ?it/s]\n"}
+,{"stream_name":"stdout","time":241.840835569,"data":"Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.40.1` and `tokenizers==0.23.1`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.\n"}
+,{"stream_name":"stdout","time":241.840841658,"data":"The model weights are not tied. Please use the `tie_weights` method before using the `infer_auto_device` function.\n"}
+,{"stream_name":"stdout","time":241.840857976,"data":"\n"}
+,{"stream_name":"stdout","time":241.840862105,"data":"Loading checkpoint shards:   0%|          | 0/4 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":241.840866441,"data":"Loading checkpoint shards:  25%|██▌       | 1/4 [00:04\u003c00:13,  4.53s/it]\n"}
+,{"stream_name":"stdout","time":241.840870879,"data":"Loading checkpoint shards:  50%|█████     | 2/4 [00:12\u003c00:12,  6.28s/it]\n"}
+,{"stream_name":"stdout","time":241.84087446,"data":"Loading checkpoint shards:  75%|███████▌  | 3/4 [00:24\u003c00:09,  9.10s/it]\n"}
+,{"stream_name":"stdout","time":241.840878256,"data":"Loading checkpoint shards: 100%|██████████| 4/4 [00:25\u003c00:00,  6.03s/it]\n"}
+,{"stream_name":"stdout","time":241.840882278,"data":"Loading checkpoint shards: 100%|██████████| 4/4 [00:25\u003c00:00,  6.46s/it]\n"}
+,{"stream_name":"stdout","time":241.840886846,"data":"\n"}
+,{"stream_name":"stdout","time":241.840890492,"data":"probe returncode: 0\n"}
+,{"stream_name":"stdout","time":241.840894129,"data":"CPU times: user 17.7 ms, sys: 20.1 ms, total: 37.9 ms\n"}
+,{"stream_name":"stdout","time":241.840898054,"data":"Wall time: 2min 5s\n"}
+,{"stream_name":"stdout","time":241.863923528,"data":"{\n"}
+,{"stream_name":"stdout","time":241.863948006,"data":"  \"notebook\": \"00_preflight\",\n"}
+,{"stream_name":"stdout","time":241.863953214,"data":"  \"stage\": \"probe-subprocess\",\n"}
+,{"stream_name":"stdout","time":241.863957665,"data":"  \"reference\": \"inference/run_omnivla.py @ NHirose/OmniVLA, fetched 2026-10-28\",\n"}
+,{"stream_name":"stdout","time":241.863962841,"data":"  \"ts_utc\": \"2026-10-29T09:22:27Z\",\n"}
+,{"stream_name":"stdout","time":241.863967793,"data":"  \"pip_transformers_4401\": {\n"}
+,{"stream_name":"stdout","time":241.863972592,"data":"    \"tokenizers_spec_patched\": true,\n"}
+,{"stream_name":"stdout","time":241.863980734,"data":"    \"patched_file\": \"/usr/local/lib/python3.13/dist-packages/transformers/dependency_versions_table.py\",\n"}
+,{"stream_name":"stdout","time":241.863985537,"data":"    \"patch\": \"\\\"tokenizers\\\": \\\"tokenizers\u003e=0.19,\u003c0.20\\\"  -\u003e  \\\"tokenizers\\\": \\\"tokenizers\u003e=0.19\\\"\",\n"}
+,{"stream_name":"stdout","time":241.863991482,"data":"    \"reason\": \"transformers 4.40.1 import-time gate vs Kaggle tokenizers 0.23.1 (no cp313 wheel for 0.19.1); model code is warn-only on tokenizers version\"\n"}
+,{"stream_name":"stdout","time":241.863996179,"data":"  },\n"}
+,{"stream_name":"stdout","time":241.86400003400001,"data":"  \"probe_env\": {\n"}
+,{"stream_name":"stdout","time":241.86400412,"data":"    \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\",\n"}
+,{"stream_name":"stdout","time":241.86400844,"data":"    \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":241.864012592,"data":"    \"transformers\": \"4.40.1\",\n"}
+,{"stream_name":"stdout","time":241.864016677,"data":"    \"tokenizers\": \"0.23.1\",\n"}
+,{"stream_name":"stdout","time":241.864020666,"data":"    \"timm\": \"0.9.16\",\n"}
+,{"stream_name":"stdout","time":241.864024752,"data":"    \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":241.864028749,"data":"    \"cuda_count\": 2,\n"}
+,{"stream_name":"stdout","time":241.864034594,"data":"    \"gpus\": [\n"}
+,{"stream_name":"stdout","time":241.86404262,"data":"      \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":241.864046274,"data":"      \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":241.864074754,"data":"    ]\n"}
+,{"stream_name":"stdout","time":241.86408984,"data":"  },\n"}
+,{"stream_name":"stdout","time":241.864093963,"data":"  \"prismatic_stub_pkgs\": {\n"}
+,{"stream_name":"stdout","time":241.864097992,"data":"    \"stubbed\": [\n"}
+,{"stream_name":"stdout","time":241.86410198,"data":"      \"prismatic\",\n"}
+,{"stream_name":"stdout","time":241.864105885,"data":"      \"prismatic.vla\",\n"}
+,{"stream_name":"stdout","time":241.864109872,"data":"      \"prismatic.models\",\n"}
+,{"stream_name":"stdout","time":241.86411387,"data":"      \"prismatic.models.backbones\",\n"}
+,{"stream_name":"stdout","time":241.864117966,"data":"      \"prismatic.models.backbones.llm\",\n"}
+,{"stream_name":"stdout","time":241.864122038,"data":"      \"prismatic.training\",\n"}
+,{"stream_name":"stdout","time":241.864126176,"data":"      \"prismatic.extern\",\n"}
+,{"stream_name":"stdout","time":241.864130222,"data":"      \"prismatic.extern.hf\"\n"}
+,{"stream_name":"stdout","time":241.86415437,"data":"    ],\n"}
+,{"stream_name":"stdout","time":241.864162732,"data":"    \"reason\": \"bypass eager __init__ chain that imports the RLDS training stack (dlimp/tensorflow); inference-relevant modules load verbatim, documented \u0026 surgical\"\n"}
+,{"stream_name":"stdout","time":241.864168846,"data":"  },\n"}
+,{"stream_name":"stdout","time":241.864173326,"data":"  \"constants\": {\n"}
+,{"stream_name":"stdout","time":241.864177863,"data":"    \"NUM_ACTIONS_CHUNK\": 8,\n"}
+,{"stream_name":"stdout","time":241.864182389,"data":"    \"ACTION_DIM\": 4,\n"}
+,{"stream_name":"stdout","time":241.864186353,"data":"    \"POSE_DIM\": 4,\n"}
+,{"stream_name":"stdout","time":241.86419035,"data":"    \"NORM\": \"NormalizationType.BOUNDS_Q99\"\n"}
+,{"stream_name":"stdout","time":241.86419454,"data":"  },\n"}
+,{"stream_name":"stdout","time":241.864198251,"data":"  \"model_load\": {\n"}
+,{"stream_name":"stdout","time":241.864202239,"data":"    \"seconds\": 30.5,\n"}
+,{"stream_name":"stdout","time":241.864206194,"data":"    \"llm_dim\": 4096,\n"}
+,{"stream_name":"stdout","time":241.864210089,"data":"    \"num_patches\": 513,\n"}
+,{"stream_name":"stdout","time":241.864214136,"data":"    \"tokenizer_class\": \"LlamaTokenizerFast\",\n"}
+,{"stream_name":"stdout","time":241.864218317,"data":"    \"processor_class\": \"PrismaticProcessor\",\n"}
+,{"stream_name":"stdout","time":241.864222289,"data":"    \"model_class\": \"OpenVLAForActionPrediction_MMNv1\",\n"}
+,{"stream_name":"stdout","time":241.864226389,"data":"    \"device_map\": \"auto (documented deviation from official single-GPU .to())\",\n"}
+,{"stream_name":"stdout","time":241.864230686,"data":"    \"hf_device_map_module_counts\": {\n"}
+,{"stream_name":"stdout","time":241.86423482,"data":"      \"0\": 17,\n"}
+,{"stream_name":"stdout","time":241.864244829,"data":"      \"1\": 20\n"}
+,{"stream_name":"stdout","time":241.864262405,"data":"    },\n"}
+,{"stream_name":"stdout","time":241.864266924,"data":"    \"vram_after_load_gb\": [\n"}
+,{"stream_name":"stdout","time":241.864271605,"data":"      7.8,\n"}
+,{"stream_name":"stdout","time":241.86427602,"data":"      7.57\n"}
+,{"stream_name":"stdout","time":241.864280787,"data":"    ]\n"}
+,{"stream_name":"stdout","time":241.86428502,"data":"  },\n"}
+,{"stream_name":"stdout","time":241.864288831,"data":"  \"timing\": {\n"}
+,{"stream_name":"stdout","time":241.86429278,"data":"    \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":241.864296786,"data":"    \"transformers\": \"4.40.1\",\n"}
+,{"stream_name":"stdout","time":241.864300794,"data":"    \"warmup_3_ms\": [\n"}
+,{"stream_name":"stdout","time":241.864309837,"data":"      4557.2,\n"}
+,{"stream_name":"stdout","time":241.864315055,"data":"      3536.7,\n"}
+,{"stream_name":"stdout","time":241.864319037,"data":"      3370.0\n"}
+,{"stream_name":"stdout","time":241.864322843,"data":"    ],\n"}
+,{"stream_name":"stdout","time":241.864326637,"data":"    \"n\": 10,\n"}
+,{"stream_name":"stdout","time":241.864330454,"data":"    \"mean_ms\": 3563.4,\n"}
+,{"stream_name":"stdout","time":241.864334319,"data":"    \"median_ms\": 3518.2,\n"}
+,{"stream_name":"stdout","time":241.864340237,"data":"    \"p95_ms\": 3774.4,\n"}
+,{"stream_name":"stdout","time":241.864348694,"data":"    \"min_ms\": 3396.2,\n"}
+,{"stream_name":"stdout","time":241.864365806,"data":"    \"max_ms\": 3774.4,\n"}
+,{"stream_name":"stdout","time":241.864370792,"data":"    \"forward_only_mean_ms\": 3537.0,\n"}
+,{"stream_name":"stdout","time":241.864375781,"data":"    \"tick_scope\": \"batch build (official data_transformer+collator) + forward + action_head + PD decode; excludes figure saving\",\n"}
+,{"stream_name":"stdout","time":241.864381055,"data":"    \"waypoints_shape\": [\n"}
+,{"stream_name":"stdout","time":241.864385485,"data":"      1,\n"}
+,{"stream_name":"stdout","time":241.864389305,"data":"      8,\n"}
+,{"stream_name":"stdout","time":241.864393118,"data":"      4\n"}
+,{"stream_name":"stdout","time":241.864396978,"data":"    ],\n"}
+,{"stream_name":"stdout","time":241.864400781,"data":"    \"waypoints_first4_round3\": [\n"}
+,{"stream_name":"stdout","time":241.864405053,"data":"      [\n"}
+,{"stream_name":"stdout","time":241.864408876,"data":"        2.203000068664551,\n"}
+,{"stream_name":"stdout","time":241.864412785,"data":"        -0.16599999368190765,\n"}
+,{"stream_name":"stdout","time":241.864416674,"data":"        0.890999972820282,\n"}
+,{"stream_name":"stdout","time":241.864420537,"data":"        0.008999999612569809\n"}
+,{"stream_name":"stdout","time":241.864424403,"data":"      ],\n"}
+,{"stream_name":"stdout","time":241.864428223,"data":"      [\n"}
+,{"stream_name":"stdout","time":241.864432015,"data":"        2.25,\n"}
+,{"stream_name":"stdout","time":241.864435872,"data":"        0.1599999964237213,\n"}
+,{"stream_name":"stdout","time":241.864441697,"data":"        0.9610000252723694,\n"}
+,{"stream_name":"stdout","time":241.864449189,"data":"        0.04600000008940697\n"}
+,{"stream_name":"stdout","time":241.864465495,"data":"      ],\n"}
+,{"stream_name":"stdout","time":241.864470099,"data":"      [\n"}
+,{"stream_name":"stdout","time":241.864474752,"data":"        2.312000036239624,\n"}
+,{"stream_name":"stdout","time":241.864479406,"data":"        0.11400000005960464,\n"}
+,{"stream_name":"stdout","time":241.864483825,"data":"        0.9409999847412109,\n"}
+,{"stream_name":"stdout","time":241.864487685,"data":"        0.04800000041723251\n"}
+,{"stream_name":"stdout","time":241.864491489,"data":"      ],\n"}
+,{"stream_name":"stdout","time":241.864495265,"data":"      [\n"}
+,{"stream_name":"stdout","time":241.864498974,"data":"        2.921999931335449,\n"}
+,{"stream_name":"stdout","time":241.864502966,"data":"        0.17800000309944153,\n"}
+,{"stream_name":"stdout","time":241.864506814,"data":"        0.890999972820282,\n"}
+,{"stream_name":"stdout","time":241.864510592,"data":"        0.08699999749660492\n"}
+,{"stream_name":"stdout","time":241.864516158,"data":"      ]\n"}
+,{"stream_name":"stdout","time":241.864519932,"data":"    ],\n"}
+,{"stream_name":"stdout","time":241.864523746,"data":"    \"modality_id\": \"6 (image only; no satellite/lan/pose)\",\n"}
+,{"stream_name":"stdout","time":241.864531929,"data":"    \"decoded_linear_mps\": 0.30000001192092896,\n"}
+,{"stream_name":"stdout","time":241.864536103,"data":"    \"decoded_angular_rads\": 0.09930644929409027,\n"}
+,{"stream_name":"stdout","time":241.864545829,"data":"    \"vram_peak_gb\": [\n"}
+,{"stream_name":"stdout","time":241.864549781,"data":"      8.16,\n"}
+,{"stream_name":"stdout","time":241.864568555,"data":"      7.97\n"}
+,{"stream_name":"stdout","time":241.864573201,"data":"    ]\n"}
+,{"stream_name":"stdout","time":241.864577828,"data":"  }\n"}
+,{"stream_name":"stdout","time":241.864582412,"data":"}\n"}
+,{"stream_name":"stdout","time":241.864586811,"data":"\\nPREFLIGHT GATES: {\n"}
+,{"stream_name":"stdout","time":241.864590763,"data":"  \"constants_correct\": true,\n"}
+,{"stream_name":"stdout","time":241.864594811,"data":"  \"model_loaded\": true,\n"}
+,{"stream_name":"stdout","time":241.864598732,"data":"  \"inference_ran\": true,\n"}
+,{"stream_name":"stdout","time":241.864602806,"data":"  \"vram_recorded\": true\n"}
+,{"stream_name":"stdout","time":241.864606675,"data":"}\n"}
+,{"stream_name":"stdout","time":241.864610408,"data":"ALL PASS\n"}
+,{"stream_name":"stdout","time":241.864614326,"data":"report saved to /kaggle/working/preflight/preflight_report.json\n"}
+,{"stream_name":"stderr","time":247.163307156,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":247.163340828,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":247.345429209,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":247.345458717,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":248.197685981,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":248.298620516,"data":"[NbConvertApp] Writing 88875 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":251.114660231,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":251.69664235,"data":"[NbConvertApp] Writing 379280 bytes to __results__.html\n"}
+]

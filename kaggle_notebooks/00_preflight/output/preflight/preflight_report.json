@@ -1,0 +1,135 @@
+{
+  "notebook": "00_preflight",
+  "stage": "probe-subprocess",
+  "reference": "inference/run_omnivla.py @ NHirose/OmniVLA, fetched 2026-10-28",
+  "ts_utc": "2026-10-29T09:22:27Z",
+  "pip_transformers_4401": {
+    "tokenizers_spec_patched": true,
+    "patched_file": "/usr/local/lib/python3.13/dist-packages/transformers/dependency_versions_table.py",
+    "patch": "\"tokenizers\": \"tokenizers>=0.19,<0.20\"  ->  \"tokenizers\": \"tokenizers>=0.19\"",
+    "reason": "transformers 4.40.1 import-time gate vs Kaggle tokenizers 0.23.1 (no cp313 wheel for 0.19.1); model code is warn-only on tokenizers version"
+  },
+  "probe_env": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.40.1",
+    "tokenizers": "0.23.1",
+    "timm": "0.9.16",
+    "cuda_available": true,
+    "cuda_count": 2,
+    "gpus": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "prismatic_stub_pkgs": {
+    "stubbed": [
+      "prismatic",
+      "prismatic.vla",
+      "prismatic.models",
+      "prismatic.models.backbones",
+      "prismatic.models.backbones.llm",
+      "prismatic.training",
+      "prismatic.extern",
+      "prismatic.extern.hf"
+    ],
+    "reason": "bypass eager __init__ chain that imports the RLDS training stack (dlimp/tensorflow); inference-relevant modules load verbatim, documented & surgical"
+  },
+  "constants": {
+    "NUM_ACTIONS_CHUNK": 8,
+    "ACTION_DIM": 4,
+    "POSE_DIM": 4,
+    "NORM": "NormalizationType.BOUNDS_Q99"
+  },
+  "model_load": {
+    "seconds": 30.5,
+    "llm_dim": 4096,
+    "num_patches": 513,
+    "tokenizer_class": "LlamaTokenizerFast",
+    "processor_class": "PrismaticProcessor",
+    "model_class": "OpenVLAForActionPrediction_MMNv1",
+    "device_map": "auto (documented deviation from official single-GPU .to())",
+    "hf_device_map_module_counts": {
+      "0": 17,
+      "1": 20
+    },
+    "vram_after_load_gb": [
+      7.8,
+      7.57
+    ]
+  },
+  "timing": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.40.1",
+    "warmup_3_ms": [
+      4557.2,
+      3536.7,
+      3370.0
+    ],
+    "n": 10,
+    "mean_ms": 3563.4,
+    "median_ms": 3518.2,
+    "p95_ms": 3774.4,
+    "min_ms": 3396.2,
+    "max_ms": 3774.4,
+    "forward_only_mean_ms": 3537.0,
+    "tick_scope": "batch build (official data_transformer+collator) + forward + action_head + PD decode; excludes figure saving",
+    "waypoints_shape": [
+      1,
+      8,
+      4
+    ],
+    "waypoints_first4_round3": [
+      [
+        2.203000068664551,
+        -0.16599999368190765,
+        0.890999972820282,
+        0.008999999612569809
+      ],
+      [
+        2.25,
+        0.1599999964237213,
+        0.9610000252723694,
+        0.04600000008940697
+      ],
+      [
+        2.312000036239624,
+        0.11400000005960464,
+        0.9409999847412109,
+        0.04800000041723251
+      ],
+      [
+        2.921999931335449,
+        0.17800000309944153,
+        0.890999972820282,
+        0.08699999749660492
+      ]
+    ],
+    "modality_id": "6 (image only; no satellite/lan/pose)",
+    "decoded_linear_mps": 0.30000001192092896,
+    "decoded_angular_rads": 0.09930644929409027,
+    "vram_peak_gb": [
+      8.16,
+      7.97
+    ]
+  },
+  "gates": {
+    "constants_correct": true,
+    "model_loaded": true,
+    "inference_ran": true,
+    "vram_recorded": true
+  },
+  "verdict": "ALL PASS",
+  "summary": {
+    "mean_ms": 3563.4,
+    "median_ms": 3518.2,
+    "p95_ms": 3774.4,
+    "vram_peak_gb": [
+      8.16,
+      7.97
+    ],
+    "vram_after_load_gb": null,
+    "torch": "2.11.0+cu128",
+    "transformers": "4.40.1"
+  }
+}

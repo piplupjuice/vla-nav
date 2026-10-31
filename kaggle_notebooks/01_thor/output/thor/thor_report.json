@@ -1,0 +1,47 @@
+{
+  "notebook": "01_thor",
+  "version": 3,
+  "stage": "kernel-env",
+  "ts_utc": "2026-10-29T09:55:22Z",
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "apt_pkg_failures": [],
+  "xmode": "xvfb_glx",
+  "xvfb_pid": 3496,
+  "xdpyinfo_head": "name of display: :0 version number: 11.0 vendor string: The X.Org Foundation vendor release number: 12101011 X.Org version: 21.1.11 maximum",
+  "controller_cloud_error": "Exception('Unity process has exited - check ~/.config/unity3d/Allen\\\\ Institute\\\\ for\\\\ Artificial\\\\ Intelligence/AI2-THOR/Player.log for errors. Confirm that Vulkan is properly configured on this system using vulkaninfo from the vulkan-utils package. returncode=-6')",
+  "controller_tracebacks": {
+    "cloud": "Traceback (most recent call last):\n  File \"<timed exec>\", line 35, in <module>\n  File \"<timed exec>\", line 16, in try_build\n  File \"/usr/local/lib/python3.13/dist-packages/ai2thor/controller.py\", line 518, in __init__\n    self.start(\n    ~~~~~~~~~~^\n        port=port,\n        ^^^^^^^^^^\n    ...<4 lines>...\n        host=host,\n        ^^^^^^^^^^\n    )\n    ^\n  File \"/usr/local/lib/python3.13/dist-packages/ai2thor/controller.py\", line 1436, in start\n    self._start_unity_thread(env, width, height, unity_params, image_name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/ai2thor/controller.py\", line 1153, in _start_unity_thread\n    raise Exception(message)\nException: Unity process has exited - check ~/.config/unity3d/Allen\\ Institute\\ for\\ Artificial\\ Intelligence/AI2-THOR/Player.log for errors. Confirm that Vulkan is properly configured on this system using vulkaninfo from the vulkan-utils package. returncode=-6\n"
+  },
+  "unity_player_log_tails": {
+    "cloud": "[Vulkan init] extensions: count=4\n\n[Vulkan init] extensions: name=VK_EXT_debug_report, enabled=0\n\n[Vulkan init] extensions: name=VK_EXT_debug_utils, enabled=0\n\n[Vulkan init] extensions: name=VK_KHR_portability_enumeration, enabled=0\n\n[Vulkan init] extensions: name=VK_LUNARG_direct_driver_loading, enabled=0\n\n[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)\n\nERROR:             vkEnumeratePhysicalDevices: Invalid instance [VUID-vkEnumeratePhysicalDevices-instance-parameter]\n\nCaught fatal signal - signo:6 code:-6 errno:0 addr:0xdaf\n\nObtained 16 stack frames.\n\n#0  0x007f602bf03330 in __sigaction\n\n#1  0x007f602bf5cc0c in pthread_kill\n\n#2  0x007f602bf0327e in gsignal\n\n#3  0x007f602bee68ff in abort\n\n#4  0x007f602831cc83 in vkEnumeratePhysicalDevices\n\n#5  0x007f602cbf2041 in void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)\n\n#6  0x007f602cbfc6a9 in void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)\n\n#7  0x007f602cc672ce in void std::vector<std::pair<unsigned int, unsigned int>, std::allocator<std::pair<unsigned int, unsigned int> > >::_M_realloc_insert<std::pair<unsigned int, unsigned int> >(__gnu_cxx::__normal_iterator<std::pair<unsigned int, unsigned int>*, std::vector<std::pair<unsigned int, unsigned int>, std::allocator<std::pair<unsigned int, unsigned int> > > >, std::pair<unsigned int, unsigned int>&&)\n\n#8  0x007f602d098bbb in void std::vector<unsigned int, std::allocator<unsigned int> >::_M_assign_aux<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, std::forward_iterator_tag)\n\n#9  0x007f602d098ee7 in void std::vector<unsigned int, std::allocator<unsigned int> >::_M_assign_aux<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, std::forward_iterator_tag)\n\n#10 0x007f602cf50eb8 in int* std::_V2::__rotate<int*>(int*, int*, int*, std::random_access_iterator_tag)\n\n#11 0x007f602cf5ef6a in int* std::_V2::__rotate<int*>(int*, int*, int*, std::random_access_iterator_tag)\n\n#12 0x007f602d140f4c in PlayerMain(int, char**)\n\n#13 0x007f602bee81ca in __libc_init_first\n\n#14 0x007f602bee828b in __libc_start_main\n\n#15 0x0058720b701029 in _start\n"
+  },
+  "controller": {
+    "mode": "linux64",
+    "build_seconds": 102.0,
+    "xmode_used": "xvfb_glx"
+  },
+  "render": {
+    "frame_shape": [
+      400,
+      400,
+      3
+    ],
+    "frame_std": 45.0,
+    "step_ms": {
+      "mean": 113.1,
+      "median": 113.4
+    }
+  },
+  "gates": {
+    "controller_built": true,
+    "frame_real_rgb": true,
+    "frame_not_blank": true,
+    "step_timing_recorded": true
+  },
+  "verdict": "ALL PASS"
+}

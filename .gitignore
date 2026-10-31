@@ -1,0 +1,10 @@
+docs/
+kaggle_datasets/
+archive/
+tmp_*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.DS_Store

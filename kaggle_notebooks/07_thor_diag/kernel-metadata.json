@@ -1,0 +1,14 @@
+{
+  "id": "pikanigga/vlanav-07-thor-diag",
+  "title": "vlanav-07-thor-diag",
+  "code_file": "07_thor_diag.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_t4x2": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

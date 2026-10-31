@@ -1,0 +1,18 @@
+{
+  "id": "pikanigga/vlanav-04a-test-ab",
+  "title": "vlanav-04a-test-ab",
+  "code_file": "04a_test.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_t4x2": "true",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "pikanigga/vlanav-src"
+  ],
+  "kernel_sources": [
+    "pikanigga/vlanav-03-tuning"
+  ],
+  "competition_sources": []
+}

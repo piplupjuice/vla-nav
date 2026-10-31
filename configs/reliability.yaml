@@ -1,0 +1,36 @@
+# VLA-NAV reliability method configuration.
+#
+# Threshold selection rule (pre-registered): the ONLY tuning runs on the
+# `val` split of this file's listed conditions. Test-split results of any
+# method may not be consulted when choosing these numbers. The chosen value
+# is recorded here with the experiment id of the tuning run for traceability.
+reliability:
+  signal: "progress_discrepancy"    # d_t = intended - observed displacement, meters
+  stall_threshold_m: 0.01           # step counted as "stalled" below this motion
+  threshold_m: 0.2                  # VAL-selected (sweep below); degenerate, see caveat
+  stall_limit: 2                    # consecutive stalled steps before trigger
+  max_replans_per_episode: 24       # anti-loop budget per episode (documented)
+  tuning_experiment_id: "tune-thor-20261030 (val sweep, real VLA, kernel v4)"
+  tuning_caveat: >-
+    Real val sweep (notebook 03, kernel pikanigga/vlanav-03-tuning v4,
+    2026-10-30) over threshold_m in [0.05, 0.10, 0.20, 0.40] with stall_limit=2,
+    n=6 val episodes per threshold. Success rate was 0.000 at EVERY threshold,
+    so success does not identify a threshold; the pre-registered cost tie-break
+    picked 0.20 m (15.3 mean inferences/episode vs 23.2 at 0.05). See
+    results/tuning/threshold_choice.annotated.json (degenerate_val=true).
+    Treat 0.20 as the "cheapest working setting" on val, NOT a tuned optimum.
+    Notebook 04 must read results/tuning/threshold_choice.json, never this file.
+  oracle_available: false           # oracle goal-distance variant only in labeled rows
+
+# Threshold candidates evaluated on the val split (must stay fixed before test runs).
+#
+# AMENDMENT 2026-10-30 (before any test-split run existed): the original list
+# (0.03..0.20) was written for the mock policy, whose per-tick displacement
+# differs from the real VLA. With real OmniVLA the commanded displacement is
+# ~v*dt = 0.10 m/tick, so the sweep grid was widened to the list below; 0.40 m
+# acts as a deliberate near-B1 control arm (the discrepancy trigger can never
+# fire, only the stall trigger can), which is exactly what makes the
+# "does triggering help?" comparison interpretable. No test-split data existed
+# when this was changed.
+candidates_threshold_m: [0.05, 0.10, 0.20, 0.40]
+stall_limit_candidates: [2]

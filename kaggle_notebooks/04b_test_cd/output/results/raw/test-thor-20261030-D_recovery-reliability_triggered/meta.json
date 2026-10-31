@@ -1,0 +1,47 @@
+{
+  "experiment_id": "test-thor-20261030-D_recovery-reliability_triggered",
+  "created_utc": "2026-10-30T11:39:29Z",
+  "method": "reliability_triggered",
+  "env_family": "ai2thor",
+  "env_commit_hash": "unknown",
+  "model_name": "NHirose/omnivla-original",
+  "model_revision": "omnivla-original@120000",
+  "gpu_name": "Tesla T4;Tesla T4",
+  "torch_version": "2.11.0+cu128",
+  "python_version": null,
+  "seeds_version": "v1",
+  "conditions": [
+    "D_recovery"
+  ],
+  "split": "test",
+  "action_budget": 60,
+  "termination_rule": "auto-stop within goal_radius, else max_steps; collision-kill at max_collisions",
+  "notes": "FULL test matrix. n=16/condition, seeds from the upper half of the condition range, paired across regimes; B3 threshold from VAL-only tuning (/kaggle/input/notebooks/pikanigga/vlanav-03-tuning/results/tuning/threshold_choice.json); instruction via official modality 7.",
+  "extra": {
+    "seeds": [
+      40198,
+      40197,
+      40196,
+      40195,
+      40194,
+      40193,
+      40192,
+      40191,
+      40190,
+      40189,
+      40188,
+      40187,
+      40186,
+      40185,
+      40184,
+      40183
+    ],
+    "threshold_m": 0.2,
+    "stall_limit": 2,
+    "threshold_source": "/kaggle/input/notebooks/pikanigga/vlanav-03-tuning/results/tuning/threshold_choice.json",
+    "condition": "D_recovery",
+    "n_per_condition": 16,
+    "goal_radius_m": 0.6,
+    "scenes": "test block FloorPlan401..430"
+  }
+}
